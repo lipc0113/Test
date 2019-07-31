@@ -1,4 +1,4 @@
-package com.lpc.test;
+package com.lpc.test.bean;
 
 import android.view.View;
 
@@ -7,11 +7,13 @@ import android.view.View;
  * @ Date       ：Created in 16:54 2019-07-29
  * @ Description：
  */
-public class Bean {
+public class MainBean {
 
     private String name;
 
     private View.OnClickListener onClickListener;
+
+    private int viewType = 1;
 
     public String getName() {
         return name;
@@ -27,5 +29,13 @@ public class Bean {
 
     public void setOnClickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
+    }
+
+    public int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
     }
 }

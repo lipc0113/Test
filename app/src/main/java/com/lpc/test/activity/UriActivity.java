@@ -1,9 +1,11 @@
-package com.lpc.test;
+package com.lpc.test.activity;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.lpc.test.R;
 
 /**
  * @ Author     ：v_lipengcheng

@@ -1,4 +1,4 @@
-package com.lpc.test;
+package com.lpc.test.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +8,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lpc.test.bean.MainBean;
+import com.lpc.test.factory.MainBeanFactory;
+import com.lpc.test.adapter.MainAdapter;
+import com.lpc.test.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRv;
-    private List<Bean> mList = new ArrayList<>();
+    private List<MainBean> mList = new ArrayList<>();
     private MainAdapter mMainAdapter;
 
     @Override
@@ -28,23 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
 
-        BeanFactory beanFactory = new BeanFactory();
-        beanFactory.addBean("通过uri跳转activity的数据解析", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(MainActivity.this, UriActivity.class);
-                startActivity(i);
-            }
-        });
-        mList = beanFactory.build();
+        MainBeanFactory beanFactory = new MainBeanFactory();
+        mList = beanFactory.getList(this);
 
         mMainAdapter = new MainAdapter(this, mList);
         mRv.setAdapter(mMainAdapter);
     }
 
     private void initView() {
-
         mRv = findViewById(R.id.rv);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

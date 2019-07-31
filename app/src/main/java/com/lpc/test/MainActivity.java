@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,9 +44,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
         mRv = findViewById(R.id.rv);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        mRv.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        mRv.setLayoutManager(linearLayoutManager);
     }
 }

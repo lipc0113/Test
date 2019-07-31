@@ -1,17 +1,15 @@
 package com.lpc.test.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lpc.test.R;
+import com.lpc.test.adapter.MainAdapter;
 import com.lpc.test.bean.MainBean;
 import com.lpc.test.factory.MainBeanFactory;
-import com.lpc.test.adapter.MainAdapter;
-import com.lpc.test.R;
 
 import java.util.ArrayList;
 import java.util.List;

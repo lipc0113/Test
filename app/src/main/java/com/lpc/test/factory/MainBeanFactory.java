@@ -2,9 +2,9 @@ package com.lpc.test.factory;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 
-import com.lpc.test.activity.MainActivity;
 import com.lpc.test.activity.UriActivity;
 import com.lpc.test.bean.MainBean;
 
@@ -26,7 +26,8 @@ public class MainBeanFactory {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(activity, UriActivity.class);
+                Intent i = new Intent("com.lpc.test");
+                i.setData(Uri.parse("lipc0113://com.lpc.test/act?id=1&name=lipc0113"));
                 activity.startActivity(i);
             }
         });

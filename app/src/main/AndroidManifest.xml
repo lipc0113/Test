@@ -16,7 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.UriActivity" />
+        <activity android:name=".activity.UriActivity">
+            <intent-filter>
+                <action android:name="com.lpc.test" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.lpc.test"
+                    android:path="/act"
+                    android:scheme="lipc0113" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

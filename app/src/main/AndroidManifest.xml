@@ -28,6 +28,7 @@
                     android:scheme="lipc0113" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.RecyclerViewActivity" />
     </application>
 
 </manifest>

@@ -4,14 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lpc.test.bean.MainBean;
 import com.lpc.test.R;
+import com.lpc.test.bean.MainBean;
 
 import java.util.List;
 
@@ -56,10 +55,10 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         MainBean bean = mList.get(position);
         if (bean.getViewType() == VIEW_TYPE_TITLE) {
-            ((TitleViewHolder) viewHolder).tv.setText(bean.getName());
+            ((TitleViewHolder) viewHolder).tv_title.setText(bean.getName());
         } else {
-            ((ContentViewHolder) viewHolder).btn.setText(bean.getName());
-            ((ContentViewHolder) viewHolder).btn.setOnClickListener(bean.getOnClickListener());
+            ((ContentViewHolder) viewHolder).tv_content.setText(bean.getName());
+            ((ContentViewHolder) viewHolder).tv_content.setOnClickListener(bean.getOnClickListener());
         }
     }
 
@@ -75,21 +74,21 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class ContentViewHolder extends RecyclerView.ViewHolder {
 
-        private final Button btn;
+        private final TextView tv_content;
 
         public ContentViewHolder(@NonNull View itemView) {
             super(itemView);
-            btn = itemView.findViewById(R.id.btn);
+            tv_content = itemView.findViewById(R.id.tv_content);
         }
     }
 
     public class TitleViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView tv;
+        private final TextView tv_title;
 
         public TitleViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.tv);
+            tv_title = itemView.findViewById(R.id.tv_title);
         }
     }
 }

@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.view.View;
 
 import com.lpc.test.activity.RecyclerViewActivity;
-import com.lpc.test.activity.UriActivity;
 import com.lpc.test.bean.MainBean;
 
 import java.util.ArrayList;
@@ -39,6 +38,14 @@ public class MainBeanFactory {
 
                 Intent i = new Intent(activity, RecyclerViewActivity.class);
                 activity.startActivity(i);
+            }
+        });
+//        addBean("Java", 0);
+        addBean("用注释代替枚举", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
         return mList;

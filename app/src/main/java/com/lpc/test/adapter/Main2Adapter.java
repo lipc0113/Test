@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lpc.test.R;
-import com.lpc.test.bean.RecyclerViewBean;
+import com.lpc.test.bean.Main2Bean;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ import java.util.List;
 public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.ViewHolder> {
 
     private Context mContext;
-    private List<RecyclerViewBean> mList;
+    private List<Main2Bean> mList;
     private final LayoutInflater mLayoutInflater;
 
-    public Main2Adapter(Context context, List<RecyclerViewBean> list) {
+    public Main2Adapter(Context context, List<Main2Bean> list) {
 
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);

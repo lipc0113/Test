@@ -3,14 +3,13 @@ package com.lpc.test.activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lpc.test.BaseActivity;
 import com.lpc.test.R;
 import com.lpc.test.adapter.Main2Adapter;
-import com.lpc.test.bean.RecyclerViewBean;
+import com.lpc.test.bean.Main2Bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.List;
 public class RecyclerViewActivity extends BaseActivity {
 
     private RecyclerView mRv;
-    private List<RecyclerViewBean> mList = new ArrayList<>();
+    private List<Main2Bean> mList = new ArrayList<>();
     private Main2Adapter mMainAdapter;
 
     @Override
@@ -48,7 +47,7 @@ public class RecyclerViewActivity extends BaseActivity {
     protected void initData() {
 
         for (int i = 0; i < 30; i++) {
-            RecyclerViewBean bean = new RecyclerViewBean();
+            Main2Bean bean = new Main2Bean();
             bean.setName("lipc" + i);
             mList.add(bean);
         }

@@ -21,7 +21,7 @@ public class MainBeanFactory {
     private List<MainBean> mList = new ArrayList<>();
 
     public List<MainBean> getList(final Activity activity) {
-        addBean("Activity", 0);
+//        addBean("Activity", 0);
         addBean("通过uri跳转activity的数据解析", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,7 +31,6 @@ public class MainBeanFactory {
                 activity.startActivity(i);
             }
         });
-        addBean("RecyclerView", 0);
         addBean("RecyclerView的优化", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,11 +39,9 @@ public class MainBeanFactory {
                 activity.startActivity(i);
             }
         });
-//        addBean("Java", 0);
         addBean("用注释代替枚举", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
             }
         });
@@ -58,6 +55,11 @@ public class MainBeanFactory {
         mList.add(bean);
     }
 
+    /**
+     * 添加title类型item
+     * @param name
+     * @param viewType
+     */
     private void addBean(String name, int viewType) {
         MainBean bean = new MainBean();
         bean.setName(name);

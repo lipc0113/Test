@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lpc.test.BaseActivity;
 import com.lpc.test.R;
-import com.lpc.test.adapter.MyRecyclerViewAdapter;
+import com.lpc.test.adapter.Main2Adapter;
 import com.lpc.test.bean.RecyclerViewBean;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ import java.util.List;
  * @ Date       ：Created in 17:09 2019-07-31
  * @ Description：
  */
-public class RecyclerViewActivity extends AppCompatActivity {
+public class RecyclerViewActivity extends BaseActivity {
 
     private RecyclerView mRv;
     private List<RecyclerViewBean> mList = new ArrayList<>();
-    private MyRecyclerViewAdapter mMainAdapter;
+    private Main2Adapter mMainAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +35,17 @@ public class RecyclerViewActivity extends AppCompatActivity {
         initData();
     }
 
-    private void initData() {
+    @Override
+    protected void initView() {
+        mRv = findViewById(R.id.rv);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        mRv.setLayoutManager(linearLayoutManager);
+    }
+
+    @Override
+    protected void initData() {
 
         for (int i = 0; i < 30; i++) {
             RecyclerViewBean bean = new RecyclerViewBean();
@@ -42,15 +53,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
             mList.add(bean);
         }
 
-        mMainAdapter = new MyRecyclerViewAdapter(this, mList);
+        mMainAdapter = new Main2Adapter(this, mList);
         mRv.setAdapter(mMainAdapter);
-    }
-
-    private void initView() {
-        mRv = findViewById(R.id.rv);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        mRv.setLayoutManager(linearLayoutManager);
     }
 }

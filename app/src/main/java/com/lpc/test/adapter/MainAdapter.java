@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 16:36 2019-07-29
- * @ Description：
+ * @ Description：包括title和content两种样式
  */
 public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

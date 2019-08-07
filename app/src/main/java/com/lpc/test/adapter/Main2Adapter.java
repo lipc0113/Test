@@ -1,7 +1,6 @@
 package com.lpc.test.adapter;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lpc.test.R;
-import com.lpc.test.activity.RecyclerViewActivity;
-import com.lpc.test.bean.MainBean;
 import com.lpc.test.bean.RecyclerViewBean;
 
 import java.util.List;
@@ -20,15 +17,15 @@ import java.util.List;
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 17:13 2019-07-31
- * @ Description：
+ * @ Description：只包含一个text
  */
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
+public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.ViewHolder> {
 
     private Context mContext;
     private List<RecyclerViewBean> mList;
     private final LayoutInflater mLayoutInflater;
 
-    public MyRecyclerViewAdapter(Context context, List<RecyclerViewBean> list) {
+    public Main2Adapter(Context context, List<RecyclerViewBean> list) {
 
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);

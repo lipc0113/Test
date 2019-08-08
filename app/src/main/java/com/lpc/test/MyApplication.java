@@ -2,6 +2,7 @@ package com.lpc.test;
 
 import android.app.Application;
 
+import com.lpc.test.utils.CrashHandler;
 import com.lpc.test.utils.UIUtil;
 
 /**
@@ -15,5 +16,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         UIUtil.init(this);
+
+        CrashHandler crashHandler = new CrashHandler();
+        crashHandler.init();
     }
 }

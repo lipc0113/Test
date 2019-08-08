@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lpc.test.utils.ActivityStackManager;
+
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 10:56 2019-08-07
@@ -15,6 +17,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ActivityStackManager.getInstance().push(this);
 
         setContentView(getContentViewResid());
 
@@ -27,4 +31,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initView();
 
     protected abstract void initData();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        ActivityStackManager.getInstance().pop(this);
+    }
 }

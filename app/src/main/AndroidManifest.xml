@@ -33,6 +33,7 @@
         <activity android:name=".activity.ActivityTestActivity" />
         <activity android:name=".activity.JavaTestActivity" />
         <activity android:name=".activity.AnnotationActivity" />
+        <activity android:name=".activity.TestActivity" />
     </application>
 
 </manifest>

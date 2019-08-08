@@ -7,6 +7,7 @@ import android.view.View;
 import com.lpc.test.activity.ActivityTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
+import com.lpc.test.activity.TestActivity;
 import com.lpc.test.bean.TitleContentBean;
 
 import java.util.ArrayList;
@@ -22,6 +23,14 @@ public class MainBeanFactory {
     private List<TitleContentBean> mList = new ArrayList<>();
 
     public List<TitleContentBean> getList(final Activity activity) {
+        addBean("Test", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, TestActivity.class);
+                activity.startActivity(i);
+            }
+        });
         addBean("Android", 0);
         addBean("Activity", new View.OnClickListener() {
             @Override

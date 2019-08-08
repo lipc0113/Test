@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lpc.test.R;
-import com.lpc.test.bean.Main2Bean;
+import com.lpc.test.bean.TextBean;
 
 import java.util.List;
 
@@ -19,13 +19,13 @@ import java.util.List;
  * @ Date       ：Created in 17:13 2019-07-31
  * @ Description：只包含一个text
  */
-public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.ViewHolder> {
+public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Main2Bean> mList;
+    private List<TextBean> mList;
     private final LayoutInflater mLayoutInflater;
 
-    public Main2Adapter(Context context, List<Main2Bean> list) {
+    public TextAdapter(Context context, List<TextBean> list) {
 
         this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);
@@ -35,12 +35,13 @@ public class Main2Adapter extends RecyclerView.Adapter<Main2Adapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(mLayoutInflater.inflate(R.layout.item_recyclerview, parent, false));
+        return new ViewHolder(mLayoutInflater.inflate(R.layout.item_text, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv.setText(mList.get(position).getName());
+        holder.tv.setOnClickListener(mList.get(position).getOnClickListener());
     }
 
     @Override

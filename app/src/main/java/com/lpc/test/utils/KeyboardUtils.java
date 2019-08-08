@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.ultrapower.java.rcslib.utils.UIUtil;
-
 /**
  * Created by lpc on 2017/1/3 0003.
  */

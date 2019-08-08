@@ -7,7 +7,7 @@ import android.view.View;
  * @ Date       ：Created in 16:54 2019-07-29
  * @ Description：
  */
-public class Main2Bean {
+public class TextBean {
 
     private String name;
 

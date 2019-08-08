@@ -1,13 +1,13 @@
 package com.lpc.test.activity;
 
-import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.IntDef;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.lpc.test.R;
+import com.lpc.test.base.BaseActivity;
+import com.lpc.test.utils.LogUtil;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -17,7 +17,7 @@ import java.lang.annotation.RetentionPolicy;
  * @ Date       ：Created in 17:09 2019-08-01
  * @ Description：
  */
-public class AnnotationActivity extends AppCompatActivity {
+public class AnnotationActivity extends BaseActivity {
 
     public static final int SUNDAY = 0;
     public static final int MONDAY = 1;
@@ -37,19 +37,23 @@ public class AnnotationActivity extends AppCompatActivity {
     private TextView tv;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
-
-        initView();
-        initData();
+    protected int getContentViewResid() {
+        return R.layout.activity_test;
     }
 
-    private void initData() {
+    @Override
+    protected void initData() {
         setCurrentDay(SUNDAY);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv.setText(String.valueOf(getmCurrentDay()));
+            }
+        });
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         tv = findViewById(R.id.tv);
     }
 

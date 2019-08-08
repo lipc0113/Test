@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lpc.test.R;
-import com.lpc.test.bean.MainBean;
+import com.lpc.test.bean.TitleContentBean;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import java.util.List;
  * @ Date       ：Created in 16:36 2019-07-29
  * @ Description：包括title和content两种样式
  */
-public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TitleContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     /*
      * 0 title; 1 content
@@ -29,9 +29,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final LayoutInflater mLayoutInflater;
     private Context mContext;
-    private List<MainBean> mList;
+    private List<TitleContentBean> mList;
 
-    public MainAdapter(Context context, List<MainBean> list) {
+    public TitleContentAdapter(Context context, List<TitleContentBean> list) {
         mLayoutInflater = LayoutInflater.from(context);
         this.mContext = context;
         mList = list;
@@ -53,7 +53,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        MainBean bean = mList.get(position);
+        TitleContentBean bean = mList.get(position);
         if (bean.getViewType() == VIEW_TYPE_TITLE) {
             ((TitleViewHolder) viewHolder).tv_title.setText(bean.getName());
         } else {

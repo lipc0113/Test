@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +25,18 @@ public class PermissionManager {
     public static final int SDK_PERMISSION_REQUEST = 127;
 
     /*
-    * 检查有没有权限
-    * */
+     * 检查有没有权限
+     * */
     public static boolean checkPermission(Context context, String permission) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (PermissionChecker.checkSelfPermission(context, permission)
                     != PackageManager.PERMISSION_GRANTED) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
-        }else{
+        } else {
             return true;
         }
 
@@ -44,6 +44,7 @@ public class PermissionManager {
 
     /**
      * 请求权限，但不做其它操作
+     *
      * @param permission
      */
     public static void requestPermission(Fragment fragment, String permission) {
@@ -62,6 +63,7 @@ public class PermissionManager {
 
     /**
      * 请求权限，但不做其它操作
+     *
      * @param permissions
      */
     public static void requestPermission(Fragment fragment, List<String> permissions) {
@@ -120,9 +122,9 @@ public class PermissionManager {
                 fragment.requestPermissions(permissionsForMe.toArray(new String[permissionsForMe.size()])
                         , SDK_PERMISSION_REQUEST);
             }
-        }else{
-            for (String permission : permissions){
-                if(permissionCallback == null){
+        } else {
+            for (String permission : permissions) {
+                if (permissionCallback == null) {
                     break;
                 }
                 permissionCallback.permissionSuccess(permission);
@@ -153,9 +155,9 @@ public class PermissionManager {
                 ActivityCompat.requestPermissions(activity
                         , permissionsForMe.toArray(new String[permissionsForMe.size()]), SDK_PERMISSION_REQUEST);
             }
-        }else{
-            for (String permission : permissions){
-                if(permissionCallback == null){
+        } else {
+            for (String permission : permissions) {
+                if (permissionCallback == null) {
                     break;
                 }
                 permissionCallback.permissionSuccess(permission);
@@ -166,6 +168,7 @@ public class PermissionManager {
 
     /**
      * 在activity或者fragment的回调方法onRequestPermissionsResult后加此方法
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -194,7 +197,8 @@ public class PermissionManager {
     }
 
     /**
-     *  这个方法可以加一个拒绝权限后的提示， 目前 还没有用
+     * 这个方法可以加一个拒绝权限后的提示， 目前 还没有用
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -213,8 +217,8 @@ public class PermissionManager {
 
                 } else {
 
-                    if(fragment.shouldShowRequestPermissionRationale(permissions[i])){
-                        if(rationales != null && !TextUtils.isEmpty(rationales[i])){
+                    if (fragment.shouldShowRequestPermissionRationale(permissions[i])) {
+                        if (rationales != null && !TextUtils.isEmpty(rationales[i])) {
                             alertDialogForPermission(fragment, permissions[i], permissionCallback, rationales[i]);
                         }
                     }
@@ -242,8 +246,8 @@ public class PermissionManager {
 
                 } else {
 
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[i])){
-                        if(rationales != null && !TextUtils.isEmpty(rationales[i])){
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[i])) {
+                        if (rationales != null && !TextUtils.isEmpty(rationales[i])) {
                             alertDialogForPermission(activity, permissions[i], permissionCallback, rationales[i]);
                         }
                     }
@@ -259,7 +263,7 @@ public class PermissionManager {
     }
 
     private static void alertDialogForPermission(final Fragment fragment, final String permission
-            , final PermissionCallback permissionCallback, final String content){
+            , final PermissionCallback permissionCallback, final String content) {
         new AlertDialog.Builder(fragment.getActivity())
                 .setMessage(content)
                 .setPositiveButton("允许", new DialogInterface.OnClickListener() {
@@ -278,7 +282,7 @@ public class PermissionManager {
     }
 
     private static void alertDialogForPermission(final Activity activity, final String permission
-            , final PermissionCallback permissionCallback, final String content){
+            , final PermissionCallback permissionCallback, final String content) {
         new AlertDialog.Builder(activity)
                 .setMessage(content)
                 .setPositiveButton("允许", new DialogInterface.OnClickListener() {

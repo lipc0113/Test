@@ -2,28 +2,33 @@ package com.lpc.test.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.lpc.test.R;
+import com.lpc.test.base.BaseActivity;
 
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 17:18 2019-07-29
  * @ Description：
  */
-public class UriActivity extends AppCompatActivity {
+public class UriActivity extends BaseActivity {
 
     private TextView tv;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+    protected int getContentViewResid() {
+        return R.layout.activity_test;
+    }
+
+    @Override
+    protected void initView() {
+
+        tv = findViewById(R.id.tv);
+    }
+
+    @Override
+    protected void initData() {
 
         Intent intent = getIntent();
         Uri data = intent.getData();
@@ -32,7 +37,7 @@ public class UriActivity extends AppCompatActivity {
         String path = data.getPath();
         String query = data.getQuery();
 
-        tv = findViewById(R.id.tv);
-        tv.setText("scheme = " + scheme + ";host = " + host + ";path = " + path + ";query = " + query);
+        tv.setText("scheme = " + scheme + ";host = " + host + ";path = "
+                + path + ";query = " + query);
     }
 }

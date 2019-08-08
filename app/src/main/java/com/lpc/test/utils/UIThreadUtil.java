@@ -2,8 +2,6 @@ package com.lpc.test.utils;
 
 import android.os.Handler;
 
-import com.ultrapower.java.rcslib.RcsLib;
-
 public class UIThreadUtil {
 
     // 判断当前线程是否运行在主线程内

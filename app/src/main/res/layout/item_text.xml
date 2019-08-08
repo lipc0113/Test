@@ -11,4 +11,6 @@
         android:padding="12dp"
         android:textColor="#000"
         android:textSize="18sp" />
+
+    <include layout="@layout/divider2" />
 </LinearLayout>

@@ -9,7 +9,7 @@ import com.lpc.test.utils.UIUtil;
  * @ Date       ：Created in 10:59 2019-08-07
  * @ Description：
  */
-public class BaseApplication extends Application {
+public class MyApplication extends Application {
 
     @Override
     public void onCreate() {

@@ -1,4 +1,4 @@
-package com.lpc.test;
+package com.lpc.test.base;
 
 import android.os.Bundle;
 
@@ -16,9 +16,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(getContentViewResid());
+
         initView();
         initData();
     }
+
+    protected abstract int getContentViewResid();
 
     protected abstract void initView();
 

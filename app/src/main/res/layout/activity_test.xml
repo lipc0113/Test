@@ -8,6 +8,8 @@
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="12dp"
         android:text="测试"
         android:textColor="#000"
         android:textSize="18sp" />

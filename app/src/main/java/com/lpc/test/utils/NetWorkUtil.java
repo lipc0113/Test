@@ -217,6 +217,8 @@ public class NetWorkUtil {
 
         NetworkInfo networkInfo = getActiveNetworkInfo();
         String strNetworkType = "NO_KNOW";
+        String aaa = networkInfo.getSubtypeName();
+        int bbb = networkInfo.getSubtype();
 
         if (networkInfo != null && networkInfo.isConnected()) {
 
@@ -228,6 +230,7 @@ public class NetWorkUtil {
                 int networkType = networkInfo.getSubtype();
 
                 switch (networkType) {
+                    case TelephonyManager.NETWORK_TYPE_GSM:
                     case TelephonyManager.NETWORK_TYPE_GPRS:
                     case TelephonyManager.NETWORK_TYPE_EDGE:
                     case TelephonyManager.NETWORK_TYPE_CDMA:
@@ -235,6 +238,7 @@ public class NetWorkUtil {
                     case TelephonyManager.NETWORK_TYPE_IDEN: //api<8 : replace by 11
                         strNetworkType = "2G";
                         break;
+                    case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
                     case TelephonyManager.NETWORK_TYPE_UMTS:
                     case TelephonyManager.NETWORK_TYPE_EVDO_0:
                     case TelephonyManager.NETWORK_TYPE_EVDO_A:
@@ -246,6 +250,7 @@ public class NetWorkUtil {
                     case TelephonyManager.NETWORK_TYPE_HSPAP:  //api<13 : replace by 15
                         strNetworkType = "3G";
                         break;
+                    case TelephonyManager.NETWORK_TYPE_IWLAN:
                     case TelephonyManager.NETWORK_TYPE_LTE:    //api<11 : replace by 13
                         strNetworkType = "4G";
                         break;

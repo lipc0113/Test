@@ -8,6 +8,7 @@ import com.lpc.test.activity.ActivityTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
 import com.lpc.test.activity.TestActivity;
+import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
 
 import java.util.ArrayList;
@@ -45,6 +46,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, RecyclerViewTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("WebView", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, WebViewTestActivity.class);
                 activity.startActivity(i);
             }
         });

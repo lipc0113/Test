@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lpc.test">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -34,6 +38,7 @@
         <activity android:name=".activity.JavaTestActivity" />
         <activity android:name=".activity.AnnotationActivity" />
         <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.WebViewTestActivity" />
     </application>
 
 </manifest>

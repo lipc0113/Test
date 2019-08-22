@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <!--<include layout="@layout/divider" />-->
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
@@ -13,7 +15,8 @@
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:textColor="#000"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@color/colorPrimary"/>
 
-    <include layout="@layout/divider" />
+    <!--<include layout="@layout/divider" />-->
 </LinearLayout>

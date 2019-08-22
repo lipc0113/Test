@@ -13,9 +13,8 @@ import com.lpc.test.utils.NetWorkUtil;
 import com.lpc.test.utils.ToastUtils;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-
-import static android.os.Build.CPU_ABI;
 
 /**
  * @ Author     ：v_lipengcheng
@@ -40,6 +39,18 @@ public class TestActivity extends BaseTextRecyclerViewActivity implements Handle
 
     @Override
     protected void initRecyclerViewData() {
+
+        addBeanToMList("adb指令-后退", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    Runtime.getRuntime().exec("input keyevent 4");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         addBeanToMList("判断网络类型", new View.OnClickListener() {
             @Override

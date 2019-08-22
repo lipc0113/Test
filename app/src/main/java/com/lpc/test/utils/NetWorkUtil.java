@@ -217,17 +217,19 @@ public class NetWorkUtil {
 
         NetworkInfo networkInfo = getActiveNetworkInfo();
         String strNetworkType = "NO_KNOW";
-        String aaa = networkInfo.getSubtypeName();
-        int bbb = networkInfo.getSubtype();
 
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+            int type = networkInfo.getType();
+            LogUtil.d("getNetworkType:type=" + type);
+
+            if (type == ConnectivityManager.TYPE_WIFI) {
                 strNetworkType = "WIFI";
-            } else if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+            } else if (type == ConnectivityManager.TYPE_MOBILE) {
 
                 String _strSubTypeName = networkInfo.getSubtypeName();
                 int networkType = networkInfo.getSubtype();
+                LogUtil.d("getNetworkType:networkType=" + networkType);
 
                 switch (networkType) {
                     case TelephonyManager.NETWORK_TYPE_GSM:

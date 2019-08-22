@@ -9,8 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
+        android:layout_margin="8dp"
         android:textColor="#000"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/selectors_bg_btn"/>
 
-    <include layout="@layout/divider2" />
+    <!--<include layout="@layout/divider2" />-->
 </LinearLayout>

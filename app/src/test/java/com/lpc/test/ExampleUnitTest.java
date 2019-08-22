@@ -2,7 +2,7 @@ package com.lpc.test;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +12,10 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+
+        String s = "小度小度";
+        String ss = s.replace("小度", "小云");
+        System.out.println("ss = " + ss);
         assertEquals(4, 2 + 2);
     }
 }

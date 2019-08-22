@@ -11,8 +11,19 @@
     <color name="grey">#a9b7b7</color>
     <color name="red">#ff0000</color>
     <color name="blue">#00abe6</color>
+    <color name="ten_pencent_white">#1affffff</color>
+    <color name="twenty_percent_white">#33ffffff</color>
+    <color name="thirty_percent_white">#4cffffff</color>
+    <color name="fourty_percent_black">#66000000</color>
+    <color name="fifty_six_percent_white">#8fffffff</color>
+    <color name="sixty_percent_white">#99ffffff</color>
+    <color name="seventy_percent_white">#B4ffffff</color>
+    <color name="eighty_percent_white">#ccffffff</color>
 
     <!--共用-->
     <color name="divider_line">#999999</color>
     <color name="divider_bg">#f8f8f8</color>
+    <color name="btn_line">#999999</color>
+
+    <color name="twenty_percent_blue">#2048DFF5</color>
 </resources>

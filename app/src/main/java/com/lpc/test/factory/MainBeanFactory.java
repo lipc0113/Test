@@ -57,7 +57,8 @@ public class MainBeanFactory {
                 activity.startActivity(i);
             }
         });
-        addBean("Java", new View.OnClickListener() {
+        addBean("Java", 0);
+        addBean("Java基本知识", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -1,5 +1,9 @@
 package com.lpc.test.activity;
 
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,5 +44,28 @@ public class MainActivity extends BaseActivity {
 
         mTitleContentAdapter = new TitleContentAdapter(this, mList);
         mRv.setAdapter(mTitleContentAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_setting:
+                Intent i = new Intent(MainActivity.this, SettingActivity.class);
+                MainActivity.this.startActivity(i);
+                break;
+            case R.id.action_back:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

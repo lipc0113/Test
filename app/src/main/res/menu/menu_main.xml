@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--orderInCategory优先级排序 showAsAction是否单独放到导航栏上-->
+    <item
+        android:id="@+id/action_setting"
+        android:orderInCategory="100"
+        android:title="Setting"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_test"
+        android:orderInCategory="2"
+        android:title="Test"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_back"
+        android:icon="@drawable/back"
+        android:orderInCategory="1"
+        android:title="后退"
+        app:showAsAction="always" />
+</menu>

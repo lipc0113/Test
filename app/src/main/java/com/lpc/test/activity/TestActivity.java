@@ -40,6 +40,19 @@ public class TestActivity extends BaseTextRecyclerViewActivity implements Handle
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("Thread优先级", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+                    }
+                }).start();
+            }
+        });
+
         addBeanToMList("adb指令-后退", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

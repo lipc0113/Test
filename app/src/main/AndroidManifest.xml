@@ -39,6 +39,7 @@
         <activity android:name=".activity.AnnotationActivity" />
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.WebViewTestActivity" />
+        <activity android:name=".activity.SettingActivity" />
     </application>
 
 </manifest>

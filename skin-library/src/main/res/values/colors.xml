@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--皮肤包-->
+    <color name="skin_text_color">#ffffff</color>
+    <color name="skin_activity_bg">#000000</color>
+</resources>

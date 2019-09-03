@@ -18,4 +18,16 @@ public class ExampleUnitTest {
         System.out.println("ss = " + ss);
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void addition_isCorrect2() {
+
+        String weather = "多云";
+        if (weather.contains("雨")) {
+            System.out.println("ss = 雨");
+        } else {
+            System.out.println("ss = 没雨");
+        }
+        assertEquals(4, 2 + 2);
+    }
 }

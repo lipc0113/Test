@@ -3,6 +3,8 @@ package com.lpc.test;
 import android.app.Application;
 
 import com.lpc.test.utils.CrashHandler;
+import com.lpc.test.utils.FileUtils;
+import com.lpc.test.utils.SkinUtil;
 import com.lpc.test.utils.UIUtil;
 
 /**
@@ -17,7 +19,13 @@ public class MyApplication extends Application {
         super.onCreate();
         UIUtil.init(this);
 
+        if (!FileUtils.createOrExistsDir(Constants.BASE_ENVIRONMENT_FILE_PATH)) {
+            return;
+        }
+
         CrashHandler crashHandler = new CrashHandler();
         crashHandler.init();
+
+        SkinUtil.init(this);
     }
 }

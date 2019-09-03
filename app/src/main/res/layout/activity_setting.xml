@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:skin="http://schemas.android.com/android/skin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    skin:enable="true"
+    android:background="@color/skin_activity_bg">
 
     <TextView
         android:id="@+id/tv"
@@ -11,6 +14,29 @@
         android:gravity="center_horizontal"
         android:padding="12dp"
         android:text="设置页面"
-        android:textColor="#000"
-        android:textSize="18sp" />
+        android:textColor="@color/skin_text_color"
+        android:textSize="18sp"
+        skin:enable="true"/>
+
+    <TextView
+        android:id="@+id/tv_skin_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="12dp"
+        android:text="原生皮肤"
+        android:textColor="@color/skin_text_color"
+        android:textSize="18sp"
+        skin:enable="true"/>
+
+    <TextView
+        android:id="@+id/tv_skin_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="12dp"
+        android:text="暗色皮肤"
+        android:textColor="@color/skin_text_color"
+        android:textSize="18sp"
+        skin:enable="true"/>
 </LinearLayout>

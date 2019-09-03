@@ -43,7 +43,7 @@ public class SkinInflaterFactory implements Factory {
         }
 		
 		View view = createView(context, name, attrs);
-		
+
 		if (view == null){
 			return null;
 		}

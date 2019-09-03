@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:skin="http://schemas.android.com/android/skin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <!--<include layout="@layout/divider" />-->
 
@@ -10,13 +11,15 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:gravity="center_horizontal"
         android:paddingLeft="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
-        android:textColor="#000"
+        android:textColor="@color/skin_text_color"
         android:textSize="18sp"
-        android:background="@color/colorPrimary"/>
+        skin:enable="true"
+        />
 
     <!--<include layout="@layout/divider" />-->
 </LinearLayout>

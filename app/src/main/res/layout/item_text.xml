@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:skin="http://schemas.android.com/android/skin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
         android:layout_margin="8dp"
-        android:textColor="#000"
+        android:background="@drawable/selectors_bg_btn"
+        android:padding="12dp"
+        android:textColor="@color/skin_text_color"
         android:textSize="18sp"
-        android:background="@drawable/selectors_bg_btn"/>
+        skin:enable="true"/>
 
     <!--<include layout="@layout/divider2" />-->
 </LinearLayout>

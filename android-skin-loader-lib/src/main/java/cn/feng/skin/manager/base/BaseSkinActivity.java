@@ -1,11 +1,9 @@
 package cn.feng.skin.manager.base;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import cn.feng.skin.manager.entity.DynamicAttr;
@@ -15,14 +13,14 @@ import cn.feng.skin.manager.loader.SkinInflaterFactory;
 import cn.feng.skin.manager.loader.SkinManager;
 
 /**
- * Base Fragment Activity for development
+ * Base Activity for development
  * 
  * <p>NOTICE:<br> 
- * You should extends from this if you want to do skin change
+ * You should extends from this if you what to do skin change
  * 
  * @author fengjun
  */
-public class BaseFragmentActivity extends FragmentActivity implements ISkinUpdate, IDynamicNewView{
+public class BaseSkinActivity extends Activity implements ISkinUpdate, IDynamicNewView{
 	
 	/**
 	 * Whether response to skin changing after create
@@ -34,23 +32,8 @@ public class BaseFragmentActivity extends FragmentActivity implements ISkinUpdat
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	
-        try {
-            Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
-            field.setAccessible(true);
-            field.setBoolean(getLayoutInflater(), false);
-            
-    		mSkinInflaterFactory = new SkinInflaterFactory();
-    		getLayoutInflater().setFactory(mSkinInflaterFactory);
-
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } 
-		
+		mSkinInflaterFactory = new SkinInflaterFactory();
+		getLayoutInflater().setFactory(mSkinInflaterFactory);
 	}
 	
 	@Override
@@ -63,8 +46,16 @@ public class BaseFragmentActivity extends FragmentActivity implements ISkinUpdat
 	protected void onDestroy() {
 		super.onDestroy();
 		SkinManager.getInstance().detach(this);
+		mSkinInflaterFactory.clean();
 	}
 	
+	/**
+	 * dynamic add a skin view 
+	 * 
+	 * @param view
+	 * @param attrName
+	 * @param attrValueResId
+	 */
 	protected void dynamicAddSkinEnableView(View view, String attrName, int attrValueResId){	
 		mSkinInflaterFactory.dynamicAddSkinEnableView(this, view, attrName, attrValueResId);
 	}
@@ -79,10 +70,12 @@ public class BaseFragmentActivity extends FragmentActivity implements ISkinUpdat
 
 	@Override
 	public void onThemeUpdate() {
-		if(!isResponseOnSkinChanging) return;
+		if(!isResponseOnSkinChanging){
+			return;
+		}
 		mSkinInflaterFactory.applySkin();
 	}
-	
+
 	@Override
 	public void dynamicAddView(View view, List<DynamicAttr> pDAttrs) {
 		mSkinInflaterFactory.dynamicAddSkinEnableView(this, view, pDAttrs);

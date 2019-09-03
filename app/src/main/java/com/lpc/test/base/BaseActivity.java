@@ -3,16 +3,17 @@ package com.lpc.test.base;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.lpc.test.utils.ActivityStackManager;
+
+import cn.feng.skin.manager.base.BaseSkinAppCompatActivity;
 
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 10:56 2019-08-07
  * @ Description：
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends BaseSkinAppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

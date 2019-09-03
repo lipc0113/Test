@@ -24,7 +24,7 @@ import cn.feng.skin.manager.util.L;
 /**
  * Skin Manager Instance
  *
- * 
+ *
  * <ul>
  * <strong>global init skin manager, MUST BE CALLED FIRST ! </strong>
  * <li> {@link #init()} </li>
@@ -50,12 +50,12 @@ import cn.feng.skin.manager.util.L;
  * <strong>load new theme with the giving skinPackagePath</strong>
  * <li> {@link #load(String skinPackagePath,ILoaderListener callback)} </li>
  * </ul>
- * 
- * 
+ *
+ *
  * @author fengjun
  */
 public class SkinManager implements ISkinLoader{
-	
+
 	private static final String NOT_INIT_ERROR = "SkinManager MUST init with Context first";
 	private static Object synchronizedLock = new Object();
 	private static SkinManager instance;
@@ -66,15 +66,15 @@ public class SkinManager implements ISkinLoader{
 	private Resources mResources;
 	private String skinPath;
 	private boolean isDefaultSkin = false;
-	
+
 	/**
-	 * whether the skin being used is from external .skin file 
+	 * whether the skin being used is from external .skin file
 	 * @return is external skin = true
 	 */
 	public boolean isExternalSkin(){
 		return !isDefaultSkin && mResources != null;
 	}
-	
+
 	/**
 	 * get current skin path
 	 * @return current skin path
@@ -97,21 +97,21 @@ public class SkinManager implements ISkinLoader{
 		}
 		return instance;
 	}
-	
+
 	public String getSkinPackageName() {
 		return skinPackageName;
 	}
-	
+
 	public Resources getResources(){
 		return mResources;
 	}
-	
+
 	private SkinManager() { }
-	
+
 	public void init(Context ctx){
 		context = ctx.getApplicationContext();
 	}
-	
+
 	public void restoreDefaultTheme(){
 		SkinConfig.saveSkinPath(context, SkinConfig.DEFALT_SKIN);
 		isDefaultSkin = true;
@@ -123,19 +123,62 @@ public class SkinManager implements ISkinLoader{
 		String skin = SkinConfig.getCustomSkinPath(context);
 		load(skin, null);
 	}
-	
+
 	public void load(ILoaderListener callback){
 		String skin = SkinConfig.getCustomSkinPath(context);
 		if(SkinConfig.isDefaultSkin(context)){ return; }
 		load(skin, callback);
 	}
-	
+
 	/**
 	 * Load resources from apk in asyc task
 	 * @param skinPackagePath path of skin apk
 	 * @param callback callback to notify user
 	 */
-	public void load(String skinPackagePath, final ILoaderListener callback) {
+    public void load(String skinPackagePath, final ILoaderListener callback) {
+
+        try {
+            String skinPkgPath = skinPackagePath;
+
+            File file = new File(skinPkgPath);
+            if (file == null || !file.exists()) {
+                return;
+            }
+
+            if (callback != null) {
+                callback.onStart();
+            }
+
+            PackageManager mPm = context.getPackageManager();
+            PackageInfo mInfo = mPm.getPackageArchiveInfo(skinPkgPath, PackageManager.GET_ACTIVITIES);
+            skinPackageName = mInfo.packageName;
+
+            AssetManager assetManager = AssetManager.class.newInstance();
+            Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
+            addAssetPath.invoke(assetManager, skinPkgPath);
+
+            Resources superRes = context.getResources();
+            Resources skinResource = new Resources(assetManager, superRes.getDisplayMetrics(), superRes.getConfiguration());
+
+            SkinConfig.saveSkinPath(context, skinPkgPath);
+
+            skinPath = skinPkgPath;
+            isDefaultSkin = false;
+
+			mResources = skinResource;
+
+            if (skinResource != null) {
+                if (callback != null) callback.onSuccess();
+                notifySkinUpdate();
+            } else {
+                isDefaultSkin = true;
+                if (callback != null) callback.onFailed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	/*public void load(String skinPackagePath, final ILoaderListener callback) {
 		
 		new AsyncTask<String, Void, Resources>() {
 
@@ -193,8 +236,8 @@ public class SkinManager implements ISkinLoader{
 			};
 
 		}.execute(skinPackagePath);
-	}
-	
+	}*/
+
 	@Override
 	public void attach(ISkinUpdate observer) {
 		if(skinObservers == null){
@@ -220,28 +263,28 @@ public class SkinManager implements ISkinLoader{
 			observer.onThemeUpdate();
 		}
 	}
-	
+
 	public int getColor(int resId){
 		int originColor = context.getResources().getColor(resId);
 		if(mResources == null || isDefaultSkin){
 			return originColor;
 		}
-		
+
 		String resName = context.getResources().getResourceEntryName(resId);
-		
+
 		int trueResId = mResources.getIdentifier(resName, "color", skinPackageName);
 		int trueColor = 0;
-		
+
 		try{
 			trueColor = mResources.getColor(trueResId);
 		}catch(NotFoundException e){
 			e.printStackTrace();
 			trueColor = originColor;
 		}
-		
+
 		return trueColor;
 	}
-	
+
 	@SuppressLint("NewApi")
 	public Drawable getDrawable(int resId){
 		Drawable originDrawable = context.getResources().getDrawable(resId);
@@ -249,9 +292,9 @@ public class SkinManager implements ISkinLoader{
 			return originDrawable;
 		}
 		String resName = context.getResources().getResourceEntryName(resId);
-		
+
 		int trueResId = mResources.getIdentifier(resName, "drawable", skinPackageName);
-		
+
 		Drawable trueDrawable = null;
 		try{
 			L.e("ttgg", "SDK_INT = " + android.os.Build.VERSION.SDK_INT);
@@ -264,10 +307,10 @@ public class SkinManager implements ISkinLoader{
 			e.printStackTrace();
 			trueDrawable = originDrawable;
 		}
-		
+
 		return trueDrawable;
 	}
-	
+
 	/**
 	 * 加载指定资源颜色drawable,转化为ColorStateList，保证selector类型的Color也能被转换。</br>
 	 * 无皮肤包资源返回默认主题颜色
@@ -277,13 +320,13 @@ public class SkinManager implements ISkinLoader{
 	 */
 	public ColorStateList convertToColorStateList(int resId) {
 		L.e("attr1", "convertToColorStateList");
-		
+
 		boolean isExtendSkin = true;
-		
+
 		if (mResources == null || isDefaultSkin) {
 			isExtendSkin = false;
 		}
-		
+
 		String resName = context.getResources().getResourceEntryName(resId);
 		L.e("attr1", "resName = " + resName);
 		if (isExtendSkin) {

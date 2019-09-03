@@ -9,7 +9,7 @@
 ## 2.library
 用于管理所有android库或者第三方库
 
-## .android-skin-loader-lib皮肤框架
+## 3.android-skin-loader-lib皮肤框架
 框架有一个漏洞BaseSkinAppCompatActivity中，要先调用setFactory，再调用super.onCreate(savedInstanceState);
 因为在中的super.onCreate会设置mFactory
 

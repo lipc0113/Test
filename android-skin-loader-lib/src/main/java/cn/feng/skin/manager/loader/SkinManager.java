@@ -285,7 +285,6 @@ public class SkinManager implements ISkinLoader{
 		return trueColor;
 	}
 
-	@SuppressLint("NewApi")
 	public Drawable getDrawable(int resId){
 		Drawable originDrawable = context.getResources().getDrawable(resId);
 		if(mResources == null || isDefaultSkin){

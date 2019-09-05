@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import com.lpc.test.utils.ActivityStackManager;
 
 import cn.feng.skin.manager.base.BaseSkinAppCompatActivity;
+import cn.feng.skin.manager.base.BaseSkinFragmentActivity;
 
 /**
  * @ Author     ：v_lipengcheng

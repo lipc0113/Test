@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.List;
 import cn.feng.skin.manager.entity.DynamicAttr;
 import cn.feng.skin.manager.listener.IDynamicNewView;
 import cn.feng.skin.manager.listener.ISkinUpdate;
+import cn.feng.skin.manager.loader.SkinInflaterFactory;
 import cn.feng.skin.manager.loader.SkinInflaterFactory2;
 import cn.feng.skin.manager.loader.SkinManager;
 
@@ -23,24 +24,26 @@ import cn.feng.skin.manager.loader.SkinManager;
  * 
  * @author fengjun
  */
-public class BaseSkinAppCompatActivity extends AppCompatActivity implements ISkinUpdate, IDynamicNewView{
+public class BaseSkinFragmentActivity extends FragmentActivity implements ISkinUpdate, IDynamicNewView{
 	
 	/**
 	 * Whether response to skin changing after create
 	 */
 	private boolean isResponseOnSkinChanging = true;
 	
-	private SkinInflaterFactory2 mSkinInflaterFactory2;
+	private SkinInflaterFactory mSkinInflaterFactory;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
         try {
             Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
             field.setAccessible(true);
             field.setBoolean(getLayoutInflater(), false);
-            
-    		mSkinInflaterFactory2 = new SkinInflaterFactory2(this);
-    		getLayoutInflater().setFactory2(mSkinInflaterFactory2);
+
+			mSkinInflaterFactory = new SkinInflaterFactory();
+    		getLayoutInflater().setFactory(mSkinInflaterFactory);
 
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
@@ -49,8 +52,6 @@ public class BaseSkinAppCompatActivity extends AppCompatActivity implements ISki
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
-		super.onCreate(savedInstanceState);
 	}
 	
 	@Override
@@ -63,15 +64,14 @@ public class BaseSkinAppCompatActivity extends AppCompatActivity implements ISki
 	protected void onDestroy() {
 		super.onDestroy();
 		SkinManager.getInstance().detach(this);
-		mSkinInflaterFactory2.mActivity = null;
 	}
 	
-	protected void dynamicAddSkinEnableView(View view, String attrName, int attrValueResId){	
-		mSkinInflaterFactory2.dynamicAddSkinEnableView(this, view, attrName, attrValueResId);
+	protected void dynamicAddSkinEnableView(View view, String attrName, int attrValueResId){
+		mSkinInflaterFactory.dynamicAddSkinEnableView(this, view, attrName, attrValueResId);
 	}
 	
-	protected void dynamicAddSkinEnableView(View view, List<DynamicAttr> pDAttrs){	
-		mSkinInflaterFactory2.dynamicAddSkinEnableView(this, view, pDAttrs);
+	protected void dynamicAddSkinEnableView(View view, List<DynamicAttr> pDAttrs){
+		mSkinInflaterFactory.dynamicAddSkinEnableView(this, view, pDAttrs);
 	}
 	
 	final protected void enableResponseOnSkinChanging(boolean enable){
@@ -81,11 +81,11 @@ public class BaseSkinAppCompatActivity extends AppCompatActivity implements ISki
 	@Override
 	public void onThemeUpdate() {
 		if(!isResponseOnSkinChanging) return;
-		mSkinInflaterFactory2.applySkin();
+		mSkinInflaterFactory.applySkin();
 	}
 	
 	@Override
 	public void dynamicAddView(View view, List<DynamicAttr> pDAttrs) {
-		mSkinInflaterFactory2.dynamicAddSkinEnableView(this, view, pDAttrs);
+		mSkinInflaterFactory.dynamicAddSkinEnableView(this, view, pDAttrs);
 	}
 }

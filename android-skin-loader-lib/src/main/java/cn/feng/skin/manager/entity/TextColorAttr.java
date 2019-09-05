@@ -14,7 +14,11 @@ public class TextColorAttr extends SkinAttr {
 			TextView tv = (TextView)view;
 			if(RES_TYPE_NAME_COLOR.equals(attrValueTypeName)){
 				L.e("attr1", "TextColorAttr");
-				tv.setTextColor(SkinManager.getInstance().convertToColorStateList(attrValueRefId));
+				try {
+					tv.setTextColor(SkinManager.getInstance().convertToColorStateList(attrValueRefId));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

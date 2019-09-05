@@ -58,21 +58,8 @@ public class SkinInflaterFactory2 implements LayoutInflater.Factory2 {
 
 	@Override
 	public View onCreateView(String name, Context context, AttributeSet attrs) {
-		// if this is NOT enable to be skined , simplly skip it
-		boolean isSkinEnable = attrs.getAttributeBooleanValue(SkinConfig.NAMESPACE, SkinConfig.ATTR_SKIN_ENABLE, false);
-        if (!isSkinEnable){
-        		return null;
-        }
 
-		View view = createView(context, name, attrs);
-
-		if (view == null){
-			return null;
-		}
-
-		parseSkinAttr(context, attrs, view);
-
-		return view;
+		return null;
 	}
 	
 	/**

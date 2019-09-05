@@ -16,7 +16,7 @@ import cn.feng.skin.manager.loader.SkinInflaterFactory2;
 import cn.feng.skin.manager.loader.SkinManager;
 
 /**
- * Base Fragment Activity for development
+ * Base AppCompat Activity for development
  * 
  * <p>NOTICE:<br> 
  * You should extends from this if you want to do skin change

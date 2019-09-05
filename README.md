@@ -13,7 +13,7 @@
 
     1.load增加同步加载方法，用于处理某些在app外部换肤需求
     2.扩展了BaseSkinAppCompatActivity
-    	a.要先调用setFactory2，再调用super.onCreate(savedInstanceState)，因为在中的super.onCreate会设置mFactory
+    	a.先调用的**setFactory2**，再调用super.onCreate(savedInstanceState)，因为在中的super.onCreate会设置mFactory
     	b.然后改写onCreateView方法
 
 ## 4.skin-library

@@ -1,5 +1,6 @@
 package com.lpc.test.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Message;

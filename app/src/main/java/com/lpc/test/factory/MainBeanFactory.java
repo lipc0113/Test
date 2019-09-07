@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.lpc.test.activity.ActivityTestActivity;
+import com.lpc.test.activity.DuerOsTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
 import com.lpc.test.activity.TestActivity;
@@ -24,6 +25,14 @@ public class MainBeanFactory {
     private List<TitleContentBean> mList = new ArrayList<>();
 
     public List<TitleContentBean> getList(final Activity activity) {
+        addBean("DuerOS", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, DuerOsTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
         addBean("Test", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

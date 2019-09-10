@@ -35,5 +35,6 @@ dependencies {
     api rootProject.ext.dependencies.constraintlayout
     api rootProject.ext.dependencies.recyclerview
 
-    api project(path: ':android-skin-loader-lib')
+//    api project(path: ':android-skin-loader-lib')
+    api project(path: ':skin-lib')
 }

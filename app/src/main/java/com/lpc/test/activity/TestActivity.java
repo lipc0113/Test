@@ -10,6 +10,7 @@ import android.view.View;
 import com.lpc.test.annotation.Annotation;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.utils.HandlerUtils;
+import com.lpc.test.utils.LogUtil;
 import com.lpc.test.utils.NetWorkUtil;
 import com.lpc.test.utils.ToastUtils;
 

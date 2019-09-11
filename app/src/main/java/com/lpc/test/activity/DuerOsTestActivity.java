@@ -63,6 +63,13 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("奇瑞t1c/m36t车型判断", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogUtil.e(Build.ID.substring(0, 2));
+            }
+        });
+
         addBeanToMList("DuerOS消息回调", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

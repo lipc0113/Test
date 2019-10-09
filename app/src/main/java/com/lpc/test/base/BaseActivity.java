@@ -1,9 +1,15 @@
 package com.lpc.test.base;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 
+import com.lpc.test.R;
+import com.lpc.test.activity.MainActivity;
+import com.lpc.test.activity.SettingActivity;
 import com.lpc.test.utils.ActivityStackManager;
 
 import cn.feng.skin.manager.base.BaseSkinAppCompatActivity;
@@ -39,5 +45,28 @@ public abstract class BaseActivity extends BaseSkinAppCompatActivity {
         super.onDestroy();
 
         ActivityStackManager.getInstance().pop(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_setting:
+                Intent i = new Intent(this, SettingActivity.class);
+                startActivity(i);
+                break;
+            case R.id.action_back:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

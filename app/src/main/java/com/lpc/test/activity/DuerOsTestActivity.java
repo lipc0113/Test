@@ -67,6 +67,7 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
             @Override
             public void onClick(View v) {
                 LogUtil.e(Build.ID.substring(0, 2));
+                ToastUtils.showShortToast(Build.ID.substring(0, 2));
             }
         });
 

@@ -74,6 +74,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testApi rootProject.ext.dependencies.junit
+    androidTestApi rootProject.ext.dependencies.runner
+    androidTestApi rootProject.ext.dependencies.espresso
+
     implementation project(path: ':library')
 
 //    implementation(name:'libraryname', ext:'aar')

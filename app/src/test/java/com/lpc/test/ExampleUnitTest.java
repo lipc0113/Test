@@ -30,4 +30,12 @@ public class ExampleUnitTest {
         }
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void addition_isCorrect3() {
+
+        String s = "1.01";
+        System.out.println("s = " + Float.valueOf(s).intValue());
+        assertEquals(4, 2 + 2);
+    }
 }

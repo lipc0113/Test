@@ -4,23 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Message;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 
 import com.lpc.test.annotation.Annotation;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.utils.HandlerUtils;
 import com.lpc.test.utils.LogUtil;
-import com.lpc.test.utils.NetWorkUtil;
 import com.lpc.test.utils.ToastUtils;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * @ Author     ：v_lipengcheng
@@ -63,6 +55,52 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("确定多模操作", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.car.radio.SURE");
+                i.putExtra("action_pkg", "com.baidu.che.codriver");
+                i.setPackage("com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("取消多模操作", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.car.radio.CANCEL");
+                i.putExtra("action_pkg", "com.baidu.che.codriver");
+                i.setPackage("com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("来电广播", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.android.bdphone.open");
+                i.setPackage("com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("挂断电话广播", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.android.bdphone.close");
+                i.setPackage("com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
         addBeanToMList("奇瑞t1c/m36t车型判断", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +109,19 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
             }
         });
 
-        addBeanToMList("DuerOS消息回调", new View.OnClickListener() {
+        addBeanToMList("DuerOS普通消息", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.duerosauto.app_controler.tts");
+                i.putExtra("pkg_name", getPackageName());
+                i.putExtra("tts_text", "哈哈哈哈哈哈哈哈哈哈哈哈");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("DuerOS回调消息", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -79,11 +129,82 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
                 i.setAction("com.baidu.duerosauto.app_controler.tts");
                 i.putExtra("pkg_name", getPackageName());
                 i.putExtra("tts_id", "123");
-                i.putExtra("tts_text", "哈哈哈哈哈哈呵呵呵呵");
+                i.putExtra("tts_text", "呵呵呵呵呵呵呵呵呵呵呵呵");
                 DuerOsTestActivity.this.sendBroadcast(i);
             }
         });
 
+        addBeanToMList("DuerOS长音效", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.duerosauto.app_controler.tts");
+                i.putExtra("tts_text", "long_audio");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("DuerOS重度疲劳-0速度", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.car.radio.WAKEUP");
+                i.putExtra("action_type", 1);
+                i.putExtra("speed", "0");
+                i.putExtra("action_pkg", "com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("DuerOS重度疲劳-80速度", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.car.radio.WAKEUP");
+                i.putExtra("action_type", 1);
+                i.putExtra("speed", 80);
+                i.putExtra("action_pkg", "com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("DuerOS轻度疲劳", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.car.radio.WAKEUP");
+                i.putExtra("action_type", 2);
+                i.putExtra("action_pkg", "com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("DuerOS中断疲劳预警", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.car.radio.WAKEUP");
+                i.putExtra("action_type", 3);
+                i.putExtra("action_pkg", "com.baidu.che.codriver");
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("关闭疲劳预警", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction("com.baidu.duerosauto.app_controler.tts_stop");
+                i.putExtra("pkg_name", getPackageName());
+                DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
     }
 
     class MessageCallbackReceiver extends BroadcastReceiver {

@@ -134,6 +134,7 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
             }
         });
 
+        // adb shell am broadcast -a com.baidu.duerosauto.app_controler.tts --es tts_text "long_audio"
         addBeanToMList("DuerOS长音效", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

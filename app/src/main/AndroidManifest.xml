@@ -43,6 +43,7 @@
         <activity android:name=".activity.SettingActivity"
             android:exported="true"/>
         <activity android:name=".activity.DuerOsTestActivity" />
+        <activity android:name=".activity.AnimationTestActivity" />
     </application>
 
 </manifest>

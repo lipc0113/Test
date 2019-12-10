@@ -8,12 +8,10 @@ import android.view.MenuItem;
 import androidx.annotation.Nullable;
 
 import com.lpc.test.R;
-import com.lpc.test.activity.MainActivity;
 import com.lpc.test.activity.SettingActivity;
 import com.lpc.test.utils.ActivityStackManager;
 
 import cn.feng.skin.manager.base.BaseSkinAppCompatActivity;
-import cn.feng.skin.manager.base.BaseSkinFragmentActivity;
 
 /**
  * @ Author     ：v_lipengcheng

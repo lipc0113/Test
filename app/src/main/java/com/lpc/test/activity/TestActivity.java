@@ -1,6 +1,5 @@
 package com.lpc.test.activity;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Message;
@@ -10,7 +9,6 @@ import android.view.View;
 import com.lpc.test.annotation.Annotation;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.utils.HandlerUtils;
-import com.lpc.test.utils.LogUtil;
 import com.lpc.test.utils.NetWorkUtil;
 import com.lpc.test.utils.ToastUtils;
 

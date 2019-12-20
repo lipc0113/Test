@@ -101,14 +101,6 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
             }
         });
 
-        addBeanToMList("奇瑞t1c/m36t车型判断", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LogUtil.e(Build.ID.substring(0, 2));
-                ToastUtils.showShortToast(Build.ID.substring(0, 2));
-            }
-        });
-
         addBeanToMList("DuerOS普通消息", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +108,7 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
                 Intent i = new Intent();
                 i.setAction("com.baidu.duerosauto.app_controler.tts");
                 i.putExtra("pkg_name", getPackageName());
-                i.putExtra("tts_text", "哈哈哈哈哈哈哈哈哈哈哈哈");
+                i.putExtra("tts_text", "已为您切换为AR导航");
                 DuerOsTestActivity.this.sendBroadcast(i);
             }
         });
@@ -204,6 +196,14 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
                 i.setAction("com.baidu.duerosauto.app_controler.tts_stop");
                 i.putExtra("pkg_name", getPackageName());
                 DuerOsTestActivity.this.sendBroadcast(i);
+            }
+        });
+
+        addBeanToMList("奇瑞t1c/m36t车型判断", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogUtil.e(Build.ID.substring(0, 2));
+                ToastUtils.showShortToast(Build.ID.substring(0, 2));
             }
         });
     }

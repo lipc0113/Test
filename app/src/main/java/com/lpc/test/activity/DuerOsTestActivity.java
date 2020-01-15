@@ -202,8 +202,10 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
         addBeanToMList("奇瑞t1c/m36t车型判断", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.e(Build.ID.substring(0, 2));
-                ToastUtils.showShortToast(Build.ID.substring(0, 2));
+                LogUtil.i("Build.ID=" + Build.ID);
+                ToastUtils.showShortToast("Build.ID=" + Build.ID);
+                LogUtil.i("Build.MODEL=" + Build.MODEL);
+                LogUtil.i("Build.BOARD=" + Build.BOARD);
             }
         });
     }

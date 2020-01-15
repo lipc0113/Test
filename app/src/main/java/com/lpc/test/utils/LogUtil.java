@@ -83,4 +83,13 @@ public class LogUtil {
     public static void d(String tag, String infor) {
         Log.d(tag, "---> " + infor);
     }
+
+    public static void i(String infor) {
+
+        Log.i(TAG, "---> " + infor);
+    }
+
+    public static void i(String tag, String infor) {
+        Log.i(tag, "---> " + infor);
+    }
 }

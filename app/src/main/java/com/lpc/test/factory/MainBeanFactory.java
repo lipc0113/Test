@@ -11,6 +11,7 @@ import com.lpc.test.activity.RecyclerViewTestActivity;
 import com.lpc.test.activity.TestActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
+import com.lpc.test.kotlin_lib.KotlinActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,14 @@ public class MainBeanFactory {
             }
         });
         addBean("Android", 0);
+        addBean("Kotlin", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, KotlinActivity.class);
+                activity.startActivity(i);
+            }
+        });
         addBean("Activity", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

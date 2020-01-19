@@ -1,11 +1,16 @@
 package com.lpc.test.kotlin_lib
 
+import com.lpc.test.kotlin_lib.bean.Color
+import com.lpc.test.kotlin_lib.bean.Color2
+import com.lpc.test.kotlin_lib.bean.Person
 import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
+ *
+ * 第二章 kotlin基础
  */
 class ExampleUnitTest {
 

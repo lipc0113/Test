@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Message;
 import android.view.View;
 
@@ -13,6 +14,10 @@ import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.utils.HandlerUtils;
 import com.lpc.test.utils.LogUtil;
 import com.lpc.test.utils.ToastUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * @ Author     ：v_lipengcheng
@@ -54,6 +59,24 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
 
     @Override
     protected void initRecyclerViewData() {
+
+        addBeanToMList("获取CUID", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                File dir = new File(Environment.getExternalStorageDirectory() + "/wzm");
+                //        创建文件夹
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+                String uuidFilePath = dir.getPath() + "/new_uuid.txt";
+                if (!new File(uuidFilePath).exists()) {
+                    LogUtil.e("loadUUIDFromFile not exist, uuidFilePath=" + uuidFilePath);
+                }
+                String loadId = readFile(uuidFilePath);
+                LogUtil.e("loadUUIDFromFile uuidFilePath=" + uuidFilePath + ", loadId=" + loadId);
+            }
+        });
 
         addBeanToMList("确定多模操作", new View.OnClickListener() {
             @Override
@@ -219,5 +242,39 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
             LogUtil.e("tts_id = " + intent.getStringExtra("tts_id"));
             LogUtil.e("tts_callback_status = " + intent.getStringExtra("tts_callback_status"));
         }
+    }
+
+    /**
+     * 读取文件
+     *
+     * @param fileName
+     * @return
+     * @throws IOException
+     */
+    public static String readFile(String fileName) {
+        File file = new File(fileName);
+        if (file.exists()) {
+            FileInputStream fin = null;
+            try {
+                fin = new FileInputStream(fileName);
+                int length = fin.available();
+                byte[] buffer = new byte[length];
+                fin.read(buffer);
+                String res = new String(buffer, "UTF-8");
+                fin.close();
+                return res;
+            } catch (Exception e) {
+                LogUtil.e(e.getMessage());
+            } finally {
+                if (fin != null) {
+                    try {
+                        fin.close();
+                    } catch (IOException e) {
+                        LogUtil.e(e.getMessage());
+                    }
+                }
+            }
+        }
+        return "";
     }
 }

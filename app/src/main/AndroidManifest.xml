@@ -44,6 +44,7 @@
             android:exported="true"/>
         <activity android:name=".activity.DuerOsTestActivity" />
         <activity android:name=".activity.AnimationTestActivity" />
+        <activity android:name=".activity.PhoneTestActivity" />
     </application>
 
 </manifest>

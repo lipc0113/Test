@@ -64,34 +64,6 @@ public class TestActivity extends BaseTextRecyclerViewActivity implements Handle
                 }
             }
         });
-
-        addBeanToMList("判断网络类型", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String networkType = NetWorkUtil.getNetworkType();
-                ToastUtils.showShortToast("networkType = " + networkType);
-            }
-        });
-
-        addBeanToMList("ping指令", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MyAsyncTask myAsyncTask = new MyAsyncTask();
-                myAsyncTask.execute();
-            }
-        });
-
-        addBeanToMList("CPU_ABI", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String CPU_ABI = Build.CPU_ABI;
-                ToastUtils.showShortToast("CPU_ABI = " + CPU_ABI);
-            }
-        });
-
     }
 
     class MyAsyncTask extends AsyncTask<Integer, Integer, Integer> {

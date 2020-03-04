@@ -7,6 +7,7 @@ import android.view.View;
 import com.lpc.test.activity.ActivityTestActivity;
 import com.lpc.test.activity.DuerOsTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
+import com.lpc.test.activity.PhoneTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
 import com.lpc.test.activity.TestActivity;
 import com.lpc.test.activity.WebViewTestActivity;
@@ -64,6 +65,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, RecyclerViewTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("Phone", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, PhoneTestActivity.class);
                 activity.startActivity(i);
             }
         });

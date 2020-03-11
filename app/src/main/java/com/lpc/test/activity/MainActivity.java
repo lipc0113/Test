@@ -1,9 +1,5 @@
 package com.lpc.test.activity;
 
-import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 

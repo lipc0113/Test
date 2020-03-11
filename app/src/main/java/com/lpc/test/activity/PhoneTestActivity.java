@@ -49,20 +49,20 @@ public class PhoneTestActivity extends BaseTextRecyclerViewActivity implements H
             @Override
             public void onClick(View v) {
 
-//                DisplayMetrics dm = getResources().getDisplayMetrics();
-//                LogUtil.d( "分辨率(宽): "+dm.widthPixels);
-//                LogUtil.d( "分辨率(高): "+dm.heightPixels);
-//                LogUtil.d( "xdpi: "+dm.xdpi);
-//                LogUtil.d( "ydpi: "+dm.ydpi);
-//                LogUtil.d( "densityDpi: "+dm.densityDpi);
-//                LogUtil.d( "density: "+dm.density);
+                DisplayMetrics dm = getResources().getDisplayMetrics();
+                LogUtil.e( "分辨率(宽): "+dm.widthPixels);
+                LogUtil.e( "分辨率(高): "+dm.heightPixels);
+                LogUtil.e( "xdpi: "+dm.xdpi);
+                LogUtil.e( "ydpi: "+dm.ydpi);
+                LogUtil.e( "densityDpi: "+dm.densityDpi);
+                LogUtil.e( "density: "+dm.density);
 
                 Display defaultDisplay = getWindowManager().getDefaultDisplay();
                 Point point = new Point();
                 defaultDisplay.getSize(point);
                 int x = point.x;
                 int y = point.y;
-                LogUtil.i("x = " + x + ",y = " + y);
+                LogUtil.e("x = " + x + ",y = " + y);
 
                 Rect outSize = new Rect();
                 getWindowManager().getDefaultDisplay().getRectSize(outSize);
@@ -70,13 +70,13 @@ public class PhoneTestActivity extends BaseTextRecyclerViewActivity implements H
                 int top = outSize.top;
                 int right = outSize.right;
                 int bottom = outSize.bottom;
-                LogUtil.d("left = " + left + ",top = " + top + ",right = " + right + ",bottom = " + bottom);
+                LogUtil.e("left = " + left + ",top = " + top + ",right = " + right + ",bottom = " + bottom);
 
                 DisplayMetrics outMetrics = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
                 int widthPixels = outMetrics.widthPixels;
                 int heightPixels = outMetrics.heightPixels;
-                LogUtil.i("widthPixels = " + widthPixels + ",heightPixels = " + heightPixels);
+                LogUtil.e("widthPixels = " + widthPixels + ",heightPixels = " + heightPixels);
 
                 Point outSize2 = new Point();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

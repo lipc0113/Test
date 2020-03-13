@@ -1,6 +1,12 @@
 package com.lpc.test;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.junit.Test;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,6 +16,20 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
+    @Test
+    public void addition_isCorrect7() {
+
+        String s = "{\"id\":123}";
+        Gson gson = new Gson();
+        People people = gson.fromJson(s, People.class);
+        System.out.println("id = " + people.getId());
+
+        String s2 = "{\"id\":123,\"name\":\"lpc\",\"age\":12}";
+        People people2 = gson.fromJson(s2, People.class);
+        System.out.println("id2 = " + people2.getId());
+
+    }
 
     @Test
     public void addition_isCorrect6() {

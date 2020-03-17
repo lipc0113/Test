@@ -18,7 +18,6 @@ import com.lpc.test.utils.NetWorkUtil;
 import com.lpc.test.utils.ToastUtils;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -45,17 +44,34 @@ public class PhoneTestActivity extends BaseTextRecyclerViewActivity implements H
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("手机基本信息", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                LogUtil.i("Build.ID=" + Build.ID);
+                // 获取手机型号
+                LogUtil.i("手机型号Build.MODEL=" + Build.MODEL);
+                LogUtil.i("手机厂商Build.BOARD=" + Build.BOARD);
+                LogUtil.i("系统版本号Build.VERSION.RELEASE=" + Build.VERSION.RELEASE);
+                ToastUtils.showLongToast("Build.ID=" + Build.ID
+                        + "；手机型号Build.MODEL=" + Build.MODEL
+                        + "；手机厂商Build.BOARD=" + Build.BOARD
+                        + "；系统版本号Build.VERSION.RELEASE=" + Build.VERSION.RELEASE);
+            }
+        });
+
         addBeanToMList("屏幕分辨率", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                LogUtil.e("不可靠分辨率--------------------------------------------");
                 DisplayMetrics dm = getResources().getDisplayMetrics();
-                LogUtil.e( "分辨率(宽): "+dm.widthPixels);
-                LogUtil.e( "分辨率(高): "+dm.heightPixels);
-                LogUtil.e( "xdpi: "+dm.xdpi);
-                LogUtil.e( "ydpi: "+dm.ydpi);
-                LogUtil.e( "densityDpi: "+dm.densityDpi);
-                LogUtil.e( "density: "+dm.density);
+                LogUtil.e("分辨率(宽): " + dm.widthPixels);
+                LogUtil.e("分辨率(高): " + dm.heightPixels);
+                LogUtil.e("xdpi: " + dm.xdpi);
+                LogUtil.e("ydpi: " + dm.ydpi);
+                LogUtil.e("densityDpi: " + dm.densityDpi);
+                LogUtil.e("density: " + dm.density);
 
                 Display defaultDisplay = getWindowManager().getDefaultDisplay();
                 Point point = new Point();
@@ -78,6 +94,7 @@ public class PhoneTestActivity extends BaseTextRecyclerViewActivity implements H
                 int heightPixels = outMetrics.heightPixels;
                 LogUtil.e("widthPixels = " + widthPixels + ",heightPixels = " + heightPixels);
 
+                LogUtil.e("可靠分辨率--------------------------------------------");
                 Point outSize2 = new Point();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     getWindowManager().getDefaultDisplay().getRealSize(outSize2);
@@ -92,7 +109,13 @@ public class PhoneTestActivity extends BaseTextRecyclerViewActivity implements H
                 }
                 int widthPixel = outMetrics2.widthPixels;
                 int heightPixel = outMetrics2.heightPixels;
+                int densityDpi = outMetrics2.densityDpi;
+                float density = outMetrics2.density;
                 LogUtil.e("widthPixel = " + widthPixel + ",heightPixel = " + heightPixel);
+                LogUtil.e("densityDpi = " + densityDpi + ",density = " + density);
+                ToastUtils.showLongToast("widthPixel = " + widthPixel
+                        + ",heightPixel = " + heightPixel
+                        + ";densityDpi = " + densityDpi + ",density = " + density);
             }
         });
 

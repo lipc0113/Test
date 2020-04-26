@@ -45,6 +45,9 @@
         <activity android:name=".activity.DuerOsTestActivity" />
         <activity android:name=".activity.AnimationTestActivity" />
         <activity android:name=".activity.PhoneTestActivity" />
+        <activity android:name=".activity.ServiceTestActivity" />
+
+        <service android:name=".service.TestService" />
     </application>
 
 </manifest>

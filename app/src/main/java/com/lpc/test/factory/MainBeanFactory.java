@@ -9,6 +9,7 @@ import com.lpc.test.activity.DuerOsTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
 import com.lpc.test.activity.PhoneTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
+import com.lpc.test.activity.ServiceTestActivity;
 import com.lpc.test.activity.TestActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
@@ -57,6 +58,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, ActivityTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("Service", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, ServiceTestActivity.class);
                 activity.startActivity(i);
             }
         });

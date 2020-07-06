@@ -56,6 +56,7 @@ class ExampleUnitTest3 {
     * */
     @Test
     fun addition_isCorrect8() {
+        println(User5.MyFactory)
         val user = User5.MyFactory.getUser5()
         println(user)
         val user2 = User5.MyFactory.getUser5()

@@ -1,6 +1,7 @@
 package com.lpc.test;
 
 import android.app.Application;
+import android.os.Debug;
 
 import com.lpc.test.utils.CrashHandler;
 import com.lpc.test.utils.FileUtils;
@@ -26,6 +27,8 @@ public class MyApplication extends Application {
         CrashHandler crashHandler = new CrashHandler();
         crashHandler.init();
 
+//        Debug.startMethodTracing("TraceView");
         SkinUtil.init(this);
+//        Debug.stopMethodTracing();
     }
 }

@@ -1,5 +1,10 @@
 package com.lpc.test.activity;
 
+import android.os.Build;
+import android.os.Debug;
+import android.os.Trace;
+
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,13 +37,18 @@ public class MainActivity extends BaseActivity {
         mRv.setLayoutManager(linearLayoutManager);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
     protected void initData() {
 
+        Debug.startMethodTracing("TraceView");
+//        Trace.beginSection("sysTrace");
         MainBeanFactory beanFactory = new MainBeanFactory();
         mList = beanFactory.getList(this);
 
         mTitleContentAdapter = new TitleContentAdapter(this, mList);
         mRv.setAdapter(mTitleContentAdapter);
+//        Trace.endSection();
+        Debug.stopMethodTracing();
     }
 }

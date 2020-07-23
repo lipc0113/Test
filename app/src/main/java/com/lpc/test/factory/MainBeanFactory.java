@@ -11,6 +11,7 @@ import com.lpc.test.activity.PhoneTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
 import com.lpc.test.activity.ServiceTestActivity;
 import com.lpc.test.activity.TestActivity;
+import com.lpc.test.activity.TextViewTestActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
 import com.lpc.test.kotlin_lib.KotlinActivity;
@@ -74,6 +75,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, RecyclerViewTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("TextView", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, TextViewTestActivity.class);
                 activity.startActivity(i);
             }
         });

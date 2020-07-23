@@ -46,6 +46,8 @@
         <activity android:name=".activity.AnimationTestActivity" />
         <activity android:name=".activity.PhoneTestActivity" />
         <activity android:name=".activity.ServiceTestActivity" />
+        <activity android:name=".activity.TextViewTestActivity" />
+        <activity android:name=".activity.ScrollTextViewActivity" />
 
         <service android:name=".service.TestService" />
     </application>

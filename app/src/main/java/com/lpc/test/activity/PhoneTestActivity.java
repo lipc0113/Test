@@ -53,10 +53,14 @@ public class PhoneTestActivity extends BaseTextRecyclerViewActivity implements H
                 LogUtil.i("手机型号Build.MODEL=" + Build.MODEL);
                 LogUtil.i("手机厂商Build.BOARD=" + Build.BOARD);
                 LogUtil.i("系统版本号Build.VERSION.RELEASE=" + Build.VERSION.RELEASE);
+                LogUtil.i("系统CPU Build.CPU_ABI=" + Build.CPU_ABI);
+                LogUtil.i("系统CPU Build.CPU_ABI2=" + Build.CPU_ABI2);
                 ToastUtils.showLongToast("Build.ID=" + Build.ID
                         + "；手机型号Build.MODEL=" + Build.MODEL
                         + "；手机厂商Build.BOARD=" + Build.BOARD
-                        + "；系统版本号Build.VERSION.RELEASE=" + Build.VERSION.RELEASE);
+                        + "；系统版本号Build.VERSION.RELEASE=" + Build.VERSION.RELEASE
+                        + "；系统CPU Build.CPU_ABI=" + Build.CPU_ABI
+                        + "；系统CPU2 Build.CPU_ABI2=" + Build.CPU_ABI2);
             }
         });
 

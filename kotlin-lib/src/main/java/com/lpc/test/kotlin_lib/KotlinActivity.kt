@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.lpc.test.kotlin_lib.test.Person
+import com.lpc.test.kotlin_lib.utils.LogUtil
 
 /**
  * @ Author     ：v_lipengcheng
@@ -13,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
  */
 class KotlinActivity : AppCompatActivity() {
 
+    lateinit var tvTest: TextView
+    lateinit var tvTest2: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin);
@@ -20,19 +25,25 @@ class KotlinActivity : AppCompatActivity() {
         initData()
     }
 
-    fun initView(){
-        val tvTest = findViewById<TextView>(R.id.tv_test)
+    fun initView() {
+        tvTest = findViewById<TextView>(R.id.tv_test)
         tvTest.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                Log.d("lipc0113", "view=${v}")
+                LogUtil.d("view=${v}")
             }
         })
 
-        val tvTest2 = findViewById<TextView>(R.id.tv_test2)
+        tvTest2 = findViewById<TextView>(R.id.tv_test2)
+        // 5.1.1作为函数参数的代码块
         tvTest2.setOnClickListener { Log.d("lipc0113", "view=${tvTest2}") }
     }
 
-    fun initData(){
-
+    fun initData() {
+        val peoples = listOf(Person("lipc", 30), Person("syj", 28))
+        // 5.1.2Lammbda与集合
+        tvTest.setText(peoples.maxBy { it.age }?.name)
+        tvTest2.setText(peoples.maxBy(Person::age)?.age.toString())
+        LogUtil.d(peoples.maxBy { it.age }?.name.toString())
+        LogUtil.d(peoples.maxBy(Person::age)?.age.toString())
     }
 }

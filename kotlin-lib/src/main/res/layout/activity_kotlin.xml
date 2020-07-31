@@ -7,11 +7,14 @@
     <TextView
         android:id="@+id/tv_test"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
         android:text="Hello Kotlin" />
+
     <TextView
         android:id="@+id/tv_test2"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
         android:text="Hello Kotlin2" />
 </LinearLayout>

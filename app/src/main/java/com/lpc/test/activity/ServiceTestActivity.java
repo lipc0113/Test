@@ -33,5 +33,12 @@ public class ServiceTestActivity extends BaseTextRecyclerViewActivity {
                 }
             }
         });
+
+        addBeanToMList("JobService服务-TODO", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

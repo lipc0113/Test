@@ -7,14 +7,24 @@
     <TextView
         android:id="@+id/tv_test"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:text="Hello Kotlin" />
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="Hello Kotlin"
+        android:textSize="24sp"/>
 
     <TextView
         android:id="@+id/tv_test2"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:text="Hello Kotlin2" />
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="Hello Kotlin2"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tv_test3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="Hello Kotlin3"
+        android:textSize="24sp"/>
 </LinearLayout>

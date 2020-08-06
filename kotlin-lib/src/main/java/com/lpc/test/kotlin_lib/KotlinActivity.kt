@@ -15,7 +15,7 @@ import com.lpc.test.kotlin_lib.utils.LogUtil
  */
 class KotlinActivity : AppCompatActivity() {
 
-    val peoples = listOf(Person("lipc", 30), Person("syj", 28))
+    val peoples = listOf(Person("lipc", 30), Person("syj", 28), Person("pm", 28))
     lateinit var tvTest: TextView
     lateinit var tvTest2: TextView
     lateinit var tvTest3: TextView
@@ -27,6 +27,51 @@ class KotlinActivity : AppCompatActivity() {
         initData()
         initData2()
         initData3("name")
+        initData4()
+    }
+
+    /*
+    * 5.2集合的函数式API
+    * */
+    private fun initData4() {
+        val filterList = peoples.filter {
+            it.age == 30
+        }
+        LogUtil.d("filterList--->$filterList")
+
+        val filterList2 = peoples.map {
+            it.name
+        }
+        LogUtil.d("filterList2--->$filterList2")
+
+        val isAll28 = peoples.all {
+            it.age == 28
+        }
+        LogUtil.d("isAll28--->$isAll28")
+
+        val isAny28 = peoples.any {
+            it.age == 28
+        }
+        LogUtil.d("isAny28--->$isAny28")
+
+        val count28 = peoples.count {
+            it.age == 28
+        }
+        LogUtil.d("count28--->$count28")
+
+        val person28 = peoples.find {
+            it.age == 28
+        }
+        LogUtil.d("person28--->$person28")
+
+        val groupByList = peoples.groupBy {
+            it.age
+        }
+        LogUtil.d("groupByList--->$groupByList")
+
+        val strings = listOf("adc", "cdf")
+        val flatMap = strings.flatMap { it.toList() }
+        LogUtil.d("flatMap--->$flatMap")
     }
 
     fun initView() {
@@ -64,8 +109,8 @@ class KotlinActivity : AppCompatActivity() {
 
     fun initData2() {
         // 5.1.3Lambda表达式的语法
-        val sum = { x:Int, y:Int-> x+y }
-        LogUtil.d(sum(1,2).toString())
+        val sum = { x: Int, y: Int -> x + y }
+        LogUtil.d(sum(1, 2).toString())
 
         //Lambda表达式的省略过程优化
         LogUtil.d("1:::" + peoples.maxBy({ p: Person -> p.age })!!.name);
@@ -78,7 +123,7 @@ class KotlinActivity : AppCompatActivity() {
 
     fun initData3(prefix: String) {
         // 5.1.4在作用域中访问变量
-        peoples.forEach{
+        peoples.forEach {
             LogUtil.d("$prefix:${it.name}")
         }
     }

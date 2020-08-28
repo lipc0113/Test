@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.lpc.test.activity.ActivityTestActivity;
+import com.lpc.test.activity.AnimationTestActivity;
 import com.lpc.test.activity.DuerOsTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
 import com.lpc.test.activity.PhoneTestActivity;
@@ -99,6 +100,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, WebViewTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("Animaition", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, AnimationTestActivity.class);
                 activity.startActivity(i);
             }
         });

@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.view.View;
 
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
-import com.lpc.test.bean.Child;
-import com.lpc.test.utils.ToastUtils;
 
 /**
  * @ Author     ：v_lipengcheng
@@ -14,16 +12,24 @@ import com.lpc.test.utils.ToastUtils;
  */
 public class AnimationTestActivity extends BaseTextRecyclerViewActivity {
 
+
     @Override
     protected void initRecyclerViewData() {
 
-        addBeanToMList("用注释代替枚举", new View.OnClickListener() {
+        addBeanToMList("ClipDrawable", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AnimationTestActivity.this, AnnotationActivity.class);
+                Intent i = new Intent(AnimationTestActivity.this, ClipDrawableAnimationTestActivity.class);
                 AnimationTestActivity.this.startActivity(i);
             }
         });
 
+        addBeanToMList("TransitionDrawable", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AnimationTestActivity.this, TransitionDrawableAnimationTestActivity.class);
+                AnimationTestActivity.this.startActivity(i);
+            }
+        });
     }
 }

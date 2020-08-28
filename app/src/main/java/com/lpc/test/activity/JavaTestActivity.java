@@ -1,6 +1,7 @@
 package com.lpc.test.activity;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
@@ -8,8 +9,17 @@ import com.lpc.test.bean.Child;
 import com.lpc.test.utils.LogUtil;
 import com.lpc.test.utils.ToastUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ Author     ：v_lipengcheng
@@ -18,8 +28,32 @@ import java.io.IOException;
  */
 public class JavaTestActivity extends BaseTextRecyclerViewActivity {
 
+    private String json;
+
     @Override
     protected void initRecyclerViewData() {
+
+        addBeanToMList("用注释代替枚举", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(JavaTestActivity.this, AnnotationActivity.class);
+                JavaTestActivity.this.startActivity(i);
+            }
+        });
+
+        addBeanToMList("lists.remove()", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        List<String> lists = new ArrayList<>();
+                        lists.add("123");
+                        lists.add("456");
+                        lists.add("789");
+                        LogUtil.d("lists.remove(\"111\")" + lists.remove("111"));
+                        LogUtil.d("lists.remove(null)" + lists.remove(null));
+                        LogUtil.d("lists.remove(\"789\")" + lists.remove("789"));
+                    }
+                }
+        );
 
         addBeanToMList("测量文件夹大小", new View.OnClickListener() {
             @Override
@@ -71,5 +105,62 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
                 ToastUtils.showShortToast(child.getStudents().get(0));
             }
         });
+
+        addBeanToMList("复杂集合转成json", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Map<String, List<String>> map = new HashMap<>();
+                List<String> list = new ArrayList<>();
+                list.add("lpc0113");
+                list.add("syj0512");
+                List<String> list2 = new ArrayList<>();
+                list2.add("lpc0113");
+                list2.add("syj0512");
+                map.put("name", list);
+                map.put("name2", list2);
+                JSONObject object = new JSONObject(map);
+                json = object.toString();
+                LogUtil.d("json === " + json);
+            }
+        });
+
+        addBeanToMList("json转成复杂集合", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!TextUtils.isEmpty(json)) {
+                    try {
+                        Map<String, List<String>> valueMap = new HashMap<>();
+                        JSONObject jsonObject = new JSONObject(json);
+                        Iterator<String> keyIter = jsonObject.keys();
+                        String key;
+                        Object value;
+                        List<String> list = null;
+                        JSONArray jsonArray = null;
+                        while (keyIter.hasNext()) {
+                            key = (String) keyIter.next();
+                            value = jsonObject.get(key);
+                            if (value != null) {
+                                jsonArray = (JSONArray) value;
+                                list = new ArrayList<>();
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    list.add((String) jsonArray.get(i));
+                                }
+                            }
+                            valueMap.put(key, list);
+                        }
+                        LogUtil.d("valueMap === " + valueMap);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    public List<String> getList(String jsonString) {
+
+        return null;
     }
 }

@@ -1,7 +1,10 @@
 package com.lpc.test.activity;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Message;
 import android.os.SystemClock;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.view.View;
 import com.lpc.test.annotation.Annotation;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.utils.HandlerUtils;
+import com.lpc.test.utils.LogUtil;
 import com.lpc.test.utils.NetWorkUtil;
 import com.lpc.test.utils.ToastUtils;
 
@@ -39,6 +43,24 @@ public class TestActivity extends BaseTextRecyclerViewActivity implements Handle
 
     @Override
     protected void initRecyclerViewData() {
+
+        addBeanToMList("AndroidManifest.xml中metaData的获取", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 取不到metaData
+//                ApplicationInfo applicationInfo = getApplicationInfo();
+//                Bundle metaData = applicationInfo.metaData;
+//                LogUtil.d("metaData===" + metaData.getString("test"));
+
+                try {
+                    ApplicationInfo applicationInfo1 = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+                    Bundle metaData1 = applicationInfo1.metaData;
+                    LogUtil.d("metaData===" + metaData1.getString("test"));
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         addBeanToMList("Thread优先级", new View.OnClickListener() {
             @Override

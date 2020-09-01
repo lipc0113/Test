@@ -111,6 +111,12 @@ public class MainBeanFactory {
                 activity.startActivity(i);
             }
         });
+        addBean("手写Handler---TODO", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2020/8/11
+            }
+        });
         addBean("Java", 0);
         addBean("Java基本知识", new View.OnClickListener() {
             @Override

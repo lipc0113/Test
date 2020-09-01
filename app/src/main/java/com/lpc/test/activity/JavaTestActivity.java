@@ -157,10 +157,12 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
                 }
             }
         });
-    }
 
-    public List<String> getList(String jsonString) {
-
-        return null;
+        addBeanToMList("生产者、消费者demo---TODO", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2020/8/11
+            }
+        });
     }
 }

@@ -1,6 +1,9 @@
 package com.lpc.test.activity;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Debug;
 import android.os.Trace;
 
@@ -30,6 +33,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+
         mRv = findViewById(R.id.rv);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

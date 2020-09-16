@@ -18,6 +18,18 @@ import static org.junit.Assert.assertEquals;
 public class ExampleUnitTest {
 
     @Test
+    public void addition_isCorrect8() {
+        String s = "1001006003";
+        long l = 0;
+        try {
+            l = Long.parseLong(s);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        System.out.println("l = " + l);
+    }
+
+    @Test
     public void addition_isCorrect7() {
 
         String s = "{\"id\":123}";

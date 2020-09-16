@@ -1,7 +1,5 @@
 package com.lpc.test.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 

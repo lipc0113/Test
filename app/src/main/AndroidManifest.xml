@@ -55,6 +55,8 @@
         <activity android:name=".activity.ScrollTextViewActivity" />
         <activity android:name=".activity.TransitionDrawableAnimationTestActivity" />
         <activity android:name=".activity.ClipDrawableAnimationTestActivity" />
+        <activity android:name=".activity.CustomViewTestActivity" />
+        <activity android:name=".activity.CircleProgressBarActivity" />
 
         <service android:name=".service.TestService" />
     </application>

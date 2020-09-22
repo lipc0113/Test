@@ -33,6 +33,15 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("new File(null)", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String path = null;
+                File file = new File(path); // 这里会直接报空指针
+                LogUtil.d("file.getAbsolutePath()" + file.getAbsolutePath());
+            }
+        });
+
         addBeanToMList("用注释代替枚举", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

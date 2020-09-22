@@ -38,6 +38,6 @@ public class UriActivity extends BaseActivity {
         String query = data.getQuery();
 
         tv.setText("scheme = " + scheme + ";host = " + host + ";path = "
-                + path + ";query = " + query);
+                + path + ";query = " + query + ";data = " + data.toString());
     }
 }

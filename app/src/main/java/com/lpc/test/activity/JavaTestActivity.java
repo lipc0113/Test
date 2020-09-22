@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.lpc.test.activity.sub.AnnotationActivity;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.bean.Child;
 import com.lpc.test.utils.LogUtil;

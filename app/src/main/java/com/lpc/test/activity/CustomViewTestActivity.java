@@ -3,6 +3,7 @@ package com.lpc.test.activity;
 import android.content.Intent;
 import android.view.View;
 
+import com.lpc.test.activity.sub.CircleProgressBarActivity;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 
 /**

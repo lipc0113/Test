@@ -1,4 +1,4 @@
-package com.lpc.test.activity;
+package com.lpc.test.activity.sub;
 
 import android.view.View;
 import android.widget.TextView;

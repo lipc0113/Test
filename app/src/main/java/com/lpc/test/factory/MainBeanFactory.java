@@ -2,6 +2,7 @@ package com.lpc.test.factory;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 
 import com.lpc.test.activity.ActivityTestActivity;
@@ -14,6 +15,7 @@ import com.lpc.test.activity.RecyclerViewTestActivity;
 import com.lpc.test.activity.ServiceTestActivity;
 import com.lpc.test.activity.TestActivity;
 import com.lpc.test.activity.TextViewTestActivity;
+import com.lpc.test.activity.UriActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
 import com.lpc.test.kotlin_lib.KotlinActivity;
@@ -124,6 +126,14 @@ public class MainBeanFactory {
             @Override
             public void onClick(View v) {
                 // TODO: 2020/8/11
+            }
+        });
+        addBean("Uri测试", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(activity, UriActivity.class);
+                i.setDataAndType(Uri.parse("lipc0113://com.lpc.test/act"), "image/png");
+                activity.startActivity(i);
             }
         });
         addBean("Java", 0);

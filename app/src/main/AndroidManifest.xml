@@ -33,16 +33,16 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data
+                <!--<data
                     android:host="com.lpc.test"
                     android:path="/act"
-                    android:scheme="lipc0113" />
+                    android:scheme="lipc0113" />-->
             </intent-filter>
         </activity>
         <activity android:name=".activity.RecyclerViewTestActivity" />
         <activity android:name=".activity.ActivityTestActivity" />
         <activity android:name=".activity.JavaTestActivity" />
-        <activity android:name=".activity.AnnotationActivity" />
+        <activity android:name=".activity.sub.AnnotationActivity" />
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.WebViewTestActivity" />
         <activity android:name=".activity.SettingActivity"
@@ -52,11 +52,11 @@
         <activity android:name=".activity.PhoneTestActivity" />
         <activity android:name=".activity.ServiceTestActivity" />
         <activity android:name=".activity.TextViewTestActivity" />
-        <activity android:name=".activity.ScrollTextViewActivity" />
-        <activity android:name=".activity.TransitionDrawableAnimationTestActivity" />
-        <activity android:name=".activity.ClipDrawableAnimationTestActivity" />
+        <activity android:name=".activity.sub.ScrollTextViewActivity" />
+        <activity android:name=".activity.sub.TransitionDrawableAnimationTestActivity" />
+        <activity android:name=".activity.sub.ClipDrawableAnimationTestActivity" />
         <activity android:name=".activity.CustomViewTestActivity" />
-        <activity android:name=".activity.CircleProgressBarActivity" />
+        <activity android:name=".activity.sub.CircleProgressBarActivity" />
 
         <service android:name=".service.TestService" />
     </application>

@@ -1,4 +1,4 @@
-package com.lpc.test.activity;
+package com.lpc.test.activity.sub;
 
 import android.graphics.drawable.ClipDrawable;
 import android.os.Handler;
@@ -11,7 +11,7 @@ import com.lpc.test.base.BaseActivity;
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 17:23 2019-08-08
- * @ Description：
+ * @ Description：裁剪动画
  */
 public class ClipDrawableAnimationTestActivity extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package com.lpc.test.activity;
+package com.lpc.test.activity.sub;
 
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;

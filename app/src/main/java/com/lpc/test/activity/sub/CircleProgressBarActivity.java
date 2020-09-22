@@ -1,4 +1,4 @@
-package com.lpc.test.activity;
+package com.lpc.test.activity.sub;
 
 import android.graphics.Color;
 import android.view.View;

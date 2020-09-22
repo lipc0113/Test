@@ -3,6 +3,8 @@ package com.lpc.test.activity;
 import android.content.Intent;
 import android.view.View;
 
+import com.lpc.test.activity.sub.ClipDrawableAnimationTestActivity;
+import com.lpc.test.activity.sub.TransitionDrawableAnimationTestActivity;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 
 /**

@@ -1,6 +1,5 @@
 package com.lpc.test.activity;
 
-import android.view.View;
 import android.webkit.WebView;
 
 import com.lpc.test.R;

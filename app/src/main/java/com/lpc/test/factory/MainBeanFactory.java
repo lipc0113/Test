@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.lpc.test.activity.ActivityTestActivity;
 import com.lpc.test.activity.AnimationTestActivity;
+import com.lpc.test.activity.ConcurrentActivity;
 import com.lpc.test.activity.CustomViewTestActivity;
 import com.lpc.test.activity.DuerOsTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
@@ -142,6 +143,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, JavaTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("多线程", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, ConcurrentActivity.class);
                 activity.startActivity(i);
             }
         });

@@ -57,6 +57,7 @@
         <activity android:name=".activity.sub.ClipDrawableAnimationTestActivity" />
         <activity android:name=".activity.CustomViewTestActivity" />
         <activity android:name=".activity.sub.CircleProgressBarActivity" />
+        <activity android:name=".activity.ConcurrentActivity" />
 
         <service android:name=".service.TestService" />
     </application>

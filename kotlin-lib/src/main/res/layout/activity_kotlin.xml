@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:text="Hello Kotlin2"
+        android:text="作用域中访问变量"
         android:textSize="24sp"/>
 
     <TextView
@@ -25,6 +25,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:text="Hello Kotlin3"
+        android:text="成员引用"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tv_test4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="把lambda当做参数传给java方法"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tv_test5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="SAM构造方法"
         android:textSize="24sp"/>
 </LinearLayout>

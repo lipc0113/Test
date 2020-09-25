@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.test.Person
 import com.lpc.test.kotlin_lib.topfun.log
 import com.lpc.test.kotlin_lib.utils.LogUtil
+import java.lang.StringBuilder
 
 /**
  * @ Author     ：v_lipengcheng
@@ -19,6 +20,8 @@ class KotlinActivity : AppCompatActivity() {
     lateinit var tvTest: TextView
     lateinit var tvTest2: TextView
     lateinit var tvTest3: TextView
+    lateinit var tvTest4: TextView
+    lateinit var tvTest5: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,47 @@ class KotlinActivity : AppCompatActivity() {
         initData2()
         initData3("name")
         initData4()
+        initData5()
+        initData6()
+        initData7()
+    }
+
+    /*
+    * 5.5 带接收者的lambda："with"和"apply"
+    * */
+    private fun initData7() {
+        val stringBuilder = StringBuilder()
+        with(stringBuilder) {
+            append("123")
+            append("456")
+            append("789")
+        }
+        LogUtil.d("with() = " + stringBuilder)
+
+        val apply = StringBuilder().apply {
+            append("111")
+            append("222")
+            append("333")
+        }
+        LogUtil.d("apply() = " + apply)
+    }
+
+    /*
+    * 5.4 使用java函数式接口
+    * */
+    private fun initData6() {
+        tvTest4.setOnClickListener { LogUtil.d("把lambda当做参数传给java方法") }
+
+        val listener = View.OnClickListener { LogUtil.d("SAM构造方法") }
+        tvTest5.setOnClickListener(listener)
+    }
+
+    /*
+    * 5.3 序列
+    * */
+    private fun initData5() {
+        val toList = peoples.asSequence().map { it.name }.filter { it.startsWith("l") }.toList()
+        LogUtil.d("toList.toString() = " + toList.toString())
     }
 
     /*
@@ -99,6 +143,9 @@ class KotlinActivity : AppCompatActivity() {
             // 成员引用
             run(::log)
         }
+
+        tvTest4 = findViewById(R.id.tv_test4)
+        tvTest5 = findViewById(R.id.tv_test5)
     }
 
     fun initData() {

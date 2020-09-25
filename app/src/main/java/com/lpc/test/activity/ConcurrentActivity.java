@@ -12,6 +12,7 @@ import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.utils.LogUtil;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
@@ -40,6 +41,82 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
 
     @Override
     protected void initRecyclerViewData() {
+
+        /**
+         * LinkedBlockingQueue
+         *
+         * 设置初始容量后，就不会自动扩容
+         *
+         * 取数据
+         * take()：首选。当队列为空时阻塞
+         * poll()：弹出队顶元素，队列为空时，返回null
+         * peek()：和poll烈性，返回队队顶元素，但顶元素不弹出。队列为空时返回null
+         * remove(Object o)：移除某个元素，队列为空时抛出异常。成功移除返回true
+         *
+         * 添加数据
+         * put()：首选。队满是阻塞
+         * offer()：队满时返回false
+         *
+         * */
+        addBeanToMList("LinkedBlockingQueue阻塞式take", new View.OnClickListener() {
+
+            LinkedBlockingQueue<String> queue = null;
+
+            @Override
+            public void onClick(View v) {
+
+                queue = new LinkedBlockingQueue<>(2);
+                queue.offer("1");
+                queue.offer("2");
+                queue.offer("3");
+
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            String take = null;
+                            while ((take = queue.take()) != null) {
+                                LogUtil.d("take = " + take);
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
+
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            String take = null;
+                            while ((take = queue.take()) != null) {
+                                LogUtil.d("take = " + take);
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        queue.offer("4");
+                        queue.offer("5");
+                        queue.offer("6");
+                    }
+                }, 3000);
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        LogUtil.d("queue = " + queue.toString());
+                    }
+                }, 5000);
+            }
+        });
 
         /**
          * 线程安全计数 j并不准确，integer、k准确

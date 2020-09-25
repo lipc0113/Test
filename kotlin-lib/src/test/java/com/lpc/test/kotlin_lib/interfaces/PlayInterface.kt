@@ -6,6 +6,7 @@ package com.lpc.test.kotlin_lib.interfaces
  * @ Description：
  */
 interface PlayInterface {
-    var ball: String
+    val ball: String
+        get()= ball
     fun palyBall()
 }

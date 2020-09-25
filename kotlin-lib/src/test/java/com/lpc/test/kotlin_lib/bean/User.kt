@@ -1,5 +1,8 @@
 package com.lpc.test.kotlin_lib.bean
 
+import android.os.Parcel
+import android.os.Parcelable
+
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 12:47 2020-01-20
@@ -88,7 +91,41 @@ open class User5() {
 
 class User6 {
 
+    open var id: Int = 101
+
+    open var name: String = "lpc"
+
+    constructor(_id: Int, _name: String) {
+        id = _id
+        name = _name
+    }
+
+    constructor(_id: Int) {
+        id = _id
+    }
+
     init {
         println("初始化6...")
+    }
+}
+
+class User7() : User5() {
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readInt()
+        name = parcel.readString()
+    }
+
+    constructor(_id: Int, _name: String) : this() {
+        id = _id
+        name = _name
+    }
+
+    constructor(_id: Int) : this(_id, "lpc") {
+        id = _id
+    }
+
+    init {
+        println("初始化7...")
     }
 }

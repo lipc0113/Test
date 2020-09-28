@@ -1,6 +1,6 @@
 package com.lpc.test.kotlin_lib
 
-import com.lpc.test.kotlin_lib.topfun.*
+import com.lpc.test.kotlin_lib.test.topfun.*
 import org.junit.Test
 
 /**

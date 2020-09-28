@@ -1,4 +1,4 @@
-package com.lpc.test.kotlin_lib.test
+package com.lpc.test.kotlin_lib.test.bean
 
 /**
  * @ Author     ：v_lipengcheng

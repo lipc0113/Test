@@ -2,6 +2,7 @@
     package="com.lpc.test.kotlin_lib" >
 
     <application>
-        <activity android:name=".KotlinActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".test.KotlinActivity" />
     </application>
 </manifest>

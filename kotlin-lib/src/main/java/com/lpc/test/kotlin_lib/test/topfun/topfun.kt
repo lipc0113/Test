@@ -1,6 +1,6 @@
-package com.lpc.test.kotlin_lib.topfun
+package com.lpc.test.kotlin_lib.test.topfun
 
-import com.lpc.test.kotlin_lib.utils.LogUtil
+import com.lpc.test.kotlin_lib.test.utils.LogUtil
 
 /**
  * @ Author     ：v_lipengcheng

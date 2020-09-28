@@ -1,12 +1,13 @@
-package com.lpc.test.kotlin_lib
+package com.lpc.test.kotlin_lib.test
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.lpc.test.kotlin_lib.test.Person
-import com.lpc.test.kotlin_lib.topfun.log
-import com.lpc.test.kotlin_lib.utils.LogUtil
+import com.lpc.test.kotlin_lib.R
+import com.lpc.test.kotlin_lib.test.bean.Person
+import com.lpc.test.kotlin_lib.test.topfun.log
+import com.lpc.test.kotlin_lib.test.utils.LogUtil
 import java.lang.StringBuilder
 
 /**

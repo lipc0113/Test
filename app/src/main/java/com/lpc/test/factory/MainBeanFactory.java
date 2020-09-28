@@ -19,7 +19,7 @@ import com.lpc.test.activity.TextViewTestActivity;
 import com.lpc.test.activity.UriActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
-import com.lpc.test.kotlin_lib.KotlinActivity;
+import com.lpc.test.kotlin_lib.test.KotlinActivity;
 
 import java.util.ArrayList;
 import java.util.List;

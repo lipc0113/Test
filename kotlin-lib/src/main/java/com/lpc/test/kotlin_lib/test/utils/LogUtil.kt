@@ -1,4 +1,4 @@
-package com.lpc.test.kotlin_lib.utils
+package com.lpc.test.kotlin_lib.test.utils
 
 import android.util.Log
 

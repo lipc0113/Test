@@ -15,7 +15,7 @@ import java.lang.StringBuilder
  * @ Date       ：Created in 10:23 2020-01-15
  * @ Description：
  */
-class KotlinActivity : AppCompatActivity() {
+class Kotlin5Activity : AppCompatActivity() {
 
     val peoples = listOf(Person("lipc", 30), Person("syj", 28), Person("pm", 28))
     lateinit var tvTest: TextView
@@ -26,7 +26,7 @@ class KotlinActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kotlin);
+        setContentView(R.layout.activity_kotlin5);
         initView()
         initData()
         initData2()

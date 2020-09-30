@@ -19,7 +19,8 @@ import com.lpc.test.activity.TextViewTestActivity;
 import com.lpc.test.activity.UriActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
-import com.lpc.test.kotlin_lib.test.KotlinActivity;
+import com.lpc.test.kotlin_lib.activity.KotlinActivity;
+import com.lpc.test.kotlin_lib.test.Kotlin6Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,8 +55,8 @@ public class MainBeanFactory {
         addBean("Kotlin", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent i = new Intent(activity, KotlinActivity.class);
+                // 后期改成recycleView的样式
+                Intent i = new Intent(activity, Kotlin6Activity.class);
                 activity.startActivity(i);
             }
         });

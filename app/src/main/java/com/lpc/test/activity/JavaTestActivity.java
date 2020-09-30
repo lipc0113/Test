@@ -29,10 +29,28 @@ import java.util.Map;
  */
 public class JavaTestActivity extends BaseTextRecyclerViewActivity {
 
+    private static final int i = 16;
+    // 0x代表16进制，0b代表2进制。这里的j = 1*16+6 = 22;
+    private static final int j = 0x16;
+
     private String json;
 
     @Override
     protected void initRecyclerViewData() {
+
+        addBeanToMList("进制转换", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogUtil.d("Integer.toBinaryString(i) = " + Integer.toBinaryString(i));
+                LogUtil.d("Integer.toHexString(i) = " + Integer.toHexString(i));
+                LogUtil.d("Integer.toOctalString(i) = " + Integer.toOctalString(i));
+
+                LogUtil.d("j = " + j);
+                LogUtil.d("Integer.toBinaryString(j) = " + Integer.toBinaryString(j));
+                LogUtil.d("Integer.toHexString(j) = " + Integer.toHexString(j));
+                LogUtil.d("Integer.toOctalString(j) = " + Integer.toOctalString(j));
+            }
+        });
 
         addBeanToMList("new File(null)", new View.OnClickListener() {
             @Override

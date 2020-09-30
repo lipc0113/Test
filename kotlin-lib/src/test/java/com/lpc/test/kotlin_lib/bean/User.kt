@@ -104,6 +104,10 @@ class User6 {
         id = _id
     }
 
+    constructor() {
+
+    }
+
     init {
         println("初始化6...")
     }

@@ -33,6 +33,8 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
     // 0x代表16进制，0b代表2进制。这里的j = 1*16+6 = 22;
     private static final int j = 0x16;
 
+    private static final int m = 0x166;
+
     private String json;
 
     @Override
@@ -49,6 +51,11 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
                 LogUtil.d("Integer.toBinaryString(j) = " + Integer.toBinaryString(j));
                 LogUtil.d("Integer.toHexString(j) = " + Integer.toHexString(j));
                 LogUtil.d("Integer.toOctalString(j) = " + Integer.toOctalString(j));
+
+                LogUtil.d("m = " + m);
+                LogUtil.d("Integer.toBinaryString(m) = " + Integer.toBinaryString(m));
+                LogUtil.d("Integer.toHexString(m) = " + Integer.toHexString(m));
+                LogUtil.d("Integer.toOctalString(m) = " + Integer.toOctalString(m));
             }
         });
 

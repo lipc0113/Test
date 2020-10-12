@@ -23,8 +23,8 @@
 
 # 三、功能TODO List
 
-- [x] 首页
-- [ ] 欢迎页
+-  首页
+-  欢迎页
 
 # 四、使用的开源库
 [Android-Skin-Loader](https://github.com/fengjundev/Android-Skin-Loader)

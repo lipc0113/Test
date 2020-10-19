@@ -9,9 +9,9 @@ import kotlin.Comparator
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  *
- * 第十章 注解与反射
+ * 第十一章 DSL构建
  */
-class ExampleUnitTest8 {
+class ExampleUnitTest9 {
 
     val list = arrayListOf("lipc", "syj")
 

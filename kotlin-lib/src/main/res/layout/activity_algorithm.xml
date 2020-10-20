@@ -20,4 +20,12 @@
         android:text="两数相加"
         android:textSize="24sp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="test3"
+        android:padding="30dp"
+        android:text="无重复字符的最长子串"
+        android:textSize="24sp" />
+
 </LinearLayout>

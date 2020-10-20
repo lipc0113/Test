@@ -53,6 +53,10 @@ class AlgorithmActivity : AppCompatActivity() {
         LogUtil.d("addTwoNumbers(node, node4) = ${test2?.next?.next?.value}")
     }
 
+    fun test3(view: View) {
+
+    }
+
     /**
      * 两数之和
      *
@@ -108,5 +112,8 @@ class AlgorithmActivity : AppCompatActivity() {
         return head
     }
 
+    fun lengthOfLongestSubstring(s: String): Int {
 
+        return 0
+    }
 }

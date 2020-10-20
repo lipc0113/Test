@@ -20,6 +20,7 @@ import com.lpc.test.activity.UriActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
 import com.lpc.test.kotlin_lib.activity.KotlinActivity;
+import com.lpc.test.kotlin_lib.test.AlgorithmActivity;
 import com.lpc.test.kotlin_lib.test.Kotlin6Activity;
 
 import java.util.ArrayList;
@@ -152,6 +153,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, ConcurrentActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("算法", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, AlgorithmActivity.class);
                 activity.startActivity(i);
             }
         });

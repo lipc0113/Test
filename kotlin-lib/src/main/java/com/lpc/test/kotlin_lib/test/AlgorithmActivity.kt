@@ -152,11 +152,18 @@ class AlgorithmActivity : AppCompatActivity() {
      * 输入字符串为 "LEETCODEISHIRING" 行数为3时,输出"LCIRETOESIIGEDHN"
      * */
     fun convert(s: String, numRows: Int): String {
+
+        if (numRows == 1) {
+            return s
+        }
+
+        if (s.length <= numRows) {
+            return s
+        }
+
         var list = arrayListOf<StringBuilder>()
-        var sb: StringBuilder? = null
         for (i in 0 until numRows) {
-            sb = StringBuilder()
-            list.add(sb)
+            list.add(StringBuilder())
         }
 
         var line = 0
@@ -164,12 +171,9 @@ class AlgorithmActivity : AppCompatActivity() {
         var b = false
         for (i in 0 until length) {
 
-            sb = list.get(line)
-            sb.append(s.get(i))
+            list.get(line).append(s.get(i))
 
-            if (line == numRows-1 || line == 0) {
-                b = !b
-            }
+            if (line == numRows - 1 || line == 0) b = !b
 
             if (b) {
                 line++
@@ -178,7 +182,7 @@ class AlgorithmActivity : AppCompatActivity() {
             }
         }
 
-        sb = StringBuilder()
+        val sb = StringBuilder()
         for (i in 0 until numRows) {
             sb.append(list.get(i).toString())
         }

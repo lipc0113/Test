@@ -29,11 +29,13 @@ class AlgorithmActivity : AppCompatActivity() {
 
     }
 
-    fun test(view: View) {
-        val nums = intArrayOf(0, 2, 7, 11, 15)
-        val target = 9
-        val test = twoSum(nums, target)
-        LogUtil.d("twoSum(nums, target) = ${test[0]},${test[1]}")
+    fun test4(view: View) {
+        val convert = convert("LEETCODEISHIRING", 3)
+        LogUtil.d("convert = ${convert}")
+    }
+
+    fun test3(view: View) {
+        LogUtil.d("lengthOfLongestSubstring(\"abcabcbb\") = ${lengthOfLongestSubstring("abcabcbb")}")
     }
 
     fun test2(view: View) {
@@ -53,8 +55,11 @@ class AlgorithmActivity : AppCompatActivity() {
         LogUtil.d("addTwoNumbers(node, node4) = ${test2?.next?.next?.value}")
     }
 
-    fun test3(view: View) {
-        LogUtil.d("lengthOfLongestSubstring(\"abcabcbb\") = ${lengthOfLongestSubstring("abcabcbb")}")
+    fun test(view: View) {
+        val nums = intArrayOf(0, 2, 7, 11, 15)
+        val target = 9
+        val test = twoSum(nums, target)
+        LogUtil.d("twoSum(nums, target) = ${test[0]},${test[1]}")
     }
 
     /**
@@ -136,4 +141,49 @@ class AlgorithmActivity : AppCompatActivity() {
 
         return maxLength
     }
+
+    /**
+     * Z字形变换
+     *
+     * L   C   I   R
+     * E T O E S I I G
+     * E   D   H   N
+     *
+     * 输入字符串为 "LEETCODEISHIRING" 行数为3时,输出"LCIRETOESIIGEDHN"
+     * */
+    fun convert(s: String, numRows: Int): String {
+        var list = arrayListOf<StringBuilder>()
+        var sb: StringBuilder? = null
+        for (i in 0 until numRows) {
+            sb = StringBuilder()
+            list.add(sb)
+        }
+
+        var line = 0
+        val length = s.length
+        var b = false
+        for (i in 0 until length) {
+
+            sb = list.get(line)
+            sb.append(s.get(i))
+
+            if (line == numRows-1 || line == 0) {
+                b = !b
+            }
+
+            if (b) {
+                line++
+            } else {
+                line--
+            }
+        }
+
+        sb = StringBuilder()
+        for (i in 0 until numRows) {
+            sb.append(list.get(i).toString())
+        }
+
+        return sb.toString()
+    }
+
 }

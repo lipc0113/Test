@@ -54,7 +54,7 @@ class AlgorithmActivity : AppCompatActivity() {
     }
 
     fun test3(view: View) {
-
+        LogUtil.d("lengthOfLongestSubstring(\"abcabcbb\") = ${lengthOfLongestSubstring("abcabcbb")}")
     }
 
     /**
@@ -92,7 +92,7 @@ class AlgorithmActivity : AppCompatActivity() {
         var carry: Int = 0
         var listNode: ListNode? = null
         while (l1 != null || l2 != null) {
-            var value:Int = ((l1?.value ?: 0) + (l2?.value ?: 0) + carry) % 10
+            var value: Int = ((l1?.value ?: 0) + (l2?.value ?: 0) + carry) % 10
             listNode = ListNode(value)
             if (head == null) {
                 head = listNode
@@ -105,15 +105,35 @@ class AlgorithmActivity : AppCompatActivity() {
             l1 = l1?.next
             l2 = l2?.next
         }
-        if(carry != 0){
+        if (carry != 0) {
             listNode = ListNode(carry)
             tail!!.next = listNode
         }
         return head
     }
 
+    /**
+     * 输入: "abcabcbb"
+     * 输出: 3
+     * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+     */
     fun lengthOfLongestSubstring(s: String): Int {
+        var maxLength = 0
+        val hashSetOf = hashSetOf<Char>()
+        var right = 0
+        val length = s.length
+        val toCharArray = s.toCharArray()
+        for ((index, value) in toCharArray.withIndex()) {
+            if (index != 0) {
+                hashSetOf.remove(s.get(index - 1))
+            }
+            while (right < length && !hashSetOf.contains(s.get(right))) {
+                hashSetOf.add(s.get(right))
+                right++
+            }
+            maxLength = Math.max(maxLength, right - index)
+        }
 
-        return 0
+        return maxLength
     }
 }

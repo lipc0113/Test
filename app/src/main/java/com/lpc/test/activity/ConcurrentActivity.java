@@ -79,26 +79,27 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                             while ((take = queue.take()) != null) {
                                 LogUtil.d("take = " + take);
                             }
+                            LogUtil.d("queue = 0");
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
                 }.start();
 
-                new Thread() {
-                    @Override
-                    public void run() {
-                        super.run();
-                        try {
-                            String take = null;
-                            while ((take = queue.take()) != null) {
-                                LogUtil.d("take = " + take);
-                            }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }.start();
+//                new Thread() {
+//                    @Override
+//                    public void run() {
+//                        super.run();
+//                        try {
+//                            String take = null;
+//                            while ((take = queue.take()) != null) {
+//                                LogUtil.d("take = " + take);
+//                            }
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }.start();
 
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -146,8 +147,8 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                                 @Override
                                 public void run() {
                                     SystemClock.sleep(100);
-                                    integer.getAndIncrement();
-//                                    j++;
+//                                    integer.getAndIncrement();
+                                    j++;
 //                                    synchronized (countDownLatch) {
 //                                        k++;
 //                                    }
@@ -387,15 +388,15 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
 
         /**
          * 这个demo，并没有出现理论现象
+         *
+         * 与公平锁的区别在于新晋获取锁的进程会有多次机会去抢占锁。如果被加入了等待队列后则跟公平锁没有区别。
          */
         addBeanToMList("ReentrantLock非公平锁", new View.OnClickListener() {
 
-            ReentrantLock rLock = new ReentrantLock(false);
-
             @Override
             public void onClick(View v) {
-
-                for (i = 0; i < 10; i++) {
+                final ReentrantLock rLock = new ReentrantLock(false);
+                for (i = 0; i < 30; i++) {
                     Thread A = new Thread(new Runnable() {
 
                         @Override
@@ -403,6 +404,7 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                             try {
                                 LogUtil.d("线程" + Thread.currentThread().getName() + "执行---start");
                                 rLock.lock();
+                                SystemClock.sleep(1000);
                                 LogUtil.d("线程" + Thread.currentThread().getName() + "执行ing");
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -412,21 +414,20 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                         }
                     }, "A" + i);
                     A.start();
+                    SystemClock.sleep(100);
                 }
             }
         });
 
         /**
-         * 这个demo，并没有出现理论现象
+         *
          */
         addBeanToMList("ReentrantLock公平锁", new View.OnClickListener() {
 
-            ReentrantLock rLock = new ReentrantLock(true);
-
             @Override
             public void onClick(View v) {
-
-                for (i = 0; i < 10; i++) {
+                final ReentrantLock rLock = new ReentrantLock(true);
+                for (i = 0; i < 30; i++) {
                     Thread A = new Thread(new Runnable() {
 
                         @Override
@@ -434,6 +435,7 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                             try {
                                 LogUtil.d("线程" + Thread.currentThread().getName() + "执行---start");
                                 rLock.lock();
+                                SystemClock.sleep(1000);
                                 LogUtil.d("线程" + Thread.currentThread().getName() + "执行ing");
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -443,11 +445,12 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                         }
                     }, "A" + i);
                     A.start();
+                    SystemClock.sleep(100);
                 }
             }
         });
 
-        addBeanToMList("ReentrantLock调用await/notify", new View.OnClickListener() {
+        addBeanToMList("ReentrantLock调用await/signal", new View.OnClickListener() {
 
             private boolean isNeedWait = true;
 
@@ -488,7 +491,7 @@ public class ConcurrentActivity extends BaseTextRecyclerViewActivity {
                         try {
                             reentrantLock.lock();
                             isNeedWait = false;
-                            LogUtil.d("线程B执行---notify锁");
+                            LogUtil.d("线程B执行---signal");
                             condition.signal();
                         } catch (Exception e) {
                             e.printStackTrace();

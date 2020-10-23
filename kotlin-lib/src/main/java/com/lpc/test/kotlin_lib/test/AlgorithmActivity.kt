@@ -29,6 +29,10 @@ class AlgorithmActivity : AppCompatActivity() {
 
     }
 
+    fun test5(view: View) {
+        println("reverse(1452) = ${reverse(1452)}")
+    }
+
     fun test4(view: View) {
         val convert = convert("LEETCODEISHIRING", 3)
         LogUtil.d("convert = ${convert}")
@@ -188,6 +192,31 @@ class AlgorithmActivity : AppCompatActivity() {
         }
 
         return sb.toString()
+    }
+
+    /**
+     * 整数反转
+     *
+     * int类型的范围是 -2^31——2^31-1，即-2147483648——2147483647
+     * */
+    fun reverse(x: Int): Int {
+
+        var resource = x
+        var dest = 0
+
+        while (resource != 0) {
+            val temp = resource % 10
+            resource /= 10
+
+            if (dest > Int.MAX_VALUE / 10 || dest == Int.MAX_VALUE / 10 && temp > Int.MAX_VALUE % 10) {
+                return 0
+            }
+            if (dest < Int.MIN_VALUE / 10 || dest == Int.MIN_VALUE / 10 && temp < Int.MIN_VALUE % 10) {
+                return 0
+            }
+            dest = dest * 10 + temp
+        }
+        return dest
     }
 
 }

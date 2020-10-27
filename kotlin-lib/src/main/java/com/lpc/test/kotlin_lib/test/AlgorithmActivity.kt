@@ -16,7 +16,7 @@ class AlgorithmActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_leetcode)
+        setContentView(R.layout.activity_algorithm)
         initView()
         initData()
     }

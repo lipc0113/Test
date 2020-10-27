@@ -251,13 +251,13 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     fun test8(view: View) {
-//        println("myAtoi(   -42) = ${myAtoi("   -42")}")
-//        println("myAtoi(-a42) = ${myAtoi("-a42")}")
-//        println("myAtoi(42) = ${myAtoi("42")}")
-//        println("myAtoi(a42) = ${myAtoi("a42")}")
-//        println("myAtoi(aaaa) = ${myAtoi("aaaa")}")
-//        println("myAtoi(--42) = ${myAtoi("--42")}")
-//        println("myAtoi(+42) = ${myAtoi("+42")}")
+        println("myAtoi(   -42) = ${myAtoi("   -42")}")
+        println("myAtoi(-a42) = ${myAtoi("-a42")}")
+        println("myAtoi(42) = ${myAtoi("42")}")
+        println("myAtoi(a42) = ${myAtoi("a42")}")
+        println("myAtoi(aaaa) = ${myAtoi("aaaa")}")
+        println("myAtoi(--42) = ${myAtoi("--42")}")
+        println("myAtoi(+42) = ${myAtoi("+42")}")
         println("myAtoi(21474836460) = ${myAtoi("21474836460")}")
     }
 

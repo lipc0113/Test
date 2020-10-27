@@ -40,6 +40,29 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("主线程不能抓住子线程的异常", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            super.run();
+//                            try {
+                                int i = 1 / 0;
+//                            } catch (Exception e) {
+//                                LogUtil.d("子线程Exception");
+//                                e.printStackTrace();
+//                            }
+                        }
+                    }.start();
+                } catch (Exception e) {
+                    LogUtil.d("主线程Exception");
+                    e.printStackTrace();
+                }
+            }
+        });
+
         addBeanToMList("进制转换", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

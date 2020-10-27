@@ -7,9 +7,41 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="冒泡排序"
+        android:padding="10dp"
+        android:text="冒泡排序--先找小"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="冒泡排序2"
+        android:padding="10dp"
+        android:text="冒泡排序2--先找大"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="选择排序"
+        android:padding="10dp"
+        android:text="选择排序"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="选择排序2"
+        android:padding="10dp"
+        android:text="选择排序2--优化"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="test"
         android:padding="10dp"
-        android:text="1.单链表反转"
+        android:text="单链表反转"
         android:textSize="24sp" />
 
 </LinearLayout>

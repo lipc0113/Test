@@ -261,6 +261,9 @@ class LeetCodeActivity : AppCompatActivity() {
         println("myAtoi(21474836460) = ${myAtoi("21474836460")}")
     }
 
+    /**
+     * 注意：1.Int的取值范围；2.value做判断的时候，小心越界
+     * */
     fun myAtoi(s: String): Int {
         val hashMapOf = hashMapOf<String, Array<String>>(
                 Pair("start", arrayOf("start", "sign", "number", "end")),

@@ -19,6 +19,9 @@ public class ExampleUnitTest {
 
     @Test
     public void addition_isCorrect8() {
+
+        System.out.println("l = " + -(Integer.MIN_VALUE / 10));
+        System.out.println("l = " + -Integer.MIN_VALUE / 10);
         String s = "1001006003";
         long l = 0;
         try {

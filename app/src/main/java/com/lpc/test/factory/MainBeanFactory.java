@@ -22,6 +22,7 @@ import com.lpc.test.bean.TitleContentBean;
 import com.lpc.test.kotlin_lib.activity.KotlinActivity;
 import com.lpc.test.kotlin_lib.test.AlgorithmActivity;
 import com.lpc.test.kotlin_lib.test.Kotlin6Activity;
+import com.lpc.test.kotlin_lib.test.LeetCodeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,6 +154,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, ConcurrentActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("LeetCode", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, LeetCodeActivity.class);
                 activity.startActivity(i);
             }
         });

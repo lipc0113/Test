@@ -251,10 +251,74 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     fun test8(view: View) {
-        println("myAtoi() = ${myAtoi("   -42")}")
+//        println("myAtoi(   -42) = ${myAtoi("   -42")}")
+//        println("myAtoi(-a42) = ${myAtoi("-a42")}")
+//        println("myAtoi(42) = ${myAtoi("42")}")
+//        println("myAtoi(a42) = ${myAtoi("a42")}")
+//        println("myAtoi(aaaa) = ${myAtoi("aaaa")}")
+//        println("myAtoi(--42) = ${myAtoi("--42")}")
+//        println("myAtoi(+42) = ${myAtoi("+42")}")
+        println("myAtoi(21474836460) = ${myAtoi("21474836460")}")
     }
 
     fun myAtoi(s: String): Int {
-        return 0
+        val hashMapOf = hashMapOf<String, Array<String>>(
+                Pair("start", arrayOf("start", "sign", "number", "end")),
+                Pair("sign", arrayOf("end", "end", "number", "end")),
+                Pair("number", arrayOf("end", "end", "number", "end")),
+                Pair("end", arrayOf("end", "end", "end", "end"))
+        )
+        var currentState = "start"
+        var value = 0
+        var sign = 1
+        var temp = 0
+
+        for (index in s.indices) {
+            currentState = hashMapOf.get(currentState)!!.get(getType(s.get(index)))
+
+            when (currentState) {
+                "start" -> currentState = "start"
+                "sign" -> {
+                    if (s.get(index).toString() == "+") sign = 1 else sign = -1
+                }
+                "number" -> {
+                    temp = s.get(index).toString().toInt()
+
+                    if (value * sign < Int.MIN_VALUE / 10 || value * sign == Int.MIN_VALUE / 10 && temp * sign <= Int.MIN_VALUE % 10) {
+                        currentState = "end"
+                        value = Int.MIN_VALUE
+                        sign = 1
+                    } else if (value > Int.MAX_VALUE / 10 || value == Int.MAX_VALUE / 10 && temp > Int.MAX_VALUE % 10) {
+                        currentState = "end"
+                        value = Int.MAX_VALUE
+                    } else {
+                        value = value * 10 + temp
+                    }
+                }
+                else -> {
+                    currentState = "end"
+                }
+            }
+
+            if (currentState == "end") break;
+
+        }
+
+        return sign * value
+    }
+
+    fun getType(first: Char): Int {
+        var type = 0
+        when {
+            first.isWhitespace() -> type = 0
+            first.toString() == "+" || first.toString() == "-" -> {
+                type = 1
+            }
+            first.isDigit() -> {
+                type = 2
+            }
+            else -> type = 3
+        }
+        return type
     }
 }

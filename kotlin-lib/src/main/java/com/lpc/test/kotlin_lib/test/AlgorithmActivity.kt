@@ -147,7 +147,7 @@ class AlgorithmActivity : AppCompatActivity() {
         }
     }
 
-    fun sort(node10: ListNode?) :ListNode?{
+    fun sort(node10: ListNode?): ListNode? {
 
         var pre: ListNode? = null
         var current: ListNode? = node10
@@ -165,5 +165,26 @@ class AlgorithmActivity : AppCompatActivity() {
             current = next
         }
         return pre
+    }
+
+    fun 插入排序(view: View) {
+        val arrays = intArrayOf(10, 1, 4, 5, 0, 9, 2, 3)
+
+        var temp = 0
+        var pre = 0
+        var value = 0
+        for (i in 1 until arrays.size) {
+            pre = i - 1
+            value = arrays[i]
+
+            while (pre >= 0 && value < arrays[pre]) {
+                arrays[pre + 1] = arrays[pre]
+                pre--
+            }
+            arrays[pre + 1] = value
+        }
+        for (i in arrays.indices) {
+            LogUtil.d("arrays[i] = ${arrays[i]}")
+        }
     }
 }

@@ -365,7 +365,7 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     fun test11(view: View) {
-        println("maxArea(intArrayOf(1,8,6,2,5,4,8,3,7)) = ${maxArea(intArrayOf(1,8,6,2,5,4,8,3,7))}")
+        println("maxArea(intArrayOf(1,8,6,2,5,4,8,3,7)) = ${maxArea(intArrayOf(1, 8, 6, 2, 5, 4, 8, 3, 7))}")
     }
 
     /**
@@ -375,7 +375,7 @@ class LeetCodeActivity : AppCompatActivity() {
         var max = 0
         var left = 0
         var right = height.size - 1
-        while(left < right){
+        while (left < right) {
             if (height[left] <= height[right]) {
                 max = Math.max(height[left] * (right - left), max)
                 left++
@@ -386,5 +386,51 @@ class LeetCodeActivity : AppCompatActivity() {
         }
 
         return max
+    }
+
+    fun test12(view: View) {
+        LogUtil.d("intToRoman(1994) = ${intToRoman(1994)}")
+        LogUtil.d("intToRoman(1834) = ${intToRoman(1834)}")
+    }
+
+    /**
+     * 方法一、贪心算法
+     *
+     * 方法二、暴力求解（利用数组把数字穷举会比较简单）
+     * */
+    fun intToRoman(num: Int): String {
+        var num = num
+        val numbers = arrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
+        val romans = arrayOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
+        val stringBuilder = StringBuilder()
+        var index = 0
+        while (num > 0) {
+            while (num >= numbers[index]) {
+                num = num - numbers[index]
+                stringBuilder.append(romans[index])
+            }
+            index++
+        }
+        return stringBuilder.toString()
+    }
+
+    fun test13(view: View) {
+        LogUtil.d("romanToInt(MCMXCIV) = ${romanToInt("MCMXCIV")}")
+    }
+
+    fun romanToInt(s: String): Int {
+        var s = s
+        val numbers = arrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
+        val romans = arrayOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
+        var index = 0
+        var value = 0
+        while (s.length > 0) {
+            while (s.startsWith(romans[index])) {
+                s = s.substring(romans[index].length)
+                value += numbers[index]
+            }
+            index++
+        }
+        return value
     }
 }

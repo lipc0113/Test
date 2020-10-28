@@ -7,6 +7,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="test11"
+        android:padding="10dp"
+        android:text="11. 盛最多水的容器"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="test9"
+        android:padding="10dp"
+        android:text="9. 回文数"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="test8"
         android:padding="10dp"
         android:text="8. 字符串转换整数 (atoi)"

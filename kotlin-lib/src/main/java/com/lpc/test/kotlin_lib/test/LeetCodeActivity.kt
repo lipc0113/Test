@@ -37,7 +37,7 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     /**
-     * 两数之和
+     * 利用taget-index上的值，来求解
      *
      * nums = [2, 7, 11, 15], target = 9
      *
@@ -75,6 +75,8 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     /**
+     * 考虑进位的问题
+     *
      * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
      * 输出：7 -> 0 -> 8
      * 原因：342 + 465 = 807
@@ -113,6 +115,8 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     /**
+     * 滑动窗口
+     *
      * 输入: "abcabcbb"
      * 输出: 3
      * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
@@ -143,6 +147,8 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     /**
+     * 动态规划
+     *
      * 最长回文子串
      * */
     fun longestPalindrome(s: String): String {
@@ -262,6 +268,8 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     /**
+     * 自动机（有限状态机）
+     *
      * 注意：1.Int的取值范围；2.value做判断的时候，小心越界
      * */
     fun myAtoi(s: String): Int {
@@ -323,5 +331,60 @@ class LeetCodeActivity : AppCompatActivity() {
             else -> type = 3
         }
         return type
+    }
+
+    fun test9(view: View) {
+        println("isPalindrome(-1) = ${isPalindrome(-1)}")
+        println("isPalindrome(12321) = ${isPalindrome(12321)}")
+        println("isPalindrome(-12321) = ${isPalindrome(-12321)}")
+        println("isPalindrome(112321) = ${isPalindrome(112321)}")
+        println("isPalindrome(998899) = ${isPalindrome(998899)}")
+    }
+
+    /**
+     * 使用移动一半数字的算法更佳
+     * */
+    fun isPalindrome(x: Int): Boolean {
+        var value = x
+        val arrayListOf = arrayListOf<Int>()
+        if (x < 0) {
+            return false
+        }
+        if (x == 0) {
+            return true
+        }
+        while (value != 0) {
+            arrayListOf.add(value % 10)
+            value = value / 10
+        }
+        val stringBuilder = StringBuilder()
+        for (i in 0 until arrayListOf.size) {
+            stringBuilder.append(arrayListOf.get(i))
+        }
+        return stringBuilder.toString() == x.toString()
+    }
+
+    fun test11(view: View) {
+        println("maxArea(intArrayOf(1,8,6,2,5,4,8,3,7)) = ${maxArea(intArrayOf(1,8,6,2,5,4,8,3,7))}")
+    }
+
+    /**
+     * 双指针
+     * */
+    fun maxArea(height: IntArray): Int {
+        var max = 0
+        var left = 0
+        var right = height.size - 1
+        while(left < right){
+            if (height[left] <= height[right]) {
+                max = Math.max(height[left] * (right - left), max)
+                left++
+            } else {
+                max = Math.max(height[right] * (right - left), max)
+                right--
+            }
+        }
+
+        return max
     }
 }

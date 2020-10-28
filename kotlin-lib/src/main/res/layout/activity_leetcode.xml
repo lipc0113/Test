@@ -7,6 +7,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="test14_2"
+        android:padding="10dp"
+        android:text="14.最长公共前缀-字典树"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="test14"
+        android:padding="10dp"
+        android:text="14.最长公共前缀-纵向扫描"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="test13"
         android:padding="10dp"
         android:text="13. 罗马数字转整数"

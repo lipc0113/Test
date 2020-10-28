@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
 import com.lpc.test.kotlin_lib.test.bean.ListNode
+import com.lpc.test.kotlin_lib.test.bean.TreeNode
 import com.lpc.test.kotlin_lib.test.utils.LogUtil
 
 /**
@@ -432,5 +433,79 @@ class LeetCodeActivity : AppCompatActivity() {
             index++
         }
         return value
+    }
+
+    fun test14(view: View) {
+
+        LogUtil.d("longestCommonPrefix(arrayOf(\"flower\",\"flow\",\"flight\")) " +
+                "= ${longestCommonPrefix(arrayOf("flower", "flow", "flight"))}")
+    }
+
+    /**
+     * 纵向扫描
+     * */
+    fun longestCommonPrefix(strs: Array<String>): String {
+
+        val first = strs[0]
+        val length = first.length
+        for(i in 0 until length){
+
+            for(j in 1 until  strs.size){
+                if (strs[j] == "") {
+                    return ""
+                }
+                if(strs[j].length == i || strs[j][i] != (first[i])){
+                    if (i == 0) {
+                        return ""
+                    }
+                    return first.substring(0, i)
+                }
+            }
+        }
+        return first
+    }
+
+    fun test14_2(view: View) {
+        LogUtil.d("longestCommonPrefix_2(arrayOf(\"flower\",\"flow\",\"flight\")) " +
+                "= ${longestCommonPrefix_2(arrayOf("flower", "flow", "flight"))}")
+        LogUtil.d("longestCommonPrefix_2(arrayOf(\"flight\",\"flow\",\"flower\")) " +
+                "= ${longestCommonPrefix_2(arrayOf("flower", "flow", "flight"))}")
+        LogUtil.d("longestCommonPrefix_2(arrayOf(\"dog\",\"racecar\",\"car\")) " +
+                "= ${longestCommonPrefix_2(arrayOf("dog","racecar","car"))}")
+    }
+
+    /**
+     * 字典树
+     * */
+    fun longestCommonPrefix_2(strs: Array<String>): String {
+
+        val size = strs.size
+        var treeNode = TreeNode('s'.toChar())
+
+        for(i in 0 until size){
+            addNode(strs[i], treeNode)
+        }
+        val sb = StringBuilder()
+        while(treeNode.children.size == 1 && !treeNode.isEnd){
+            sb.append(treeNode.children.keys.iterator().next())
+            treeNode = treeNode.children[treeNode.children.keys.iterator().next()]!!
+        }
+        return sb.toString()
+    }
+
+    private fun addNode(s: String, root: TreeNode) {
+
+        var root = root
+        val length = s.length
+        for (i in 0 until length) {
+
+            val char = s[i]
+            val node = TreeNode(char)
+            if (!root.children.containsKey(node.value)) {
+                root.children.put(node.value, node)
+            }
+            root = root.children[node.value]!!
+        }
+        root.isEnd = true
     }
 }

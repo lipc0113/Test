@@ -20,16 +20,17 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect8() {
 
+        int i = -1;
+        int j = -2147483648;
+        int m = -2147483647;
+
+        System.out.println("l = " + -i);
+        System.out.println("l = " + Math.abs(i));
+        System.out.println("l = " + Math.abs(j));
+        System.out.println("l = " + Math.abs(m));
+        System.out.println("l = " + -Integer.MIN_VALUE);
         System.out.println("l = " + -(Integer.MIN_VALUE / 10));
         System.out.println("l = " + -Integer.MIN_VALUE / 10);
-        String s = "1001006003";
-        long l = 0;
-        try {
-            l = Long.parseLong(s);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        System.out.println("l = " + l);
     }
 
     @Test

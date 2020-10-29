@@ -7,6 +7,38 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="快速排序"
+        android:padding="10dp"
+        android:text="快速排序--左右指针"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="快速排序2"
+        android:padding="10dp"
+        android:text="快速排序--挖坑法"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="快速排序3"
+        android:padding="10dp"
+        android:text="快速排序--前后指针"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="快速排序4"
+        android:padding="10dp"
+        android:text="快速排序--非递归"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="插入排序"
         android:padding="10dp"
         android:text="插入排序"

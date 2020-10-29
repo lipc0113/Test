@@ -187,4 +187,20 @@ class AlgorithmActivity : AppCompatActivity() {
             LogUtil.d("arrays[i] = ${arrays[i]}")
         }
     }
+
+    fun 快速排序(view: View) {
+        val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+    }
+
+    fun 快速排序2(view: View) {
+        val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+    }
+
+    fun 快速排序3(view: View) {
+        val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+    }
+
+    fun 快速排序4(view: View) {
+        val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+    }
 }

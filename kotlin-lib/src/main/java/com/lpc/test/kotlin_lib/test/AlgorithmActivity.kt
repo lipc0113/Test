@@ -201,7 +201,7 @@ class AlgorithmActivity : AppCompatActivity() {
      * */
     fun 快速排序3(view: View) {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
-        quickSort(array, 0, array.size - 1)
+        quickSort(array, 0, array.size - 1, ::partSort3)
         for (i in array.indices) {
             LogUtil.d(array[i].toString())
         }
@@ -216,13 +216,13 @@ class AlgorithmActivity : AppCompatActivity() {
 
     }
 
-    private fun quickSort(array: Array<Int>, left: Int, right: Int) {
+    private fun quickSort(array: Array<Int>, left: Int, right: Int, action: (Array<Int>, Int, Int) -> Int) {
         if (left >= right) {
             return
         }
         val index = partSort3(array, left, right)
-        quickSort(array, left, index - 1)
-        quickSort(array, index + 1, right)
+        quickSort(array, left, index - 1, action)
+        quickSort(array, index + 1, right, action)
     }
 
     private fun partSort3(array: Array<Int>, start: Int, end: Int): Int {

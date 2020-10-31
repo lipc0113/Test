@@ -231,25 +231,25 @@ class AlgorithmActivity : AppCompatActivity() {
         var pre = current - 1
         while (current < end) {
             while (array[current] < key && ++pre != current) {
+                swap(array, pre, current)
 //                swap(array[pre], array[current])
-                var temp = array[pre]
-                array[pre] = array[current]
-                array[current] = temp
+//                var temp = array[pre]
+//                array[pre] = array[current]
+//                array[current] = temp
             }
             current++
         }
+        swap(array, ++pre, end)
 //        swap(array[++pre], array[end])
-        var temp = array[++pre]
-        array[pre] = array[end]
-        array[end] = temp
+//        var temp = array[++pre]
+//        array[pre] = array[end]
+//        array[end] = temp
         return pre
     }
 
-    private fun swap(i: Int, j: Int) {
-        var i = i
-        var j = j
-        var temp = i
-        i = j
-        j = temp
+    private fun swap(array: Array<Int>, i: Int, j: Int) {
+        var temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
     }
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
 import com.lpc.test.kotlin_lib.test.bean.ListNode
 import com.lpc.test.kotlin_lib.test.utils.LogUtil
+import java.util.*
 
 /**
  * @ Author     ：v_lipengcheng
@@ -227,9 +228,32 @@ class AlgorithmActivity : AppCompatActivity() {
      * */
     fun 快速排序4(view: View) {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
-
+        var left = 0
+        var right = array.size - 1
+        val stack = Stack<Int>()
+        stack.push(right)
+        stack.push(left)
+        while (stack.size != 0) {
+            left = stack.pop()
+            right = stack.pop()
+            val index = partSort3(array, left, right)
+            if (index - 1 >= left) {
+                stack.push(index - 1)
+                stack.push(left)
+            }
+            if (index + 1 <= right) {
+                stack.push(right)
+                stack.push(index + 1)
+            }
+        }
+        for (i in array.indices) {
+            LogUtil.d(array[i].toString())
+        }
     }
 
+    /**
+     * 递归
+     * */
     private fun quickSort(array: Array<Int>, left: Int, right: Int, action: (Array<Int>, Int, Int) -> Int) {
         if (left >= right) {
             return

@@ -196,11 +196,60 @@ class AlgorithmActivity : AppCompatActivity() {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
     }
 
+    /**
+     * 前后指针
+     * */
     fun 快速排序3(view: View) {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+        quickSort(array, 0, array.size - 1)
+        for (i in array.indices) {
+            LogUtil.d(array[i].toString())
+        }
     }
 
+
+    /**
+     * 非递归
+     * */
     fun 快速排序4(view: View) {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+
+    }
+
+    private fun quickSort(array: Array<Int>, left: Int, right: Int) {
+        if (left >= right) {
+            return
+        }
+        val index = partSort3(array, left, right)
+        quickSort(array, left, index - 1)
+        quickSort(array, index + 1, right)
+    }
+
+    private fun partSort3(array: Array<Int>, start: Int, end: Int): Int {
+        var current = start
+        var key = array[end]
+        var pre = current - 1
+        while (current < end) {
+            while (array[current] < key && ++pre != current) {
+//                swap(array[pre], array[current])
+                var temp = array[pre]
+                array[pre] = array[current]
+                array[current] = temp
+            }
+            current++
+        }
+//        swap(array[++pre], array[end])
+        var temp = array[++pre]
+        array[pre] = array[end]
+        array[end] = temp
+        return pre
+    }
+
+    private fun swap(i: Int, j: Int) {
+        var i = i
+        var j = j
+        var temp = i
+        i = j
+        j = temp
     }
 }

@@ -188,12 +188,26 @@ class AlgorithmActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 左右指针
+     * */
     fun 快速排序(view: View) {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+        quickSort(array, 0, array.size - 1, ::partSort)
+        for (i in array.indices) {
+            LogUtil.d(array[i].toString())
+        }
     }
 
+    /**
+     * 挖坑法
+     * */
     fun 快速排序2(view: View) {
         val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+        quickSort(array, 0, array.size - 1, ::partSort2)
+        for (i in array.indices) {
+            LogUtil.d(array[i].toString())
+        }
     }
 
     /**
@@ -220,9 +234,44 @@ class AlgorithmActivity : AppCompatActivity() {
         if (left >= right) {
             return
         }
-        val index = partSort3(array, left, right)
+        val index = action(array, left, right)
         quickSort(array, left, index - 1, action)
         quickSort(array, index + 1, right, action)
+    }
+
+    private fun partSort(array: Array<Int>, start: Int, end: Int): Int {
+        var left = start
+        var right = end
+        var key = array[end]
+        while (left < right) {
+            while (array[left] < key && left < right) {
+                left++
+            }
+            while (array[right] >= key && left < right) {
+                right--
+            }
+            swap(array, left, right)
+        }
+        swap(array, left, end)
+        return left
+    }
+
+    private fun partSort2(array: Array<Int>, start: Int, end: Int): Int {
+        var left = start
+        var right = end
+        var key = array[end]
+        while (left < right) {
+            while (array[left] < key && left < right) {
+                left++
+            }
+            array[right] = array[left]
+            while (array[right] >= key && left < right) {
+                right--
+            }
+            array[left] = array[right]
+        }
+        array[right] = key
+        return left
     }
 
     private fun partSort3(array: Array<Int>, start: Int, end: Int): Int {

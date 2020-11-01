@@ -7,6 +7,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="test16"
+        android:padding="10dp"
+        android:text="16.最接近的三数之和"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="test15"
+        android:padding="10dp"
+        android:text="15.三数之和"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="test14_2"
         android:padding="10dp"
         android:text="14.最长公共前缀-字典树"

@@ -508,4 +508,94 @@ class LeetCodeActivity : AppCompatActivity() {
         }
         root.isEnd = true
     }
+
+    fun test15(view: View) {
+        var nums = intArrayOf(-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6)
+        LogUtil.d("threeSum(nums) = ${threeSum(nums)}")
+    }
+
+    fun threeSum(nums: IntArray): List<List<Int>> {
+        var list : MutableList<Int>?= null
+        val listOf = mutableListOf<List<Int>>()
+
+        nums.sort()
+        for(i in nums.indices){
+            if(i > 0 && nums[i] == nums[i-1]){
+                continue
+            }
+            var left = i
+            var right = nums.size - 1
+            while(left <right){
+                left++
+                while(left <right && nums[left] == nums[left-1] && left-1>i){
+                    left++
+                }
+                while(left <right && nums[left] +nums[right] < -nums[i]){
+                    left++
+                    while(left <right && nums[left] == nums[left-1]){
+                        left++
+                    }
+                }
+                while(left <right && nums[left] +nums[right] > -nums[i]){
+                    right--
+                    while(left <right && nums[right] == nums[right+1]){
+                        right--
+                    }
+                }
+                if(nums[left] +nums[right] == -nums[i] && left <right){
+                    list = mutableListOf()
+                    list.add(nums[i])
+                    list.add(nums[left])
+                    list.add(nums[right])
+                    listOf.add(list)
+                }
+            }
+
+        }
+
+        return listOf
+    }
+
+    fun test16(view: View) {
+        var nums = intArrayOf(-1,0,1,1,55)
+        LogUtil.d("threeSumClosest(nums, target) = ${threeSumClosest(nums, 3)}")
+    }
+
+    fun threeSumClosest(nums: IntArray, target: Int): Int {
+
+        nums.sort()
+        var min = nums[0]+nums[1]+nums[2]
+        for (i in 0 until nums.size - 2) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue
+            }
+            var right = nums.size - 1
+            for (left in i + 1 until nums.size - 1) {
+                if (left - 1 > i && nums[left] == nums[left - 1]) {
+                    continue
+                }
+
+                if(nums[left] + nums[right] + nums[i] <= target){
+                    if (Math.abs(nums[left] + nums[right] + nums[i] - target) < Math.abs(min - target)) {
+                        min = nums[left] + nums[right] + nums[i]
+                    }
+                    continue
+                }
+
+                while(left < right && nums[left] + nums[right] + nums[i] >= target){
+                    if (Math.abs(nums[left] + nums[right] + nums[i] - target) < Math.abs(min - target)) {
+                        min = nums[left] + nums[right] + nums[i]
+                    }
+                    if(left < right){
+                        right--
+                    }
+                    while(left < right && nums[right] == nums[right+1]){
+                        right--
+                    }
+                }
+            }
+        }
+
+        return min
+    }
 }

@@ -325,4 +325,30 @@ class AlgorithmActivity : AppCompatActivity() {
         array[i] = array[j]
         array[j] = temp
     }
+
+    /**
+     * 在分组的前提下，再进行插入排序
+     *
+     * 随着gap的减小，分组数越来越多
+     * */
+    fun 希尔排序(view: View) {
+        val array = arrayOf(4, 1, 7, 6, 9, 2, 8, 0, 3, 5)
+        val size = array.size
+        var gap = size / 2
+        while (gap > 0) {
+            for (i in gap until size) {
+                var temp = array[i]
+                var j = i
+                while (j - gap >= 0 && temp < array[j - gap]) {
+                    array[j] = array[j - gap]
+                    j -= gap
+                }
+                array[j] = temp
+            }
+            gap /= 2
+        }
+        for (i in array.indices) {
+            LogUtil.d(array[i].toString())
+        }
+    }
 }

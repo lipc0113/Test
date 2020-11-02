@@ -448,13 +448,13 @@ class LeetCodeActivity : AppCompatActivity() {
 
         val first = strs[0]
         val length = first.length
-        for(i in 0 until length){
+        for (i in 0 until length) {
 
-            for(j in 1 until  strs.size){
+            for (j in 1 until strs.size) {
                 if (strs[j] == "") {
                     return ""
                 }
-                if(strs[j].length == i || strs[j][i] != (first[i])){
+                if (strs[j].length == i || strs[j][i] != (first[i])) {
                     if (i == 0) {
                         return ""
                     }
@@ -471,7 +471,7 @@ class LeetCodeActivity : AppCompatActivity() {
         LogUtil.d("longestCommonPrefix_2(arrayOf(\"flight\",\"flow\",\"flower\")) " +
                 "= ${longestCommonPrefix_2(arrayOf("flower", "flow", "flight"))}")
         LogUtil.d("longestCommonPrefix_2(arrayOf(\"dog\",\"racecar\",\"car\")) " +
-                "= ${longestCommonPrefix_2(arrayOf("dog","racecar","car"))}")
+                "= ${longestCommonPrefix_2(arrayOf("dog", "racecar", "car"))}")
     }
 
     /**
@@ -482,11 +482,11 @@ class LeetCodeActivity : AppCompatActivity() {
         val size = strs.size
         var treeNode = TreeNode('s'.toChar())
 
-        for(i in 0 until size){
+        for (i in 0 until size) {
             addNode(strs[i], treeNode)
         }
         val sb = StringBuilder()
-        while(treeNode.children.size == 1 && !treeNode.isEnd){
+        while (treeNode.children.size == 1 && !treeNode.isEnd) {
             sb.append(treeNode.children.keys.iterator().next())
             treeNode = treeNode.children[treeNode.children.keys.iterator().next()]!!
         }
@@ -510,39 +510,39 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     fun test15(view: View) {
-        var nums = intArrayOf(-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6)
+        var nums = intArrayOf(-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6)
         LogUtil.d("threeSum(nums) = ${threeSum(nums)}")
     }
 
     fun threeSum(nums: IntArray): List<List<Int>> {
-        var list : MutableList<Int>?= null
+        var list: MutableList<Int>? = null
         val listOf = mutableListOf<List<Int>>()
 
         nums.sort()
-        for(i in nums.indices){
-            if(i > 0 && nums[i] == nums[i-1]){
+        for (i in nums.indices) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue
             }
             var left = i
             var right = nums.size - 1
-            while(left <right){
+            while (left < right) {
                 left++
-                while(left <right && nums[left] == nums[left-1] && left-1>i){
+                while (left < right && nums[left] == nums[left - 1] && left - 1 > i) {
                     left++
                 }
-                while(left <right && nums[left] +nums[right] < -nums[i]){
+                while (left < right && nums[left] + nums[right] < -nums[i]) {
                     left++
-                    while(left <right && nums[left] == nums[left-1]){
+                    while (left < right && nums[left] == nums[left - 1]) {
                         left++
                     }
                 }
-                while(left <right && nums[left] +nums[right] > -nums[i]){
+                while (left < right && nums[left] + nums[right] > -nums[i]) {
                     right--
-                    while(left <right && nums[right] == nums[right+1]){
+                    while (left < right && nums[right] == nums[right + 1]) {
                         right--
                     }
                 }
-                if(nums[left] +nums[right] == -nums[i] && left <right){
+                if (nums[left] + nums[right] == -nums[i] && left < right) {
                     list = mutableListOf()
                     list.add(nums[i])
                     list.add(nums[left])
@@ -557,41 +557,42 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     fun test16(view: View) {
-        var nums = intArrayOf(-1,0,1,1,55)
+        var nums = intArrayOf(-1, 0, 1, 1, 55)
         LogUtil.d("threeSumClosest(nums, target) = ${threeSumClosest(nums, 3)}")
     }
 
     fun threeSumClosest(nums: IntArray, target: Int): Int {
 
         nums.sort()
-        var min = nums[0]+nums[1]+nums[2]
+        var min = nums[0] + nums[1] + nums[2]
         for (i in 0 until nums.size - 2) {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue
             }
+
+            var left = i + 1
             var right = nums.size - 1
-            for (left in i + 1 until nums.size - 1) {
-                if (left - 1 > i && nums[left] == nums[left - 1]) {
-                    continue
+            while (left < right) {
+                var sum = nums[left] + nums[right] + nums[i]
+                if (sum == target) {
+                    return target
+                }
+                if (sum < target) {
+                    left++
+                    while (left > i + 1 && left < right && nums[left] == nums[left - 1]) {
+                        left++
+                    }
                 }
 
-                if(nums[left] + nums[right] + nums[i] <= target){
-                    if (Math.abs(nums[left] + nums[right] + nums[i] - target) < Math.abs(min - target)) {
-                        min = nums[left] + nums[right] + nums[i]
+                if (sum > target) {
+                    right--
+                    while (left < right && nums[right] == nums[right + 1]) {
+                        right--
                     }
-                    continue
                 }
 
-                while(left < right && nums[left] + nums[right] + nums[i] >= target){
-                    if (Math.abs(nums[left] + nums[right] + nums[i] - target) < Math.abs(min - target)) {
-                        min = nums[left] + nums[right] + nums[i]
-                    }
-                    if(left < right){
-                        right--
-                    }
-                    while(left < right && nums[right] == nums[right+1]){
-                        right--
-                    }
+                if (Math.abs(sum - target) < Math.abs(min - target)) {
+                    min = sum
                 }
             }
         }

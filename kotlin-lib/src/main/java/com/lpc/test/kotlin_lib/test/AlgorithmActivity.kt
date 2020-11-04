@@ -108,41 +108,6 @@ class AlgorithmActivity : AppCompatActivity() {
         }
     }
 
-    fun test(view: View) {
-        val node = ListNode(10)
-        val node2 = ListNode(20)
-        val node3 = ListNode(30)
-        val node4 = ListNode(40)
-        node.next = node2
-        node2.next = node3
-        node3.next = node4
-        var sort = sort(node)
-        while (sort != null) {
-            LogUtil.d("node = ${sort.value}")
-            sort = sort.next
-        }
-    }
-
-    fun sort(node10: ListNode?): ListNode? {
-
-        var pre: ListNode? = null
-        var current: ListNode? = node10
-        var next: ListNode? = null
-
-        if (current == null || current.next == null) {
-            return current
-        }
-
-        while (current != null) {
-            next = current?.next
-            current.next = pre
-
-            pre = current
-            current = next
-        }
-        return pre
-    }
-
     fun 插入排序(view: View) {
         val arrays = intArrayOf(10, 1, 4, 5, 0, 9, 2, 3)
 

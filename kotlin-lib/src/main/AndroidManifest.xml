@@ -7,5 +7,6 @@
         <activity android:name=".test.Kotlin6Activity" />
         <activity android:name=".test.AlgorithmActivity" />
         <activity android:name=".test.LeetCodeActivity" />
+        <activity android:name=".test.DataStructureActivity" />
     </application>
 </manifest>

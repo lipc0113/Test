@@ -68,6 +68,29 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
                 Intent i = new Intent();
                 i.setClassName("com.baidu.che.codriver",
                         "com.baidu.che.codriver.ui.VrPrintRegisterActivity");
+                i.putExtra("personCode", "123456");
+                startActivity(i);
+            }
+        });
+
+        addBeanToMList("进入测试页面", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setClassName("com.baidu.che.codriver",
+                        "com.baidu.che.codriver.ui.DevActivity");
+                startActivity(i);
+            }
+        });
+
+        addBeanToMList("进入声纹页面", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setClassName("com.baidu.che.codriver",
+                        "com.baidu.che.codriver.ui.VrPrintRegisterActivity");
                 i.putExtra("personCode", "123123");
                 startActivity(i);
             }

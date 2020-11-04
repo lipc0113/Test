@@ -7,14 +7,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="广度优先bfs遍历二叉树_递归"
-        android:padding="10dp"
-        android:text="广度优先bfs遍历二叉树_递归"
-        android:textSize="24sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:onClick="广度优先bfs遍历二叉树_非递归"
         android:padding="10dp"
         android:text="广度优先bfs遍历二叉树_非递归"

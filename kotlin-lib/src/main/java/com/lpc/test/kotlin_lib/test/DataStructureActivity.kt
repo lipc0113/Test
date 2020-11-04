@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
-import com.lpc.test.kotlin_lib.test.bean.BinaryTree
 import com.lpc.test.kotlin_lib.test.bean.BinaryTreeNode
 import com.lpc.test.kotlin_lib.test.bean.ListNode
 import com.lpc.test.kotlin_lib.test.utils.LogUtil
@@ -24,7 +23,6 @@ class DataStructureActivity : AppCompatActivity() {
 
     val linkedList = LinkedList<String?>()
     var root: BinaryTreeNode<String?>? = null
-    var binaryTree: BinaryTree<String?>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +41,9 @@ class DataStructureActivity : AppCompatActivity() {
         linkedList.add("D")
         linkedList.add("H")
         linkedList.add(null)
+        linkedList.add(null)
         linkedList.add("I")
+        linkedList.add(null)
         linkedList.add(null)
         linkedList.add("E")
         linkedList.add(null)
@@ -53,11 +53,10 @@ class DataStructureActivity : AppCompatActivity() {
         linkedList.add(null)
         linkedList.add("J")
         linkedList.add(null)
+        linkedList.add(null)
         linkedList.add("G")
         linkedList.add(null)
         linkedList.add(null)
-
-        binaryTree = BinaryTree()
     }
 
     fun 单链表反转(view: View) {
@@ -96,20 +95,98 @@ class DataStructureActivity : AppCompatActivity() {
     }
 
     fun 先序创建二叉树(view: View) {
-        root = binaryTree?.createBinaryPre(linkedList)
+        root = createBinaryPre(linkedList)
         LogUtil.d("root = $root")
     }
 
-
     fun 先序遍历二叉树_递归(view: View) {
-        binaryTree?.printBinaryTreePreRecur(root)
+        printBinaryTreePreRecur(root)
     }
 
-    fun 中序遍历二叉树_递归(view: View) {}
-    fun 后序遍历二叉树_递归(view: View) {}
-    fun 先序遍历二叉树_非递归(view: View) {}
-    fun 中序遍历二叉树_非递归(view: View) {}
-    fun 后序遍历二叉树_非递归(view: View) {}
-    fun 广度优先bfs遍历二叉树_非递归(view: View) {}
-    fun 广度优先bfs遍历二叉树_递归(view: View) {}
+    fun 中序遍历二叉树_递归(view: View) {
+        printBinaryTreeMidRecur(root)
+    }
+
+    fun 后序遍历二叉树_递归(view: View) {
+        printBinaryTreeBackRecur(root)
+    }
+
+    // TODO: 2020/11/4
+    fun 先序遍历二叉树_非递归(view: View) {
+
+    }
+
+    // TODO: 2020/11/4
+    fun 中序遍历二叉树_非递归(view: View) {
+
+    }
+
+    // TODO: 2020/11/4
+    fun 后序遍历二叉树_非递归(view: View) {
+
+    }
+
+    // TODO: 2020/11/4
+    fun 广度优先bfs遍历二叉树_非递归(view: View) {
+        val stack = LinkedList<BinaryTreeNode<String?>?>()
+        stack.push(root)
+        while (!stack.isEmpty()) {
+            val node = stack.removeFirst() ?: continue
+            LogUtil.d("root.value = ${node?.value}")
+            if (node.left != null) {
+                stack.addLast(node.left)
+            }
+            if (node.right != null) {
+                stack.addLast(node.right)
+            }
+        }
+    }
+
+    private fun <T> createBinaryPre(linkedList: LinkedList<T>): BinaryTreeNode<T>? {
+        if (linkedList.size <= 0) {
+            return null
+        }
+        val value = linkedList.removeFirst() ?: return null
+        val root = BinaryTreeNode(value)
+        root.left = createBinaryPre(linkedList)
+        root.right = createBinaryPre(linkedList)
+
+        return root
+    }
+
+    private fun <T> printBinaryTreePreRecur(root: BinaryTreeNode<T>?) {
+        if (root != null) {
+            LogUtil.d("root.value = ${root.value}")
+            printBinaryTreePreRecur(root.left)
+            printBinaryTreePreRecur(root.right)
+        }
+    }
+
+    private fun <T> printBinaryTreeMidRecur(root: BinaryTreeNode<T>?) {
+        if (root != null) {
+            printBinaryTreeMidRecur(root.left)
+            LogUtil.d("root.value = ${root.value}")
+            printBinaryTreeMidRecur(root.right)
+        }
+    }
+
+    private fun <T> printBinaryTreeBackRecur(root: BinaryTreeNode<T>?) {
+        if (root != null) {
+            printBinaryTreeBackRecur(root.left)
+            printBinaryTreeBackRecur(root.right)
+            LogUtil.d("root.value = ${root.value}")
+        }
+    }
+
+    private fun <T> printBinaryTreePreNotRecur(root: BinaryTreeNode<T>?) {
+
+    }
+
+    private fun <T> printBinaryTreeMidNotRecur(root: BinaryTreeNode<T>?) {
+
+    }
+
+    private fun <T> printBinaryTreeBackNotRecur(root: BinaryTreeNode<T>?) {
+
+    }
 }

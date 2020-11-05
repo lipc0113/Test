@@ -1,12 +1,14 @@
 package com.lpc.test.kotlin_lib.test
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
 import com.lpc.test.kotlin_lib.test.bean.ListNode
 import com.lpc.test.kotlin_lib.test.bean.TreeNode
 import com.lpc.test.kotlin_lib.test.utils.LogUtil
+import java.util.*
 
 /**
  * @ Author     ：v_lipengcheng
@@ -598,5 +600,35 @@ class LeetCodeActivity : AppCompatActivity() {
         }
 
         return min
+    }
+
+    fun test20(view: View) {
+        println("isValid({[]}) = ${isValid("{[]}")}")
+    }
+
+    fun isValid(s: String): Boolean {
+
+        val preArray = arrayOf('(', '[', '{')
+        val backArray = arrayOf(')', ']', '}')
+        val map = mapOf<Char, Char>('(' to ')', '[' to ']', '{' to '}')
+
+        val arrayDeque = ArrayDeque<Char>(s.length)
+        for (i in s.indices) {
+            val c = s[i]
+            if (preArray.contains(c)) {
+                arrayDeque.push(c)
+            } else if (backArray.contains(c) && !arrayDeque.isEmpty()) {
+                val poll = arrayDeque.pop()
+                if (map[poll] != c) {
+                    return false
+                }
+            } else if (c == ' ') {
+                continue
+            } else {
+                return false
+            }
+        }
+
+        return arrayDeque.isEmpty()
     }
 }

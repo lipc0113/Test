@@ -1,7 +1,6 @@
 package com.lpc.test.kotlin_lib.test
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
@@ -630,5 +629,80 @@ class LeetCodeActivity : AppCompatActivity() {
         }
 
         return arrayDeque.isEmpty()
+    }
+
+    fun test21(view: View) {
+        val node = ListNode(2)
+        val node2 = ListNode(6)
+        val node3 = ListNode(7)
+        node.next = node2
+        node2.next = node3
+        val node4 = ListNode(3)
+        val node5 = ListNode(4)
+        val node6 = ListNode(9)
+        node4.next = node5
+        node5.next = node6
+
+        var mergeTwoLists = mergeTwoLists(node, node4)
+        while (mergeTwoLists != null) {
+            LogUtil.d("mergeTwoLists = ${mergeTwoLists.value}")
+            mergeTwoLists = mergeTwoLists.next
+
+        }
+    }
+
+    fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
+
+        var l1 = l1
+        var l2 = l2
+        val first: ListNode = ListNode(-1)
+        var temp = first
+        while (l1 != null && l2 != null) {
+            if (l2.value > l1.value) {
+                temp.next = l1
+                l1 = l1.next
+            } else {
+                temp.next = l2
+                l2 = l2.next
+            }
+            temp = temp.next!!
+        }
+
+        temp.next = (l1 ?: l2)
+        return first.next
+    }
+
+    fun test21_2(view: View) {
+        val node = ListNode(2)
+        val node2 = ListNode(6)
+        val node3 = ListNode(7)
+        node.next = node2
+        node2.next = node3
+        val node4 = ListNode(3)
+        val node5 = ListNode(4)
+        val node6 = ListNode(9)
+        node4.next = node5
+        node5.next = node6
+
+        var mergeTwoLists = mergeTwoLists2(node, node4)
+        while (mergeTwoLists != null) {
+            LogUtil.d("mergeTwoLists = ${mergeTwoLists.value}")
+            mergeTwoLists = mergeTwoLists.next
+
+        }
+    }
+
+    fun mergeTwoLists2(l1: ListNode?, l2: ListNode?): ListNode? {
+        if (l1 == null) {
+            return l2
+        } else if (l2 == null) {
+            return l1
+        } else if (l1.value < l2.value) {
+            l1.next = mergeTwoLists2(l1.next, l2)
+            return l1
+        } else {
+            l2.next = mergeTwoLists2(l2.next, l1)
+            return l2
+        }
     }
 }

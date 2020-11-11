@@ -19,6 +19,9 @@ android {
 
         // 自定义BuildConfig中的变量
         buildConfigField 'String', 'API_SERVER_URL', '"https://www.baidu.com/"'
+
+        // 多渠道打包的维度，针对"productFlavors"配置。当配置多个维度的时候，会将多个维度的"productFlavors"进行混合打包
+        flavorDimensions "default"
     }
 
     applicationVariants.all { variant ->
@@ -46,14 +49,22 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug {
             signingConfig signingConfigs.release
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors{
+        production{
+            dimension "default"
+        }
+        dev{
+            dimension "default"
         }
     }
 

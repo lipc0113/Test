@@ -62,9 +62,11 @@ android {
     productFlavors{
         production{
             dimension "default"
+            manifestPlaceholders=[test:"production"]
         }
         dev{
             dimension "default"
+            manifestPlaceholders=[test:"dev"]
         }
     }
 

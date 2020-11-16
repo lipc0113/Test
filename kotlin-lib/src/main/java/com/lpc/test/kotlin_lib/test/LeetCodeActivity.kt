@@ -705,4 +705,56 @@ class LeetCodeActivity : AppCompatActivity() {
             return l2
         }
     }
+
+    fun test22(view: View) {
+        LogUtil.d("generateParenthesis() = ${generateParenthesis2(4)}")
+    }
+
+    fun generateParenthesis(n: Int): List<String> {
+        val mutableListOf = mutableListOf<String>()
+        if (n == 0) {
+            return mutableListOf
+        }
+        recur(mutableListOf, "", 0, 0, n)
+        return mutableListOf
+    }
+
+    fun recur(mutableListOf: MutableList<String>, s: String, left: Int, right: Int, count: Int) {
+        if (left == count && right == count) {
+            mutableListOf.add(s)
+        }
+
+        if (left < count) {
+            recur(mutableListOf, "$s(", left + 1, right, count)
+        }
+
+        if (right < left) {
+            recur(mutableListOf, "$s)", left, right + 1, count)
+        }
+    }
+
+    fun generateParenthesis2(n: Int): List<String> {
+        val mutableListOf = mutableListOf<String>()
+        if (n == 0) {
+            return mutableListOf
+        }
+        recur2(mutableListOf, StringBuilder(), 0, 0, n)
+        return mutableListOf
+    }
+
+    fun recur2(mutableListOf: MutableList<String>, sb: StringBuilder, left: Int, right: Int, count: Int) {
+        if (left == count && right == count) {
+            mutableListOf.add(sb.toString())
+        }
+
+        if (left < count) {
+            recur2(mutableListOf, sb.append("("), left + 1, right, count)
+            sb.deleteCharAt(sb.length - 1)
+        }
+
+        if (right < left) {
+            recur2(mutableListOf, sb.append(")"), left, right + 1, count)
+            sb.deleteCharAt(sb.length - 1)
+        }
+    }
 }

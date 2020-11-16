@@ -7,6 +7,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="test22"
+        android:padding="10dp"
+        android:text="22. 括号生成"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="test21_2"
         android:padding="10dp"
         android:text="21. 合并两个有序链表"

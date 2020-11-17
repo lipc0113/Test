@@ -1,10 +1,12 @@
 package com.lpc.test.activity;
 
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Message;
@@ -265,6 +267,53 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
                 ToastUtils.showShortToast("Build.ID=" + Build.ID);
                 LogUtil.i("Build.MODEL=" + Build.MODEL);
                 LogUtil.i("Build.BOARD=" + Build.BOARD);
+            }
+        });
+
+        addBeanToMList("多媒体音量", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AudioManager audioManager = (AudioManager) getSystemService(Service.AUDIO_SERVICE);
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                        AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND
+                                | AudioManager.FLAG_SHOW_UI);
+            }
+        });
+
+        addBeanToMList("电话音量", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AudioManager audioManager = (AudioManager) getSystemService(Service.AUDIO_SERVICE);
+                audioManager.adjustStreamVolume(AudioManager.STREAM_VOICE_CALL,
+                        AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND
+                                | AudioManager.FLAG_SHOW_UI);
+            }
+        });
+
+        addBeanToMList("导航音量", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AudioManager audioManager = (AudioManager) getSystemService(Service.AUDIO_SERVICE);
+                audioManager.adjustStreamVolume(12,
+                        AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND
+                                | AudioManager.FLAG_SHOW_UI);
+            }
+        });
+
+        addBeanToMList("语音识别音量", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 奇瑞车机上目前仪表音量，不确定怎么设置
+                 * */
+                AudioManager audioManager = (AudioManager) getSystemService(Service.AUDIO_SERVICE);
+                audioManager.adjustStreamVolume(9,
+                        AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND
+                                | AudioManager.FLAG_SHOW_UI);
             }
         });
     }

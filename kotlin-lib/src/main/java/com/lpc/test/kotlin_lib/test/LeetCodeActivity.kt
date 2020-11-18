@@ -710,6 +710,9 @@ class LeetCodeActivity : AppCompatActivity() {
         LogUtil.d("generateParenthesis() = ${generateParenthesis2(4)}")
     }
 
+    /**
+     * 字符串每次都是新生成的，严格来说并不是回溯算法
+     * */
     fun generateParenthesis(n: Int): List<String> {
         val mutableListOf = mutableListOf<String>()
         if (n == 0) {
@@ -733,6 +736,9 @@ class LeetCodeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 回溯算法
+     * */
     fun generateParenthesis2(n: Int): List<String> {
         val mutableListOf = mutableListOf<String>()
         if (n == 0) {
@@ -755,6 +761,39 @@ class LeetCodeActivity : AppCompatActivity() {
         if (right < left) {
             recur2(mutableListOf, sb.append(")"), left, right + 1, count)
             sb.deleteCharAt(sb.length - 1)
+        }
+    }
+
+    fun test46(view: View) {
+        val intArrayOf = intArrayOf(1, 2, 3)
+        val permute = permute(intArrayOf)
+        LogUtil.d("permute = ${permute}")
+    }
+
+    fun permute(nums: IntArray): List<List<Int>> {
+        val results = mutableListOf<MutableList<Int>>()
+        if (nums.isEmpty()) {
+            return results
+        }
+        val list = mutableListOf<Int>()
+        for (i in nums.indices) {
+            list.add(nums[i])
+        }
+        val size = list.size
+        backtrack(size, list, results, 0)
+        return results
+    }
+
+    fun backtrack(size: Int, list: MutableList<Int>, results: MutableList<MutableList<Int>>, first: Int) {
+        if (first == size) {
+            val temp = mutableListOf<Int>()
+            temp.addAll(list)
+            results.add(temp)
+        }
+        for (i in first until size) {
+            Collections.swap(list, first, i)
+            backtrack(size, list, results, first + 1)
+            Collections.swap(list, first, i)
         }
     }
 }

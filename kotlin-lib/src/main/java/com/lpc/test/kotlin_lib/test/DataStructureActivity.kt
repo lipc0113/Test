@@ -67,27 +67,20 @@ class DataStructureActivity : AppCompatActivity() {
         node.next = node2
         node2.next = node3
         node3.next = node4
-        var sort = sort(node)
+        var sort = sort2(node)
         while (sort != null) {
             LogUtil.d("node = ${sort.value}")
             sort = sort.next
         }
     }
 
-    fun sort(node10: ListNode?): ListNode? {
-
+    fun sort2(node10: ListNode?): ListNode? {
         var pre: ListNode? = null
-        var current: ListNode? = node10
+        var current = node10
         var next: ListNode? = null
-
-        if (current == null || current.next == null) {
-            return current
-        }
-
         while (current != null) {
             next = current?.next
             current.next = pre
-
             pre = current
             current = next
         }

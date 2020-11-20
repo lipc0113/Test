@@ -20,6 +20,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="test24"
+            android:padding="10dp"
+            android:text="24. 两两交换链表中的节点"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="test23"
             android:padding="10dp"
             android:text="23. 合并K个升序链表"

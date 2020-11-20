@@ -846,4 +846,52 @@ class LeetCodeActivity : AppCompatActivity() {
 
         return mergeTwoLists(mergeKLists(lists, left, mid), mergeKLists(lists, mid + 1, right))
     }
+
+    fun test24(view: View) {
+        val node = ListNode(1)
+        val node2 = ListNode(2)
+        val node3 = ListNode(3)
+        val node4 = ListNode(4)
+        val node5 = ListNode(5)
+        val node6 = ListNode(6)
+        node.next = node2
+        node2.next = node3
+        node3.next = node4
+        node4.next = node5
+        node5.next = node6
+
+        var mergeKLists = swapPairs(node)
+        while (mergeKLists != null) {
+            LogUtil.d("mergeTwoLists = ${mergeKLists.value}")
+            mergeKLists = mergeKLists.next
+
+        }
+    }
+
+    fun swapPairs(head: ListNode?): ListNode? {
+
+        var pre : ListNode? = null
+        var current : ListNode? = head
+        var next : ListNode? = null
+        val dest = current?.next
+        if(current == null || dest == null){
+            return current
+        }
+
+        var point: ListNode? = null
+        while (current?.next != null) {
+            pre = current
+            current = current.next
+            next = current?.next
+
+            point?.next = current
+            point = pre
+            current?.next = pre
+
+            current = next
+            point.next = current
+        }
+
+        return dest
+    }
 }

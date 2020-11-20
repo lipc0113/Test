@@ -1,167 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test46"
-        android:padding="10dp"
-        android:text="46. 全排列"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test22"
-        android:padding="10dp"
-        android:text="22. 括号生成"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test46"
+            android:padding="10dp"
+            android:text="46. 全排列"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test21_2"
-        android:padding="10dp"
-        android:text="21. 合并两个有序链表"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test23"
+            android:padding="10dp"
+            android:text="23. 合并K个升序链表"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test21"
-        android:padding="10dp"
-        android:text="21. 合并两个有序链表"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test22"
+            android:padding="10dp"
+            android:text="22. 括号生成"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test20"
-        android:padding="10dp"
-        android:text="20. 有效的括号"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test21_2"
+            android:padding="10dp"
+            android:text="21. 合并两个有序链表"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test16"
-        android:padding="10dp"
-        android:text="16.最接近的三数之和"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test21"
+            android:padding="10dp"
+            android:text="21. 合并两个有序链表"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test15"
-        android:padding="10dp"
-        android:text="15.三数之和"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test20"
+            android:padding="10dp"
+            android:text="20. 有效的括号"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test14_2"
-        android:padding="10dp"
-        android:text="14.最长公共前缀-字典树"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test16"
+            android:padding="10dp"
+            android:text="16.最接近的三数之和"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test14"
-        android:padding="10dp"
-        android:text="14.最长公共前缀-纵向扫描"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test15"
+            android:padding="10dp"
+            android:text="15.三数之和"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test13"
-        android:padding="10dp"
-        android:text="13. 罗马数字转整数"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test14_2"
+            android:padding="10dp"
+            android:text="14.最长公共前缀-字典树"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test12"
-        android:padding="10dp"
-        android:text="12. 整数转罗马数字"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test14"
+            android:padding="10dp"
+            android:text="14.最长公共前缀-纵向扫描"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test11"
-        android:padding="10dp"
-        android:text="11. 盛最多水的容器"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test13"
+            android:padding="10dp"
+            android:text="13. 罗马数字转整数"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test9"
-        android:padding="10dp"
-        android:text="9. 回文数"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test12"
+            android:padding="10dp"
+            android:text="12. 整数转罗马数字"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test8"
-        android:padding="10dp"
-        android:text="8. 字符串转换整数 (atoi)"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test11"
+            android:padding="10dp"
+            android:text="11. 盛最多水的容器"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test7"
-        android:padding="10dp"
-        android:text="7.整数反转"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test9"
+            android:padding="10dp"
+            android:text="9. 回文数"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test6"
-        android:padding="10dp"
-        android:text="6.Z字形变换"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test8"
+            android:padding="10dp"
+            android:text="8. 字符串转换整数 (atoi)"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test5"
-        android:padding="10dp"
-        android:text="5.最长回文子串"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test7"
+            android:padding="10dp"
+            android:text="7.整数反转"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test3"
-        android:padding="10dp"
-        android:text="3.无重复字符的最长子串"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test6"
+            android:padding="10dp"
+            android:text="6.Z字形变换"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test2"
-        android:padding="10dp"
-        android:text="2.两数相加"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test5"
+            android:padding="10dp"
+            android:text="5.最长回文子串"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test"
-        android:padding="10dp"
-        android:text="1.两数之和"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test3"
+            android:padding="10dp"
+            android:text="3.无重复字符的最长子串"
+            android:textSize="24sp" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test2"
+            android:padding="10dp"
+            android:text="2.两数相加"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="test"
+            android:padding="10dp"
+            android:text="1.两数之和"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+</ScrollView>

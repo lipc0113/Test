@@ -764,6 +764,9 @@ class LeetCodeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 最基本的回溯算法
+     * */
     fun test46(view: View) {
         val intArrayOf = intArrayOf(1, 2, 3)
         val permute = permute(intArrayOf)
@@ -795,5 +798,52 @@ class LeetCodeActivity : AppCompatActivity() {
             backtrack(size, list, results, first + 1)
             Collections.swap(list, first, i)
         }
+    }
+
+    /**
+     * 合并K个升序链表
+     * */
+    fun test23(view: View) {
+        val node = ListNode(2)
+        val node2 = ListNode(6)
+        val node3 = ListNode(7)
+        node.next = node2
+        node2.next = node3
+        val node4 = ListNode(3)
+        val node5 = ListNode(4)
+        val node6 = ListNode(9)
+        node4.next = node5
+        node5.next = node6
+        val node7 = ListNode(3)
+        val node8 = ListNode(4)
+        val node9 = ListNode(9)
+        node7.next = node8
+        node8.next = node9
+
+        val arrayOf: Array<ListNode?> = arrayOf(node, node4, node7)
+        var mergeKLists = mergeKLists(arrayOf)
+        while (mergeKLists != null) {
+            LogUtil.d("mergeTwoLists = ${mergeKLists.value}")
+            mergeKLists = mergeKLists.next
+
+        }
+    }
+
+    fun mergeKLists(lists: Array<ListNode?>): ListNode? {
+        if(lists.isEmpty()){
+            return null
+        }
+        val right = lists.size - 1
+        val left = 0
+        return mergeKLists(lists, left, right)
+    }
+
+    fun mergeKLists(lists: Array<ListNode?>, left: Int, right: Int): ListNode? {
+        if (left == right) {
+            return lists[left]
+        }
+        val mid = (left + right) shr 1
+
+        return mergeTwoLists(mergeKLists(lists, left, mid), mergeKLists(lists, mid + 1, right))
     }
 }

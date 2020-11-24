@@ -20,6 +20,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="test25"
+            android:padding="10dp"
+            android:text="25. K 个一组翻转链表"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="test24"
             android:padding="10dp"
             android:text="24. 两两交换链表中的节点"

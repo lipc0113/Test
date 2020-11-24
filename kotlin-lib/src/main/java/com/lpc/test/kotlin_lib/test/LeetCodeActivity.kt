@@ -894,4 +894,82 @@ class LeetCodeActivity : AppCompatActivity() {
 
         return dest
     }
+
+    fun test25(view: View) {
+        val node = ListNode(1)
+        val node2 = ListNode(2)
+        val node3 = ListNode(3)
+        val node4 = ListNode(4)
+        val node5 = ListNode(5)
+        val node6 = ListNode(6)
+        val node7 = ListNode(7)
+        node.next = node2
+        node2.next = node3
+        node3.next = node4
+        node4.next = node5
+        node5.next = node6
+        node6.next = node7
+
+        var reverseKGroup = reverseKGroup(node, 4)
+        while (reverseKGroup != null) {
+            LogUtil.d("mergeTwoLists = ${reverseKGroup.value}")
+            reverseKGroup = reverseKGroup.next
+
+        }
+    }
+
+    fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
+
+        if(k < 2){
+            return head
+        }
+
+        var head = head
+
+        var root: ListNode? = ListNode(-1)
+        var next: ListNode? = head
+
+        var preTail: ListNode?= root
+        var temp : ListNode? = null
+        var first : ListNode? = null
+
+        while (next != null) {
+
+            preTail?.next = next
+            first = next
+            temp = next
+
+            for (i in 2..k) {
+                temp = temp?.next
+                if(temp == null){
+                    next= temp
+                    break
+                }
+                if (i == k) {
+                    preTail?.next = temp
+                    preTail = first
+
+                    next = temp?.next
+                    temp?.next = null
+
+                    单链表反转(first)
+                }
+            }
+        }
+
+        return root?.next
+    }
+
+    fun 单链表反转(node10: ListNode?): ListNode? {
+        var pre: ListNode? = null
+        var current = node10
+        var next: ListNode? = null
+        while (current != null) {
+            next = current?.next
+            current.next = pre
+            pre = current
+            current = next
+        }
+        return pre
+    }
 }

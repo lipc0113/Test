@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
-import com.lpc.test.kotlin_lib.test.bean.ListNode
 import com.lpc.test.kotlin_lib.test.utils.LogUtil
 import java.util.*
 
@@ -28,6 +27,31 @@ class AlgorithmActivity : AppCompatActivity() {
 
     private fun initData() {
 
+    }
+
+    fun 二分查找(view: View) {
+        val arrays = intArrayOf(1, 3, 4, 6, 9, 11, 21, 25, 29)
+        LogUtil.d("binary(arrays, 21) = ${binary(arrays, 15)}")
+    }
+
+    private fun binary(arrays: IntArray, dest: Int): Int {
+        var low = 0
+        var high = arrays.size - 1
+        var mid = 0
+        var midValue = 0
+        while (low <= high) {
+            // 防止溢出，该式简化后等于(low + high) / 2
+            mid = low + (high - low) / 2
+            midValue = arrays[mid]
+            if (dest < midValue) {
+                high = mid - 1
+            } else if (dest > midValue) {
+                low = mid + 1
+            } else {
+                return mid
+            }
+        }
+        return -low
     }
 
     /**
@@ -291,4 +315,5 @@ class AlgorithmActivity : AppCompatActivity() {
             LogUtil.d(array[i].toString())
         }
     }
+
 }

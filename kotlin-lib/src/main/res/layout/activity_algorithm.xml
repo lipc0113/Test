@@ -76,4 +76,12 @@
         android:text="选择排序"
         android:textSize="24sp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="二分查找"
+        android:padding="10dp"
+        android:text="二分查找"
+        android:textSize="24sp" />
+
 </LinearLayout>

@@ -63,6 +63,16 @@ public class DuerOsTestActivity extends BaseTextRecyclerViewActivity implements 
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("模拟anr", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                while(true){
+                    int i = 999 * 999;
+                }
+            }
+        });
+
         addBeanToMList("进入声纹页面", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

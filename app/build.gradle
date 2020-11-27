@@ -60,17 +60,13 @@ android {
     }
 
     productFlavors{
-        production{
-            dimension "default"
-            manifestPlaceholders=[test:"production"]
-        }
         dev{
             dimension "default"
             manifestPlaceholders=[test:"dev"]
         }
-        kotlin{
+        leetcode{
             dimension "default"
-            manifestPlaceholders=[test:"kotlin"]
+            manifestPlaceholders=[test:"leetcode"]
         }
     }
 
@@ -85,8 +81,8 @@ android {
             assets.srcDirs = ['src/main/assets']
             jniLibs.srcDirs = ['src/main/libs']
         }
-        kotlin{
-            manifest.srcFile 'src/kotlin/AndroidManifest.xml'
+        leetcode{
+            manifest.srcFile 'src/leetcode/AndroidManifest.xml'
         }
     }
 

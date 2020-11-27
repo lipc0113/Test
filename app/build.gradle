@@ -68,6 +68,26 @@ android {
             dimension "default"
             manifestPlaceholders=[test:"dev"]
         }
+        kotlin{
+            dimension "default"
+            manifestPlaceholders=[test:"kotlin"]
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main']
+            resources.srcDirs = ['src/main/res']
+            aidl.srcDirs = ['src/main']
+            renderscript.srcDirs = ['src/main']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+        kotlin{
+            manifest.srcFile 'src/kotlin/AndroidManifest.xml'
+        }
     }
 
     lintOptions {

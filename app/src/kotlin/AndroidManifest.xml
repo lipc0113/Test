@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lpc.test">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="test"
+            android:value="${test}" />
+
+        <activity android:name="com.lpc.test.kotlin_lib.test.LeetCodeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.UriActivity">
+            <intent-filter>
+                <action android:name="com.lpc.test" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--<data
+                    android:host="com.lpc.test"
+                    android:path="/act"
+                    android:scheme="lipc0113" />-->
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.RecyclerViewTestActivity" />
+        <activity android:name=".activity.ActivityTestActivity" />
+        <activity android:name=".activity.JavaTestActivity" />
+        <activity android:name=".activity.sub.AnnotationActivity" />
+        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.WebViewTestActivity" />
+        <activity android:name=".activity.SettingActivity"
+            android:exported="true"/>
+        <activity android:name=".activity.DuerOsTestActivity" />
+        <activity android:name=".activity.AnimationTestActivity" />
+        <activity android:name=".activity.PhoneTestActivity" />
+        <activity android:name=".activity.ServiceTestActivity" />
+        <activity android:name=".activity.TextViewTestActivity" />
+        <activity android:name=".activity.sub.ScrollTextViewActivity" />
+        <activity android:name=".activity.sub.TransitionDrawableAnimationTestActivity" />
+        <activity android:name=".activity.sub.ClipDrawableAnimationTestActivity" />
+        <activity android:name=".activity.CustomViewTestActivity" />
+        <activity android:name=".activity.sub.CircleProgressBarActivity" />
+        <activity android:name=".activity.ConcurrentActivity" />
+
+        <service android:name=".service.TestService" />
+    </application>
+
+</manifest>

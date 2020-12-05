@@ -800,6 +800,20 @@ class LeetCodeActivity : AppCompatActivity() {
         }
     }
 
+    fun test544(view: View) {
+        LogUtil.d("findContestMatch(8) = ${findContestMatch(8)}")
+    }
+
+    fun findContestMatch(n: Int): String {
+
+        return ""
+    }
+
+    fun findContestMatchRecur(stringBuilder: StringBuilder, pre: Int, tail: Int) {
+
+
+    }
+
     /**
      * 合并K个升序链表
      * */
@@ -830,7 +844,7 @@ class LeetCodeActivity : AppCompatActivity() {
     }
 
     fun mergeKLists(lists: Array<ListNode?>): ListNode? {
-        if(lists.isEmpty()){
+        if (lists.isEmpty()) {
             return null
         }
         val right = lists.size - 1
@@ -870,11 +884,11 @@ class LeetCodeActivity : AppCompatActivity() {
 
     fun swapPairs(head: ListNode?): ListNode? {
 
-        var pre : ListNode? = null
-        var current : ListNode? = head
-        var next : ListNode? = null
+        var pre: ListNode? = null
+        var current: ListNode? = head
+        var next: ListNode? = null
         val dest = current?.next
-        if(current == null || dest == null){
+        if (current == null || dest == null) {
             return current
         }
 
@@ -920,7 +934,7 @@ class LeetCodeActivity : AppCompatActivity() {
 
     fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
 
-        if(k < 2){
+        if (k < 2) {
             return head
         }
 
@@ -929,9 +943,9 @@ class LeetCodeActivity : AppCompatActivity() {
         var root: ListNode? = ListNode(-1)
         var next: ListNode? = head
 
-        var preTail: ListNode?= root
-        var temp : ListNode? = null
-        var first : ListNode? = null
+        var preTail: ListNode? = root
+        var temp: ListNode? = null
+        var first: ListNode? = null
 
         while (next != null) {
 
@@ -941,8 +955,8 @@ class LeetCodeActivity : AppCompatActivity() {
 
             for (i in 2..k) {
                 temp = temp?.next
-                if(temp == null){
-                    next= temp
+                if (temp == null) {
+                    next = temp
                     break
                 }
                 if (i == k) {
@@ -972,4 +986,6 @@ class LeetCodeActivity : AppCompatActivity() {
         }
         return pre
     }
+
+
 }

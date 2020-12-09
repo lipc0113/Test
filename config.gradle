@@ -19,5 +19,6 @@ ext {
             recyclerview    : 'androidx.recyclerview:recyclerview:1.0.0',
             gson            : 'com.google.code.gson:gson:2.8.5',
             okhttp          : 'com.squareup.okhttp3:okhttp:3.5.0',
+            glide           : 'com.github.bumptech.glide:glide:3.7.0'
     ]
 }

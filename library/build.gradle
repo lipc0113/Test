@@ -40,4 +40,5 @@ dependencies {
 
     api rootProject.ext.dependencies.gson
     api rootProject.ext.dependencies.okhttp
+    api rootProject.ext.dependencies.glide
 }

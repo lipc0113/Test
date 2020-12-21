@@ -2,12 +2,14 @@ package com.lpc.test.kotlin_lib.test
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.IntegerRes
 import androidx.appcompat.app.AppCompatActivity
 import com.lpc.test.kotlin_lib.R
 import com.lpc.test.kotlin_lib.test.bean.BinaryTreeNode
 import com.lpc.test.kotlin_lib.test.bean.ListNode
 import com.lpc.test.kotlin_lib.test.utils.LogUtil
 import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * @ Author     ：v_lipengcheng
@@ -106,17 +108,17 @@ class DataStructureActivity : AppCompatActivity() {
 
     // TODO: 2020/11/4
     fun 先序遍历二叉树_非递归(view: View) {
-
+        printBinaryTreePreNotRecur(root)
     }
 
     // TODO: 2020/11/4
     fun 中序遍历二叉树_非递归(view: View) {
-
+        printBinaryTreeMidNotRecur(root)
     }
 
     // TODO: 2020/11/4
     fun 后序遍历二叉树_非递归(view: View) {
-
+        printBinaryTreeBackNotRecur(root)
     }
 
     // TODO: 2020/11/4
@@ -172,14 +174,56 @@ class DataStructureActivity : AppCompatActivity() {
     }
 
     private fun <T> printBinaryTreePreNotRecur(root: BinaryTreeNode<T>?) {
+        val stack = Stack<BinaryTreeNode<T>>()
+        var temp: BinaryTreeNode<T>?= root
+        while (stack.size > 0 || temp != null) {
+            if (temp != null) {
+                LogUtil.d("temp = $temp")
+                stack.push(temp)
+                temp = temp?.left
+            } else {
+                temp = stack.pop()
+                temp = temp?.right
+            }
+        }
 
     }
 
     private fun <T> printBinaryTreeMidNotRecur(root: BinaryTreeNode<T>?) {
-
+        val stack = Stack<BinaryTreeNode<T>>()
+        var temp = root
+        while (stack.size > 0 || temp != null) {
+            if (temp != null) {
+                stack.push(temp)
+                temp = temp.left
+            } else {
+                temp = stack.pop()
+                LogUtil.d("temp = $temp")
+                temp = temp?.right
+            }
+        }
     }
 
     private fun <T> printBinaryTreeBackNotRecur(root: BinaryTreeNode<T>?) {
-
+        val stack = Stack<BinaryTreeNode<T>>()
+        val map = HashMap<BinaryTreeNode<T>, Int>()
+        var temp = root
+        while (stack.size > 0 || temp != null) {
+            if (temp != null) {
+                stack.push(temp)
+                map.put(temp, 1)
+                temp = temp.left
+            } else {
+                temp = stack.peek()
+                if (map.get(temp) == 2) {
+                    temp = stack.pop()
+                    LogUtil.d("temp = $temp")
+                    temp = null
+                } else {
+                    map.put(temp, 2)
+                    temp = temp?.right
+                }
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.lpc.test.activity;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.util.Log;
+import android.util.Printer;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -49,7 +50,29 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 return false;
             }
         });
+        // 监听msg.target.dispatchMessage(msg)方法执行
+        Looper.myLooper().setMessageLogging(new Printer() {
+            //分发和处理消息开始前的log
+            private static final String START = ">>>>> Dispatching";
+            //分发和处理消息结束后的log
+            private static final String END = "<<<<< Finished";
+            @Override
+            public void println(String x) {
+
+                if (x.startsWith(START)) {
+                    startTime2 = System.currentTimeMillis();
+                    //开始计时
+                    LogUtil.d("Message start = " + startTime2);
+                }
+                if (x.startsWith(END)) {
+                    //结束计时，并计算出方法执行时间
+                    LogUtil.d("Message end =" + (System.currentTimeMillis() - startTime2));
+                }
+
+            }
+        });
     }
+    private long startTime2 = 0;
 
     @Override
     protected void initData() {

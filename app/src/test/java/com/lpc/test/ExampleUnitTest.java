@@ -18,6 +18,12 @@ import static org.junit.Assert.assertEquals;
 public class ExampleUnitTest {
 
     @Test
+    public void addition_isCorrect9() {
+        String str = "00123";
+        System.out.println("str = " + Integer.valueOf(str));
+    }
+
+    @Test
     public void addition_isCorrect8() {
 
         int i = -1;

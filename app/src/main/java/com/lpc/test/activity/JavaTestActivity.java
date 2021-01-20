@@ -7,6 +7,7 @@ import android.view.View;
 import com.lpc.test.activity.sub.AnnotationActivity;
 import com.lpc.test.base.BaseTextRecyclerViewActivity;
 import com.lpc.test.bean.Child;
+import com.lpc.test.bean.Generator;
 import com.lpc.test.utils.LogUtil;
 import com.lpc.test.utils.ToastUtils;
 
@@ -40,16 +41,33 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
     @Override
     protected void initRecyclerViewData() {
 
+        addBeanToMList("泛型-上下边界", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Generator<Integer> gInteger = new Generator<Integer>(123);
+                Generator<Number> gNumber = new Generator<Number>(456);
+
+//                showKeyValue1(gInteger);
+                showKeyValue1(gNumber);
+
+                showKeyValue2(gInteger);
+                showKeyValue2(gNumber);
+
+                showKeyValue3(gInteger);
+                showKeyValue3(gNumber);
+            }
+        });
+
         addBeanToMList("主线程不能抓住子线程的异常", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    new Thread(){
+                    new Thread() {
                         @Override
                         public void run() {
                             super.run();
 //                            try {
-                                int i = 1 / 0;
+                            int i = 1 / 0;
 //                            } catch (Exception e) {
 //                                LogUtil.d("子线程Exception");
 //                                e.printStackTrace();
@@ -222,5 +240,18 @@ public class JavaTestActivity extends BaseTextRecyclerViewActivity {
                 // TODO: 2020/8/11
             }
         });
+
+    }
+
+    public void showKeyValue1(Generator<Number> obj) {
+        LogUtil.d("泛型测试 key value is " + obj.getKey());
+    }
+
+    public void showKeyValue2(Generator<? extends Number> obj) {
+        LogUtil.d("泛型测试2 key value is " + obj.getKey());
+    }
+
+    public <T extends Number> void showKeyValue3(Generator<T> obj) {
+        LogUtil.d("泛型测试3 key value is " + obj.getKey());
     }
 }

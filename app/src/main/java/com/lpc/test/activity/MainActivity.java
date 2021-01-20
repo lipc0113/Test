@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity {
     protected void initData() {
 
         Debug.startMethodTracing("TraceView");
-//        Trace.beginSection("sysTrace");
+        Trace.beginSection("sysTrace");
         MainBeanFactory beanFactory = new MainBeanFactory();
         mList = beanFactory.getList(this);
 

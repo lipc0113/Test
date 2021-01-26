@@ -8,8 +8,14 @@ import com.lpc.test.utils.LogUtil;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ Author     ：v_lipengcheng
@@ -141,5 +147,78 @@ public class ReflectTestActivity extends BaseTextRecyclerViewActivity {
             }
         });
 
+        addBeanToMList("Class的Type", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    Class<?> aClass = Class.forName("com.lpc.test.bean.GeneratorBean");
+                    Constructor<?> constructor = aClass.getConstructor(Object.class, String.class);
+                    constructor.setAccessible(true);
+                    GeneratorBean<Integer> bean = (GeneratorBean) constructor.newInstance(123, "lipc");
+                    LogUtil.d("指定Constructor = " + constructor.toString());
+
+                    // T
+                    TypeVariable<? extends Class<?>>[] typeParameters = bean.getClass().getTypeParameters();
+                    for (int i = 0; i < typeParameters.length; i++) {
+                        TypeVariable<? extends Class<?>> typeParameter = typeParameters[i];
+                        LogUtil.d("typeParameters " + i + " = " + typeParameter.toString());
+                    }
+
+                    // com.lpc.test.listener.TestListener<T>
+                    Type[] genericInterfaces = bean.getClass().getGenericInterfaces();
+                    for (int i = 0; i < genericInterfaces.length; i++) {
+                        LogUtil.d("genericInterfaces " + i + " = " + genericInterfaces[i].toString());
+                    }
+
+                    // interface com.lpc.test.listener.TestListener
+                    Class<?>[] interfaces = bean.getClass().getInterfaces();
+                    for (int i = 0; i < interfaces.length; i++) {
+                        LogUtil.d("interfaces " + i + " = " + interfaces[i].toString());
+                    }
+
+                    // class java.lang.String
+                    Field list1 = bean.getClass().getDeclaredField("mList");
+                    list1.setAccessible(true);
+                    Type genericType = list1.getGenericType();
+                    Type[] actualTypeArguments = ((ParameterizedType) genericType).getActualTypeArguments();
+                    LogUtil.d("listTypeParameters " + 0 + " = " + actualTypeArguments[0]);
+
+                    // T
+                    Field list2 = bean.getClass().getDeclaredField("mList2");
+                    list1.setAccessible(true);
+                    Type genericType2 = list2.getGenericType();
+                    Type[] actualTypeArguments2 = ((ParameterizedType) genericType2).getActualTypeArguments();
+                    LogUtil.d("listTypeParameters2 " + 0 + " = " + actualTypeArguments2[0]);
+
+                    List<GeneratorBean> list = new ArrayList<GeneratorBean>();
+                    list.add(bean);
+
+                    // E
+                    TypeVariable<? extends Class<? extends List>>[] typeParameters1 = list.getClass().getTypeParameters();
+                    for (int i = 0; i < typeParameters1.length; i++) {
+                        LogUtil.d("typeParameters1 " + i + " = " + typeParameters1[i].toString());
+                    }
+
+                    // List<E>、Serializable等接口
+                    Type[] listGenericInterfaces = list.getClass().getGenericInterfaces();
+                    for (int i = 0; i < listGenericInterfaces.length; i++) {
+                        LogUtil.d("listGenericInterfaces " + i + " = " + listGenericInterfaces[i].toString());
+                    }
+
+                    Field strs = bean.getClass().getDeclaredField("strs");
+                    strs.setAccessible(true);
+                    Type genericType1 = strs.getGenericType();
+                    GenericArrayType genericType11 = (GenericArrayType) genericType1;
+                    Type genericComponentType = genericType11.getGenericComponentType();
+                    Type[] actualTypeArguments1 = ((ParameterizedType) genericComponentType).getActualTypeArguments();
+                    LogUtil.d("actualTypeArguments1 " + 0 + " = " + actualTypeArguments1[0]);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 }

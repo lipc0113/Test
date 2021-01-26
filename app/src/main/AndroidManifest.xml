@@ -58,6 +58,9 @@
         <activity android:name=".activity.CustomViewTestActivity" />
         <activity android:name=".activity.sub.CircleProgressBarActivity" />
         <activity android:name=".activity.ConcurrentActivity" />
+        <activity android:name=".activity.AnnotationTestActivity" />
+        <activity android:name=".activity.GenericsTestActivity" />
+        <activity android:name=".activity.ReflectTestActivity" />
 
         <service android:name=".service.TestService" />
     </application>

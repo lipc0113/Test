@@ -7,12 +7,15 @@ import android.view.View;
 
 import com.lpc.test.activity.ActivityTestActivity;
 import com.lpc.test.activity.AnimationTestActivity;
+import com.lpc.test.activity.AnnotationTestActivity;
 import com.lpc.test.activity.ConcurrentActivity;
 import com.lpc.test.activity.CustomViewTestActivity;
 import com.lpc.test.activity.DuerOsTestActivity;
+import com.lpc.test.activity.GenericsTestActivity;
 import com.lpc.test.activity.JavaTestActivity;
 import com.lpc.test.activity.PhoneTestActivity;
 import com.lpc.test.activity.RecyclerViewTestActivity;
+import com.lpc.test.activity.ReflectTestActivity;
 import com.lpc.test.activity.ServiceTestActivity;
 import com.lpc.test.activity.TestActivity;
 import com.lpc.test.activity.TextViewTestActivity;
@@ -179,6 +182,30 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, DataStructureActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("泛型", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, GenericsTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("反射", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, ReflectTestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("注解---TODO", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, AnnotationTestActivity.class);
                 activity.startActivity(i);
             }
         });

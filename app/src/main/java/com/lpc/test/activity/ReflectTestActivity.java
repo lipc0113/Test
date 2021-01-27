@@ -214,6 +214,42 @@ public class ReflectTestActivity extends BaseTextRecyclerViewActivity {
                     Type[] actualTypeArguments1 = ((ParameterizedType) genericComponentType).getActualTypeArguments();
                     LogUtil.d("actualTypeArguments1 " + 0 + " = " + actualTypeArguments1[0]);
 
+                    Method test = bean.getClass().getDeclaredMethod("test", Object.class);
+                    Type[] genericParameterTypes = test.getGenericParameterTypes();
+                    for (int i = 0; i < genericParameterTypes.length; i++) {
+                        LogUtil.d("genericParameterTypes " + i + " = " + genericParameterTypes[0]);
+                        if(genericParameterTypes[i] instanceof ParameterizedType){
+                            ParameterizedType genericParameterType = (ParameterizedType) genericParameterTypes[i];
+                            Type[] actualTypeArguments3 = genericParameterType.getActualTypeArguments();
+                            if(actualTypeArguments3 != null && actualTypeArguments3.length > 0){
+                                LogUtil.d("actualTypeArguments3 " + i + " = " + actualTypeArguments3[0]);
+                            }
+                        } else {
+                            LogUtil.d("actualTypeArguments33 " + i + " = " + genericParameterTypes[i]);
+                            LogUtil.d("actualTypeArguments33 " + i + " = " + genericParameterTypes[i].getClass());
+                            LogUtil.d("actualTypeArguments33 " + i + " = " + genericParameterTypes[i].getTypeName());
+//                            LogUtil.d("actualTypeArguments33 " + i + " = " + (Class)genericParameterTypes[i]);
+                        }
+                    }
+
+                    LogUtil.d("-------------");
+
+                    Method test2 = bean.getClass().getDeclaredMethod("test2", List.class, Object.class, int.class);
+                    Type[] genericParameterTypes2 = test2.getGenericParameterTypes();
+                    for (int i = 0; i < genericParameterTypes2.length; i++) {
+                        LogUtil.d("genericParameterTypes " + i + " = " + genericParameterTypes2[i]);
+                        if(genericParameterTypes2[i] instanceof ParameterizedType){
+                            ParameterizedType genericParameterType = (ParameterizedType) genericParameterTypes2[i];
+                            Type[] actualTypeArguments3 = genericParameterType.getActualTypeArguments();
+                            LogUtil.d("actualTypeArguments3 " + i + " = " + actualTypeArguments3[0]);
+                        } else {
+                            LogUtil.d("actualTypeArguments33 " + i + " = " + genericParameterTypes2[i]);
+                            LogUtil.d("actualTypeArguments33 " + i + " = " + genericParameterTypes2[i].getClass());
+                            LogUtil.d("actualTypeArguments33 " + i + " = " + genericParameterTypes2[i].getTypeName());
+//                            LogUtil.d("actualTypeArguments33 " + i + " = " + (Class)genericParameterTypes[i]);
+                        }
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

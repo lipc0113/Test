@@ -41,4 +41,8 @@ public class GeneratorBean<T> extends GeneratorParentBean<T> implements TestList
     public T test(T t) {
         return null;
     }
+
+    public int test2(List<Integer> list, T t, int i) {
+        return 0;
+    }
 }

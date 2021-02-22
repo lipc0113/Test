@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
 
         mTitleContentAdapter = new TitleContentAdapter(this, mList);
         mRv.setAdapter(mTitleContentAdapter);
-//        Trace.endSection();
+        Trace.endSection();
         Debug.stopMethodTracing();
     }
 }

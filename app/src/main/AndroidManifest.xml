@@ -61,6 +61,7 @@
         <activity android:name=".activity.AnnotationTestActivity" />
         <activity android:name=".activity.GenericsTestActivity" />
         <activity android:name=".activity.ReflectTestActivity" />
+        <activity android:name=".activity.ViewTextActivity" />
 
         <service android:name=".service.TestService" />
     </application>

@@ -20,6 +20,7 @@ import com.lpc.test.activity.ServiceTestActivity;
 import com.lpc.test.activity.TestActivity;
 import com.lpc.test.activity.TextViewTestActivity;
 import com.lpc.test.activity.UriActivity;
+import com.lpc.test.activity.ViewTextActivity;
 import com.lpc.test.activity.WebViewTestActivity;
 import com.lpc.test.bean.TitleContentBean;
 import com.lpc.test.kotlin_lib.activity.KotlinActivity;
@@ -54,6 +55,14 @@ public class MainBeanFactory {
             public void onClick(View v) {
 
                 Intent i = new Intent(activity, TestActivity.class);
+                activity.startActivity(i);
+            }
+        });
+        addBean("View", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(activity, ViewTextActivity.class);
                 activity.startActivity(i);
             }
         });

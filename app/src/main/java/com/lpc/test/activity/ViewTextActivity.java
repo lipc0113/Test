@@ -49,6 +49,12 @@ public class ViewTextActivity extends AppCompatActivity {
                 printlnLocation(v);
             }
         });
+        tvLocation2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printlnLocation(v);
+            }
+        });
 
         scaledTouchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
         // 改变layoutParams实现滑动
@@ -84,7 +90,7 @@ public class ViewTextActivity extends AppCompatActivity {
                 mlastY = y;
                 printlnLocation(v);
             }
-            return true;
+            return false;
         }
     };
 
@@ -100,7 +106,8 @@ public class ViewTextActivity extends AppCompatActivity {
                     LogUtil.d("event.getY() = " + event.getY());
                     layoutParams.leftMargin += (int) event.getX();
                     layoutParams.topMargin += (int) event.getY();
-                    v.setLayoutParams(layoutParams);
+//                    v.setLayoutParams(layoutParams);
+                    v.requestLayout();
                     printlnLocation(v);
                 }
             }

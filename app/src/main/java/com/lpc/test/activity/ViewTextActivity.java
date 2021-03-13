@@ -16,7 +16,7 @@ import com.lpc.test.utils.LogUtil;
 /**
  * 功能:
  * <p>
- * 描述:
+ * 描述: tvLocation和tvLocation2控件都设置了点击属性。所以在onTouch中返回false，也可以出发MOVE事件
  * <p>
  * Created by lipc0113 on 2021/3/7.
  */

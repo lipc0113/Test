@@ -9,6 +9,7 @@ import com.lpc.test.base.BaseTextRecyclerViewActivity;
 /**
  * @ Author     ：v_lipengcheng
  * @ Date       ：Created in 11:02 2019-08-08
+ * @ Description：123
  */
 public class ActivityTestActivity extends BaseTextRecyclerViewActivity {
 
